@@ -2,14 +2,14 @@
 
 class personajes{
 
-	$id_actor = "";
-	$id_pelicula = "";
-	$id_rol = "";
-	$usuario_creacion = "";
-	$fecha_creacion = "";
-	$usuario_modificacion = "";
-	$fecha_modificacion = "";
-
+public $id_actor = "";
+public $id_pelicula = "";
+public $id_rol = "";
+public $usuario_creacion = "";
+public $fecha_creacion = "";
+public $usuario_modificacion = "";
+public $fecha_modificacion = "";
+public $mensaje = "";
 
 }
 

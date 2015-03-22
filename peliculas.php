@@ -2,17 +2,17 @@
 
 class peliculas{
 
-	$id_pelicula = "";
-	$nombre = "";
-	$duracion = "";
-	$precio_alquiler = "";
-	$id_genero = "";
-	$ruta_imagenes = "";
-	$usuario_creacion = "";
-	$fecha_creacion = "";
-	$usuario_modificacion = "";
-	$fecha_modificacion = "";
-
+public $id_pelicula = "";
+public $nombre = "";
+public $duracion = "";
+public $precio_alquiler = "";
+public $id_genero = "";
+public $ruta_imagenes = "";
+public $usuario_creacion = "";
+public $fecha_creacion = "";
+public $usuario_modificacion = "";
+public $fecha_modificacion = "";
+public $mensaje = "";
 
 }
 

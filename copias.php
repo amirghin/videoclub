@@ -2,14 +2,15 @@
 
 class copias{
 
-	$id_copia = "";
-	$id_pelicula = "";
-	$cod_ubicacion = "";
-	$disponibilidad = "";
-	$usuario_creacion = "";
-	$fecha_creacion = "";
-	$usuario_modificacion = "";
-	$fecha_modificacion = "";
+public $id_copia = "";
+public $id_pelicula = "";
+public $cod_ubicacion = "";
+public $disponibilidad = "";
+public $usuario_creacion = "";
+public $fecha_creacion = "";
+public $usuario_modificacion = "";
+public $fecha_modificacion = "";
+public $mensaje = "";
 
 
 }

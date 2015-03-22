@@ -2,18 +2,18 @@
 
 class reservaciones{
 
-	$id_reservacion = "";
-	$id_cliente = "";
-	$estado_aprobacion = "";
-	$fecha_reservacion = "";
-	$fecha_retiro = "";
-	$hora_retiro = "";
-	$fecha_entrega = "";
-	$usuario_creacion = "";
-	$fecha_creacion = "";
-	$usuario_modificacion = "";
-	$fecha_modificacion = "";
-
+public $id_reservacion = "";
+public $id_cliente = "";
+public $estado_aprobacion = "";
+public $fecha_reservacion = "";
+public $fecha_retiro = "";
+public $hora_retiro = "";
+public $fecha_entrega = "";
+public $usuario_creacion = "";
+public $fecha_creacion = "";
+public $usuario_modificacion = "";
+public $fecha_modificacion = "";
+public $mensaje = "";
 
 }
 

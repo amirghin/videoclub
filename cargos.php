@@ -2,14 +2,15 @@
 
 class cargos{
 
-	$id_cargo = "";
-	$detalle = "";
-	$tipo = "";
-	$monto = "";
-	$usuario_creacion = "";
-	$fecha_creacion = "";
-	$usuario_modificacion = "";
-	$fecha_modificacion = "";
+public $id_cargo = "";
+public $detalle = "";
+public $tipo = "";
+public $monto = "";
+public $usuario_creacion = "";
+public $fecha_creacion = "";
+public $usuario_modificacion = "";
+public $fecha_modificacion = "";
+public $mensaje = "";
 
 
 }

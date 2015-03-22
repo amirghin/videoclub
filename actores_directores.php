@@ -2,14 +2,14 @@
 
 class actores_directores{
 
-	$id_actor = "";
-	$nombre = "";
-	$genero = "";
-	$usuario_creacion = "";
-	$fecha_creacion = "";
-	$usuario_modificacion = "";
-	$fecha_modificacion = "";
-
+public $id_actor = "";
+public $nombre = "";
+public $genero = "";
+public $usuario_creacion = "";
+public $fecha_creacion = "";
+public $usuario_modificacion = "";
+public $fecha_modificacion = "";
+public $mensaje = "";
 
 }
 

@@ -2,13 +2,13 @@
 
 class roles{
 
-	$id_rol = "";
-	$nombre = "";
-	$usuario_creacion = "";
-	$fecha_creacion = "";
-	$usuario_modificacion = "";
-	$fecha_modificacion = "";
-
+public $id_rol = "";
+public $nombre = "";
+public $usuario_creacion = "";
+public $fecha_creacion = "";
+public $usuario_modificacion = "";
+public $fecha_modificacion = "";
+public $mensaje = "";
 
 }
 

@@ -2,13 +2,13 @@
 
 class ubicaciones{
 
-	$cod_ubicacion = "";
-	$detalle = "";
-	$usuario_creacion = "";
-	$fecha_creacion = "";
-	$usuario_modificacion = "";
-	$fecha_modificacion = "";
-
+public $cod_ubicacion = "";
+public $detalle = "";
+public $usuario_creacion = "";
+public $fecha_creacion = "";
+public $usuario_modificacion = "";
+public $fecha_modificacion = "";
+public $mensaje = "";
 
 }
 
