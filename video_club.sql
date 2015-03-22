@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `videoclub`.`usuarios_administradores` (
   `nom_usuario` VARCHAR(20) NULL DEFAULT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `apellido` VARCHAR(45) NOT NULL,
-  `contrasena` VARCHAR(100) NOT NULL,
+  `contrasena` VARCHAR(255) NOT NULL,
   `usuario_creacion` VARCHAR(20) NOT NULL,
   `fecha_creacion` DATE NOT NULL,
   `usuario_modificacion` VARCHAR(20) NOT NULL,
