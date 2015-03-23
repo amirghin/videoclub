@@ -33,7 +33,7 @@ function existencia_usuario($usuario, $conexion){
 
 
 	}catch (Exception $e){
-				 $this->mensaje = $e->GetMessage();
+		$this->mensaje = $e->GetMessage();
 	}
 }
 
@@ -47,7 +47,6 @@ function validar_contrasena($usuario, $password, $conexion){
 		$resultado = mysqli_query($conexion, $query);
 		$row = mysqli_fetch_assoc($resultado);
 		
-
 		if (password_verify($password, $row['contrasena'])){
 
 			return True;
@@ -59,7 +58,7 @@ function validar_contrasena($usuario, $password, $conexion){
 
 
 	} catch (Exception $e){
-			 $this->mensaje = $e->GetMessage();
+		$this->mensaje = $e->GetMessage();
 	}
 
 

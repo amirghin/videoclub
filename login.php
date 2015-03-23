@@ -4,23 +4,19 @@ require "conexion.php";
 require "usuarios_administradores.php";
 
 if (isset($_POST['usuario'], $_POST['password'])){
-
+	
 	$usuario = new usuarios_administradores;
-
 	$existencia = $usuario->existencia_usuario($_POST['usuario'], $conexion);
 	$contrasenas_iguales = $usuario->validar_contrasena($_POST['usuario'], $_POST['password'], $conexion);
 
 	if($existencia AND $contrasenas_iguales){
-
 		echo "usuario y contrasena correctos";
 		echo "hola";
 
 	} elseif($existencia) {
-
 		echo "contrasena incorrecta";
 
 	} else {
-
 		echo "el usuario no existe";
 	}
 
@@ -45,7 +41,6 @@ if (isset($_POST['usuario'], $_POST['password'])){
 				<td><input type="password" name="password" id="password"></td>
 				<td colspan="2" align="center"><input type="submit" value="Iniciar Sesion"></td>
 			</tr>
-
 		</table>
 	</form>
 </body>
