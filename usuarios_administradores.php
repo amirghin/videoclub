@@ -17,7 +17,6 @@ public $mensaje = "";
 function existencia_usuario($usuario, $conexion){
 
 	try{
-
 			$query = "SELECT * FROM usuarios_administradores WHERE nom_usuario='{$usuario}'";
 			$resultado = mysqli_query($conexion, $query);
 			$existe = mysqli_num_rows($resultado);
@@ -39,10 +38,7 @@ function existencia_usuario($usuario, $conexion){
 
 
 function validar_contrasena($usuario, $password, $conexion){
-
-
 	try{
-
 		$query = "SELECT contrasena FROM usuarios_administradores WHERE nom_usuario='{$usuario}'";
 		$resultado = mysqli_query($conexion, $query);
 		$row = mysqli_fetch_assoc($resultado);

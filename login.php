@@ -29,19 +29,20 @@ if (isset($_POST['usuario'], $_POST['password'])){
 <html>
 <head>
 	<title>Sistema de Manejo de VideoClub</title>
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+
 </head>
 
 <body>
-	<form method="POST">
-		<table align="right">
-			<tr>
-				<td>Usuario</td>
-				<td><input type="text" name="usuario" id="usuario"></td>
-				<td>Contrase&ntilde;a</td>
-				<td><input type="password" name="password" id="password"></td>
-				<td colspan="2" align="center"><input type="submit" value="Iniciar Sesion"></td>
-			</tr>
-		</table>
+	<form method="POST">		
+		<fieldset class="login">
+		    <label for="usuario">Usuario</label>
+		    <input type="text" name="usuario" id="usuario">
+		    <label for="password">Contrase&ntilde;a</label>
+		    <input type="password" name="password" id="password">
+		    <input type="submit" value="Iniciar Sesion">
+		</fieldset>
+		
 	</form>
 </body>
 
