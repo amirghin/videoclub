@@ -11,7 +11,6 @@ if (isset($_POST['usuario'], $_POST['password'])){
 
 	if($existencia AND $contrasenas_iguales){
 		echo "usuario y contrasena correctos";
-		echo "hola";
 
 	} elseif($existencia) {
 		echo "contrasena incorrecta";
