@@ -8,18 +8,18 @@ if (isset($_POST['usuario'], $_POST['password'])){
 	$usuario = new usuarios_administradores;
 	$existencia = $usuario->existencia_usuario($_POST['usuario'], $conexion);
 	$contrasenas_iguales = $usuario->validar_contrasena($_POST['usuario'], $_POST['password'], $conexion);
-
+	$message = "";
 	if($existencia AND $contrasenas_iguales){
 		echo "usuario y contrasena correctos";
+		header ("Location: pagina_inicio.php");
 
 	} elseif($existencia) {
 		echo "contrasena incorrecta";
 
 	} else {
-		echo "el usuario no existe";
+		$message = "El usuario no existe";
+		//echo "el usuario no existe";
 	}
-
-
 }
 
 ?>
@@ -33,16 +33,25 @@ if (isset($_POST['usuario'], $_POST['password'])){
 </head>
 
 <body>
-	<form method="POST">		
-		<fieldset class="login">
-		    <label for="usuario">Usuario</label>
-		    <input type="text" name="usuario" id="usuario">
-		    <label for="password">Contrase&ntilde;a</label>
-		    <input type="password" name="password" id="password">
-		    <input type="submit" value="Iniciar Sesion">
-		</fieldset>
-		
-	</form>
+
+	<section class="login_section">
+		<h1>Iniciar Sesion</h1>	
+		<form method="POST">	
+			<fieldset class="login">
+				<div class="filas">
+				    <label for="usuario">Usuario:</label>
+				    <input type="text" name="usuario" id="usuario">
+			    </div>
+			    <div class="filas">
+			    	<label for="password">Contrase&ntilde;a:</label>
+			    	<input type="password" name="password" id="password">
+				</div>
+				<p class="error"><?php echo $message?></p>
+
+			    <input type="submit" value="Iniciar Sesion" class="button">
+			</fieldset>
+		</form>
+	</section>
 </body>
 
 </html>
