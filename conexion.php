@@ -1,9 +1,10 @@
 <?php
-$servername = "127.0.0.1";
+$servername = "localhost";
 $username = "root";
 $db = "videoclub";
+$password = "1234";
 
-$conexion = mysqli_connect($servername, $username, "", $db);
+$conexion = mysqli_connect($servername, $username, $password, $db);
 
 if (!$conexion) {
     die("Connection failed: " . mysqli_connect_error());
