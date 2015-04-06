@@ -62,7 +62,14 @@ function validar_contrasena($usuario, $password, $conexion){
 
 
 
+function encriptar_contrasena($contrasena){
 
+$cost = array('cost' => 11);
+$encrypted = password_hash($contrasena, PASSWORD_BCRYPT, $cost);
+
+return $encrypted;
+
+}
 
 
 

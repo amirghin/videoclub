@@ -22,12 +22,16 @@
 					<input type="text" name="nombre_usuario">
 				</div>
 				<div class="filas">
-					<label for="contrasena">Contrasena: </label>
-					<input type="text" name="contrasena">
+					<label for="contrasena">Contrase&ntilde;a: </label>
+					<input type="password" name="contrasena">
+				</div>
+				<div class="filas">
+					<label for="conf_contrasena">Confirme la Contrase&ntilde;a: </label>
+					<input type="password" name="conf_contrasena">
 				</div>
 				<div class="filas">
 					<label for="habilitado">Habilitado: </label>
-					<input type="checkbox" name="habilidato">
+					<input type="checkbox" name="habilidato" checked>
 				</div>
 				<div class="filas">
 				    <input type="submit" value="Enviar" class="button">

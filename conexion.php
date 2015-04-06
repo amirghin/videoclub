@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
+$username = "sys_videoclub";
 $db = "videoclub";
-$password = "1234";
+$password = "v1d30c!ub$";
 
 $conexion = mysqli_connect($servername, $username, $password, $db);
 
