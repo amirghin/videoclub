@@ -5,6 +5,8 @@
    		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 
 	</head>
+	<?php include 'menu.html';?>
+
 	<body>
 		<form action="" method="POST">
 			<fieldset>

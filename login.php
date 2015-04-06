@@ -2,13 +2,13 @@
 
 require "conexion.php";
 require "usuarios_administradores.php";
+$message = "";
 
 if (isset($_POST['usuario'], $_POST['password'])){
 	
 	$usuario = new usuarios_administradores;
 	$existencia = $usuario->existencia_usuario($_POST['usuario'], $conexion);
 	$contrasenas_iguales = $usuario->validar_contrasena($_POST['usuario'], $_POST['password'], $conexion);
-	$message = "";
 	if($existencia AND $contrasenas_iguales){
 		echo "usuario y contrasena correctos";
 		header ("Location: pagina_inicio.php");
@@ -40,11 +40,11 @@ if (isset($_POST['usuario'], $_POST['password'])){
 			<fieldset class="login">
 				<div class="filas">
 				    <label for="usuario">Usuario:</label>
-				    <input type="text" name="usuario" id="usuario">
+				    <input type="text" name="usuario" id="usuario" required>
 			    </div>
 			    <div class="filas">
 			    	<label for="password">Contrase&ntilde;a:</label>
-			    	<input type="password" name="password" id="password">
+			    	<input type="password" name="password" id="password" required>
 				</div>
 				<p class="error"><?php echo $message?></p>
 
