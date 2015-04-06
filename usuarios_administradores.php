@@ -60,6 +60,8 @@ function validar_contrasena($usuario, $password, $conexion){
 
 }
 
+function insertar(){}
+
 
 
 function encriptar_contrasena($contrasena){

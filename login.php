@@ -47,8 +47,9 @@ if (isset($_POST['usuario'], $_POST['password'])){
 			    	<input type="password" name="password" id="password" required>
 				</div>
 				<p class="error"><?php echo $message?></p>
-
-			    <input type="submit" value="Iniciar Sesion" class="button">
+				<div class="filas">
+			    	<input type="submit" value="Iniciar Sesion" class="button">
+			    </div>
 			</fieldset>
 		</form>
 	</section>
