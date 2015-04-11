@@ -16,6 +16,10 @@
 	<section class="estilos_form">
 		<form method="POST" enctype="multipart/form-data" action="">		
 			<fieldset class="insertar_peliculas">
+				<div class="filas">
+			    	<label for="nombre">ID Pelicula: </label>
+			    	<input type="text" name="id_pelicula" id="id_pelicula">
+				</div>
 				<div class="filas">	
 			    	<label for="nombre">Nombre Pelicula: </label>
 			    	<input type="text" name="nombre_pelicula" id="nombre_pelicula">

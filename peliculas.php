@@ -16,6 +16,7 @@ public $mensaje = "";
 
 }
 
+function insertar_peliculas(){}
 
 
 ?>
