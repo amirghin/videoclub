@@ -76,13 +76,13 @@ function insertar_usuario($nom_usuario, $nombre, $apellido, $contrasena, $habili
 try{
 	
 	$contrasena_encriptada = $this->encriptar_contrasena($contrasena);
-
 	if ($this->existencia_usuario($nom_usuario, $conexion)){
 
 		throw new Exception("El usuario {$nom_usuario} ya existe");
 	}
 
-	$insert = "INSERT INTO usuarios_administradores VALUES ('{$nom_usuario}', '{$nombre}', '{$apellido}', '{$contrasena_encriptada}', 'system', CURDATE(), 'system', CURDATE()), 0";	
+	$insert = "INSERT INTO usuarios_administradores (nom_usuario, nombre, apellido, contrasena, habilitado, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
+			VALUES ('{$nom_usuario}', '{$nombre}', '{$apellido}', '{$contrasena_encriptada}', '{$habilitado}','system', CURDATE(), 'system', CURDATE())";
 
 	$resultado = mysqli_query($conexion, $insert);
 

@@ -5,9 +5,18 @@ require "usuarios_administradores.php";
 
 $usuario_administrador = new usuarios_administradores;
 
-if(isset($_POST["nombre"], $_POST["apellido"], $_POST["nombre_usuario"], $_POST["contrasena"], $_POST["habilitado"])){
+if(isset($_POST["nombre"], $_POST["apellido"], $_POST["nombre_usuario"], $_POST["contrasena"])){
 
-	$usuario_administrador->insertar_usuario($_POST["nombre_usuario"], $_POST["nombre"], $_POST["apellido"], $_POST["contrasena"], $_POST["habilitado"], $conexion);
+	if (isset($_POST["habilitado"])){
+
+		$habilitado = 0;
+
+	}else{
+
+		$habilitado = 1;
+	}
+
+	$usuario_administrador->insertar_usuario($_POST["nombre_usuario"], $_POST["nombre"], $_POST["apellido"], $_POST["contrasena"], $habilitado, $conexion);
 
 }
 
@@ -20,7 +29,7 @@ if(isset($_POST["nombre"], $_POST["apellido"], $_POST["nombre_usuario"], $_POST[
 	<title>Insertar usuarios</title>
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<script src="js/jquery-2.1.3.min.js"></script>
-		<script type="text/javascript" src="js/videoclub.js"></script>
+		<script src="js/videoclub.js"></script>
 
 </head>
 <body>
