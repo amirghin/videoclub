@@ -14,10 +14,10 @@ public $usuario_modificacion = "";
 public $fecha_modificacion = "";
 public $mensaje = "";
 
-function existencia_usuario($usuario, $conexion){
+function existencia_usuario($nom_usuario, $conexion){
 
 	try{
-			$query = "SELECT * FROM usuarios_administradores WHERE nom_usuario='{$usuario}'";
+			$query = "SELECT * FROM usuarios_administradores WHERE nom_usuario='{$nom_usuario}'";
 			$resultado = mysqli_query($conexion, $query);
 			$existe = mysqli_num_rows($resultado);
 			
@@ -37,9 +37,9 @@ function existencia_usuario($usuario, $conexion){
 }
 
 
-function validar_contrasena($usuario, $password, $conexion){
+function validar_contrasena($nom_usuario, $password, $conexion){
 	try{
-		$query = "SELECT contrasena FROM usuarios_administradores WHERE nom_usuario='{$usuario}'";
+		$query = "SELECT contrasena FROM usuarios_administradores WHERE nom_usuario='{$nom_usuario}'";
 		$resultado = mysqli_query($conexion, $query);
 		$row = mysqli_fetch_assoc($resultado);
 		
@@ -73,7 +73,36 @@ return $encrypted;
 
 }
 
+function insertar_usuario($nom_usuario, $nombre, $apellido, $habilitado, $conexion){
 
+
+try{
+	
+	$contrasena_encriptada = $this->encriptar_contrasena($contrasena);
+
+	if ($this->existencia_usuario($nom_usuario, $conexion)){
+
+		throw new Exception("El usuario {$nom_usuario} ya existe");
+	}
+
+	$insert = "INSERT INTO usuarios_administradores VALUES ('{$nom_usuario}','{$contrasena_encriptada}')";	
+
+	$resultado = mysqli_query($conexion, $insert);
+
+	if(!$resultado){
+
+		throw new Exception("Error al insertar usuario");
+	}else{
+
+		$this->mensaje = "Se inserto con exito el usuario";
+	}
+			
+	}catch(Exception $e){
+		$this->mensaje = $e->GetMessage();
+
+	}
+
+}
 
 
 

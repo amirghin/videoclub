@@ -24,7 +24,7 @@ USE `videoclub` ;
 -- Table `videoclub`.`usuarios_administradores`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`usuarios_administradores` (
-  `id_usuario` INT(11) NOT NULL,
+  `id_usuario` INT(11) NOT NULL AUTO_INCREMENT,
   `nom_usuario` VARCHAR(20) NULL DEFAULT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `apellido` VARCHAR(45) NOT NULL,
