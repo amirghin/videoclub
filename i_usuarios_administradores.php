@@ -1,3 +1,19 @@
+<?php
+
+require "conexion.php";
+require "usuarios_administradores.php";
+
+$usuario_administrador = new usuarios_administradores;
+
+if(isset($_POST["nombre"], $_POST["apellido"], $_POST["nombre_usuario"], $_POST["contrasena"], $_POST["habilitado"])){
+
+	$usuario_administrador->insertar_usuario($_POST["nombre_usuario"], $_POST["nombre"], $_POST["apellido"], $_POST["contrasena"], $_POST["habilitado"], $conexion);
+
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +25,7 @@
 </head>
 <body>
 	<section class="estilos_form">
-		<form method="POST" action="">
+		<form method="POST" action="" id="insert_usuario_administrador">
 			<fieldset>
 				<div class="filas">
 					<label for="nombre">Nombre: </label>

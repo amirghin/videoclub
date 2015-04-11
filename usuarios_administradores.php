@@ -60,9 +60,6 @@ function validar_contrasena($nom_usuario, $password, $conexion){
 
 }
 
-function insertar(){}
-
-
 
 function encriptar_contrasena($contrasena){
 
@@ -73,7 +70,7 @@ return $encrypted;
 
 }
 
-function insertar_usuario($nom_usuario, $nombre, $apellido, $habilitado, $conexion){
+function insertar_usuario($nom_usuario, $nombre, $apellido, $contrasena, $habilitado, $conexion){
 
 
 try{
@@ -85,7 +82,7 @@ try{
 		throw new Exception("El usuario {$nom_usuario} ya existe");
 	}
 
-	$insert = "INSERT INTO usuarios_administradores VALUES ('{$nom_usuario}','{$contrasena_encriptada}')";	
+	$insert = "INSERT INTO usuarios_administradores VALUES ('{$nom_usuario}', '{$nombre}', '{$apellido}', '{$contrasena_encriptada}', 'system', CURDATE(), 'system', CURDATE()), 0";	
 
 	$resultado = mysqli_query($conexion, $insert);
 
@@ -105,6 +102,37 @@ try{
 }
 
 
+
+function buscar_usuarios(){
+
+try{
+	$query = "SELECT * FROM usuarios_administradores";
+	$resultado = mysqli_query($conexion, $query);
+
+	while($row=mysqli_fetch_assoc($resultado)){
+
+	$array[] = ['id_usuario' => $row['id_usuario'], 
+				'nom_usuario' => $row['nom_usuario'],  
+				'nombre' => $row['nombre'],
+				'apellido' => $row[''],
+				'contrasena' => $row['contrasena'],
+				'usuario_creacion' => $row['usuario_creacion'],
+				'fecha_creacion' => $row['fecha_creacion'],
+				'usuario_modificacion' => $row['usuario_modificacion'],
+				'fecha_modificacion' => $row['fecha_modificacion'],
+				'habilitado' => $row['habilitado']
+				];
+	}
+
+	echo json_encode($array);
+			
+
+
+}catch (Exception $e){
+	$this->mensaje = $e->GetMessage();
+}
+
+}
 
 }
 
