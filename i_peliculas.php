@@ -1,3 +1,8 @@
+<?php
+	if ((isset($_POST['ruta_imagenes']))){
+		include_once "ftpupload.php";
+	}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -9,7 +14,7 @@
 
 <body>
 	<section class="estilos_form">
-		<form method="POST">		
+		<form method="POST" enctype="multipart/form-data" action="">		
 			<fieldset class="insertar_peliculas">
 				<div class="filas">	
 			    	<label for="nombre">Nombre Pelicula: </label>
@@ -34,6 +39,8 @@
 				</div>
 				<div class="filas">
 			    	<input type="submit" value="Iniciar Sesion" class="button">
+			    	<input type="hidden" name="action" value="upload" /> 
+
 			    </div>
 			</fieldset>
 		</form>
