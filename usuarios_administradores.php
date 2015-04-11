@@ -103,10 +103,10 @@ try{
 
 
 
-function buscar_usuarios(){
+function buscar_usuarios($nom_usuario, $conexion){
 
 try{
-	$query = "SELECT * FROM usuarios_administradores";
+	$query = "SELECT * FROM usuarios_administradores WHERE nom_usuario LIKE '%{$nom_usuario}%'";
 	$resultado = mysqli_query($conexion, $query);
 
 	while($row=mysqli_fetch_assoc($resultado)){
