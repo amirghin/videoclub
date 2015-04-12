@@ -42,7 +42,7 @@
 					<input type="file" name="ruta_imagenes"/>
 				</div>
 				<div class="filas">
-			    	<input type="submit" value="Iniciar Sesion" class="button">
+			    	<input type="submit" value="Insertar" class="button">
 			    	<input type="hidden" name="action" value="upload" /> 
 
 			    </div>

@@ -106,26 +106,18 @@ try{
 function buscar_usuarios($nom_usuario, $conexion){
 
 try{
+
 	$query = "SELECT * FROM usuarios_administradores WHERE nom_usuario LIKE '%{$nom_usuario}%'";
 	$resultado = mysqli_query($conexion, $query);
 
-	while($row=mysqli_fetch_assoc($resultado)){
+	$array = array();
 
-	$array[] = ['id_usuario' => $row['id_usuario'], 
-				'nom_usuario' => $row['nom_usuario'],  
-				'nombre' => $row['nombre'],
-				'apellido' => $row[''],
-				'contrasena' => $row['contrasena'],
-				'usuario_creacion' => $row['usuario_creacion'],
-				'fecha_creacion' => $row['fecha_creacion'],
-				'usuario_modificacion' => $row['usuario_modificacion'],
-				'fecha_modificacion' => $row['fecha_modificacion'],
-				'habilitado' => $row['habilitado']
-				];
+	while($row=mysqli_fetch_assoc($resultado)){
+	$array[] = $row;
+
 	}
 
-	echo json_encode($array);
-			
+	echo '{"usuarios":'.json_encode($array).'}';
 
 
 }catch (Exception $e){

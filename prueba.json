@@ -1,0 +1,25 @@
+[	{
+	"id_usuario":"2",
+	"nom_usuario":"fabmayor",
+	"nombre":"fabiola",
+	"apellido":"mayorga",
+	"contrasena":"$2y$11$R2zaNiTxB.1rk0Al00o7x.kZdfDz6u2.H2yE1DTl3DiYoW2KdSwZO",
+	"usuario_creacion":"system",
+	"fecha_creacion":"2015-04-11",
+	"usuario_modificacion":"system",
+	"fecha_modificacion":"2015-04-11",
+	"habilitado":"0"
+	},
+	{
+	"id_usuario":"3",
+	"nom_usuario":"fabiola.mayorga",
+	"nombre":"fabiola",
+	"apellido":"mayorga",
+	"contrasena":"$2y$11$WoIMgc448ULOcIlFCJxZOObE12emnfpy9ycvSHTWNpIcOTH5.ou5m",
+	"usuario_creacion":"system",
+	"fecha_creacion":"2015-04-11",
+	"usuario_modificacion":"system",
+	"fecha_modificacion":"2015-04-11",
+	"habilitado":"0"
+	}
+]
