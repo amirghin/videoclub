@@ -7,6 +7,10 @@ function campos_iguales($primero, $segundo){
 	};
 };
 
+function limpiar_campos(){
+    $("input[type='text']").val("");
+}
+
 function search(){
 
     var buscar = $("#nombre_usuario").val();
@@ -19,10 +23,10 @@ function search(){
         });
         busqueda.done(function(response){
             var object = jQuery.parseJSON(response);
-            var table = "<tr><td>Nombre<td><td>Apellido</td><td>Nombre de usuario</td></tr>";
+            var table = "<tr><td>Nombre</td><td>Apellido</td><td>Nombre de usuario</td></tr>";
             var tableValues = "";
             $.each(object.usuarios, function(key,value){
-                tableValues += "<tr><td>"+value.nombre+"<td><td>"+value.apellido+"</td><td>"+value.nom_usuario+"</td><td> <input type='button' value='Eliminar'/> </td> <td> <input type='button' value='Modificar'/> </td></tr>";
+                tableValues += "<tr><td>"+value.nombre+"</td><td>"+value.apellido+"</td><td>"+value.nom_usuario+"</td><td> <input type='button' value='Eliminar'/> </td> <td> <input type='button' value='Modificar'/> </td></tr>";
                 
             });
             $("#result").html(table+tableValues);
@@ -53,7 +57,9 @@ $(function(){
             data: usuario
             })
             .success(function( msg ) {
-            alert( "se inserto el usuario");
+
+                alert( "se inserto el usuario");
+                limpiar_campos();
             });
             
         } else{
@@ -73,6 +79,7 @@ $(function(){
         })
         .success(function( msg ) {
         alert( "se inserto el genero");
+        limpiar_campos();
         }); 
     });
    
@@ -80,11 +87,11 @@ $(function(){
         search();
     });
 
-    /*$('#search').keyup(function(e) {
-                     if(e.keyCode == 13) {
-                        search();
-                      }
-                  });   */
+    $('#search').keyup(function(e) {
+        if(e.keyCode == 13) {
+            search();
+        }
+    });   
 
 
 

@@ -175,3 +175,13 @@ a{
 .accordeon li .hiddenMenu{
     display: none;
 }
+
+/*--------Search-------*/
+#result td{
+	border: 1px solid #000;
+	text-align: center;
+}
+
+#result td input{
+	width: 100%;
+}
