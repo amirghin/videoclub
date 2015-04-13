@@ -2,6 +2,9 @@
 	if ((isset($_POST['ruta_imagenes']))){
 		include_once "ftpupload.php";
 	}
+	$mensaje = "";
+	require_once("conexion.php");
+	require_once("peliculas.php");
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +45,7 @@
 					<input type="file" name="ruta_imagenes"/>
 				</div>
 				<div class="filas">
-			    	<input type="submit" value="Insertar" class="button">
+			    	<input type="submit" value="Insertar" class="button" id="crear_peliculas">
 			    	<input type="hidden" name="action" value="upload" /> 
 
 			    </div>

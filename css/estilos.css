@@ -141,9 +141,14 @@ a{
 
 /*-------Accordeon --------*/
 
+.navegacion{
+	width: 20%;
+	float: left;
+}
+
 .accordeon{
     overflow: hidden;
-    width: 20%;
+    width: 100%;
 }
 
 .accordeon li{

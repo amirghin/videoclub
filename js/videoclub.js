@@ -7,6 +7,10 @@ function campos_iguales($primero, $segundo){
 	};
 };
 
+/*************************/
+/******Limpia campos******/
+/*************************/ 
+
 function limpiar_campos(){
     $("input[type='text']").val("");
 }
@@ -82,6 +86,24 @@ $(function(){
         limpiar_campos();
         }); 
     });
+
+    /********************* Insertar peliculas *******************/
+    $("#crear_peliculas").click(function(){
+        var genero = $(":input").serializeArray();
+        $.ajax({
+        method: "POST",
+        url: "i_peliculas.php",
+        data: genero
+        })
+        .success(function( msg ) {
+        alert( "se inserto el genero");
+        limpiar_campos();
+        }); 
+    });
+
+
+
+    /*****************Funcion de busqueda de usuarios************/
    
     $("#button").on("click", function(){
         search();

@@ -23,6 +23,7 @@ $mensaje = "";
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<script src="js/jquery-2.1.3.min.js"></script>
 		<script src="js/videoclub.js"></script>
+		<script src="js/dropdown-menu.js"></script>
 
 </head>
 <?php include 'menu.html';?>

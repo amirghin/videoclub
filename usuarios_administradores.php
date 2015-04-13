@@ -112,6 +112,7 @@ try{
 
 	$array = array();
 
+
 	while($row=mysqli_fetch_assoc($resultado)){
 	$array[] = $row;
 

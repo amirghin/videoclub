@@ -3,7 +3,7 @@
 <head>
 	<title>Insertar actores directos</title>
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
-
+  
 </head>
 <body>
     <section class="estilos_form">
