@@ -35,23 +35,28 @@ if (isset($_POST['usuario'], $_POST['password'])){
 <body>
 
 	<section class="login_section">
-		<h1>Iniciar Sesion</h1>	
-		<form method="POST">	
-			<fieldset class="login">
-				<div class="filas">
-				    <label for="usuario">Usuario:</label>
-				    <input type="text" name="usuario" id="usuario" required>
-			    </div>
-			    <div class="filas">
-			    	<label for="password">Contrase&ntilde;a:</label>
-			    	<input type="password" name="password" id="password" required>
-				</div>
-				<p class="error"><?php echo $message?></p>
-				<div class="filas">
-			    	<input type="submit" value="Iniciar Sesion" class="button">
-			    </div>
-			</fieldset>
-		</form>
+		<div class="">
+			<!--<h1>Iniciar Sesion</h1>	-->
+
+		
+			<form method="POST">	
+				<fieldset class="login">
+					<div class="filas">
+					    <label for="usuario">Usuario:</label>
+					    <input type="text" name="usuario" id="usuario" required>
+				    </div>
+				    <div class="filas">
+				    	<label for="password">Contrase&ntilde;a:</label>
+				    	<input type="password" name="password" id="password" required>
+					</div>
+					<div class="filas buttons">
+				    	<input type="submit" value="Iniciar Sesion" class="button">
+				    </div>
+				    <p class="error"><?php echo $message?></p>
+
+				</fieldset>
+			</form>
+		</div>
 	</section>
 </body>
 
