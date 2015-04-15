@@ -9,7 +9,7 @@ if (isset($_POST['usuario'], $_POST['password'])){
 	$usuario = new usuarios_administradores;
 	$existencia = $usuario->existencia_usuario($_POST['usuario'], $conexion);
 	$contrasenas_iguales = $usuario->validar_contrasena($_POST['usuario'], $_POST['password'], $conexion);
-	if($existencia AND $contrasenas_iguales){
+	if($existencia AND $contrasenas_iguales AND $usuario->habilitado==0){
 		session_start();
 
 		$_SESSION["usuario"] = $usuario->nom_usuario;
@@ -17,9 +17,12 @@ if (isset($_POST['usuario'], $_POST['password'])){
 		$_SESSION["nombre_usuario"] = $usuario->nombre;
 		header ("Location: pagina_inicio.php");
 
-	} elseif($existencia) {
-		echo "contrasena incorrecta";
+	} elseif($existencia AND $usuario->habilitado != 0) {
+		$message = "El usuario se encuentra deshabilitado"; 
 
+	} elseif($existencia) {
+		$message = "contrasena incorrecta";
+	
 	} else {
 		$message = "El usuario no existe";
 		//echo "el usuario no existe";

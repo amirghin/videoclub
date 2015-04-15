@@ -27,6 +27,7 @@ function existencia_usuario($nom_usuario, $conexion){
 				$this->nom_usuario = $row['nom_usuario'];
 				$this->id_usuario = $row['id_usuario'];
 				$this->nombre = $row['nombre'];
+				$this->habilitado = $row['habilitado'];
 				return True;
 			} else {
 
