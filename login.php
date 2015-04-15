@@ -11,7 +11,6 @@ if (isset($_POST['usuario'], $_POST['password'])){
 	$contrasenas_iguales = $usuario->validar_contrasena($_POST['usuario'], $_POST['password'], $conexion);
 	if($existencia AND $contrasenas_iguales AND $usuario->habilitado==0){
 		session_start();
-
 		$_SESSION["usuario"] = $usuario->nom_usuario;
 		$_SESSION["id_usuario"] = $usuario->id_usuario;
 		$_SESSION["nombre_usuario"] = $usuario->nombre;
@@ -20,12 +19,8 @@ if (isset($_POST['usuario'], $_POST['password'])){
 	} elseif($existencia AND $usuario->habilitado != 0) {
 		$message = "El usuario se encuentra deshabilitado"; 
 
-	} elseif($existencia) {
-		$message = "contrasena incorrecta";
-	
 	} else {
-		$message = "El usuario no existe";
-		//echo "el usuario no existe";
+		$message = "La combinación de usuario y contraseña es incorrecta";
 	}
 }
 
