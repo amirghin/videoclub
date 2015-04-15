@@ -23,6 +23,10 @@ function existencia_usuario($nom_usuario, $conexion){
 			
 			if ($existe == 1){
 
+				$row = mysqli_fetch_assoc($resultado);
+				$this->nom_usuario = $row['nom_usuario'];
+				$this->id_usuario = $row['id_usuario'];
+				$this->nombre = $row['nombre'];
 				return True;
 			} else {
 
