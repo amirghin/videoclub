@@ -13,7 +13,7 @@ if (isset($_POST['usuario'], $_POST['password'])){
 		session_start();
 		$_SESSION["usuario"] = $usuario->nom_usuario;
 		$_SESSION["id_usuario"] = $usuario->id_usuario;
-		$_SESSION["nombre_usuario"] = $usuario->nombre;
+		$_SESSION["nombre_usuario"] = ucwords($usuario->nombre);
 		header ("Location: pagina_inicio.php");
 
 	} elseif($existencia AND $usuario->habilitado != 0) {
