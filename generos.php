@@ -14,7 +14,7 @@ public $mensaje = "";
 function insertar_genero($id_genero, $nombre, $conexion){
 	$mensaje = "";
 	try{
-		$query = "INSERT INTO generos (id_genero, nombre, usuario_creacion, fecha_creacion) VALUES ({$id_genero}, '${nombre}', 'system', NOW())";
+		$query = "INSERT INTO generos (id_genero, nombre, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion) VALUES ({$id_genero}, '${nombre}', 1, NOW(),1, NOW())";
 		if(mysqli_query($conexion,$query)){
 			$this->mensaje = "Genero insertado correctamente";
 		}else{
@@ -29,7 +29,7 @@ function insertar_genero($id_genero, $nombre, $conexion){
 }
 
 
-function llenar_select($conexion){
+/*function llenar_select($conexion){
 	try{
 			$query = "Select * from generos";
 			$resultado = mysqli_query($conexion, $query);
@@ -46,7 +46,7 @@ function llenar_select($conexion){
 		} catch (Exception $e){
 			$this->mensaje = $e->GetMessage();
 		}
-}
+}*/
 
 
 }

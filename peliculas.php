@@ -1,5 +1,7 @@
 <?php
 
+echo "entre";
+
 class peliculas{
 
 public $id_pelicula = "";
@@ -14,45 +16,66 @@ public $usuario_modificacion = "";
 public $fecha_modificacion = "";
 public $mensaje = "";
 
-}
 
-function llenar_dropdown(){
-	try{
-		$query = "SELECT * FROM generos";
-		$resultado = mysqli_query($conexion, $query);
-		$row = mysqli_fetch_assoc($resultado);
-		$array = array();
-		while($row=mysqli_fetch_assoc($resultado)){
-			$array[] = $row;
+
+	function llenar_dropdown(){
+		try{
+			$query = "SELECT * FROM generos";
+			$resultado = mysqli_query($conexion, $query);
+			$row = mysqli_fetch_assoc($resultado);
+			$array = array();
+			while($row=mysqli_fetch_assoc($resultado)){
+				$array[] = $row;
+			}
+			echo '{"generos":'.json_encode($array).'}';
+
+		}catch (Exception $e){
+			$this->mensaje = $e->GetMessage();
 		}
-		echo '{"generos":'.json_encode($array).'}';
-
-	}catch (Exception $e){
-		$this->mensaje = $e->GetMessage();
 	}
-}
 
-function insertar_peliculas($id_pelicula,$nombre_pelicula,$precio_alquiler,$genero,$ruta_imagenes,$duracion,$conexion){
-	try{
+	function insertar_peliculas($id_pelicula,$nombre_pelicula,$precio_alquiler,$genero,$ruta_imagenes,$duracion,$conexion){
+		try{
+			$insert = "INSERT INTO peliculas 
+					(id_pelicula, 
+					nombre, 
+					precio_alquiler, 
+					generos_id_genero, 
+					ruta_imagenes, 
+					duracion, 
+					usuario_creacion, 
+					fecha_creacion, 
+					usuario_modificacion, 
+					fecha_modificacion)
+					VALUES (
+						{$id_pelicula}, 
+						'{$nombre_pelicula}', 
+						{$precio_alquiler}, 
+						{$genero}, 
+						'{$ruta_imagenes}', 
+						{$duracion},
+						1, 
+						CURDATE(), 
+						1, 
+						CURDATE())";
 
-		$insert = "INSERT INTO peliculas (id_pelicula, nombre, precio_alquiler, generos_id_genero, ruta_imagenes, duracion, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
-				VALUES ({$id_pelicula}, '{$nombre}', {$precio_alquiler}, {$generos}, '{$ruta_imagenes}', {$duracion},'system', CURDATE(), 'system', CURDATE())";
+			$resultado = mysqli_query($conexion, $insert);
 
-		$resultado = mysqli_query($conexion, $insert);
+			if(!$resultado){
+				echo mysqli_error($conexion);
+				throw new Exception(mysqli_error($conexion));
 
-		if(!$resultado){
-			throw new Exception("Error al insertar pelicula");
-		}else{
-			echo "hola".$resultado;
-			$this->mensaje = "Se inserto con exito la pelicula";
+			}else{
+				echo "success";
+				$this->mensaje = "Se inserto con exito la pelicula";
+		}
+				
+		}catch(Exception $e){
+			$this->mensaje = $e->GetMessage();
+			//echo json_encode($this->mensaje -> "Exception occurred: ".$e->getMessage());
+
+		}
 	}
-			
-	}catch(Exception $e){
-		$this->mensaje = $e->GetMessage();
-		//echo json_encode($this->mensaje -> "Exception occurred: ".$e->getMessage());
-
-	}
-}
 	
-
+}
 ?>

@@ -76,6 +76,7 @@ $(function(){
 
     $("#crear_genero").click(function(){ 
         var genero = $(":input").serializeArray();
+        console.log(genero);
         $.ajax({
         method: "POST",
         url: "i_generos.php",
@@ -83,17 +84,17 @@ $(function(){
         })
         .success(function( msg ) {
         alert( "se inserto el genero");
-        limpiar_campos();
+        //limpiar_campos();
         }); 
     });
 
     /********************* Insertar peliculas *******************/
     $("#crear_peliculas").click(function(){
-        var genero = $(":input").serializeArray();
+        var pelicula = $(":input").serializeArray();
         $.ajax({
         method: "POST",
         url: "i_peliculas.php",
-        data: genero
+        data: pelicula
         })
         .success(function( msg ) {
         alert( "se inserto la pelicula");

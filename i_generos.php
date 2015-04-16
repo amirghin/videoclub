@@ -30,7 +30,7 @@ $mensaje = "";
 
 <body>
 	<section class="estilos_form">
-		<form action="" method="POST" id="i_generos">
+		<form action="" id="i_generos" method="POST">
 			<fieldset>
 				<div class="filas">
 					<label for="id_genero">ID Genero:</label>
@@ -41,7 +41,7 @@ $mensaje = "";
 					<input type="text" name="nombre">
 				</div>
 				<div class="filas">
-					<input type="button" value="Insertar" class="button" id="crear_genero">
+					<input type="submit" value="Insertar" class="button" id="crear_genero">
 					<span class="Mensaje" id="Mensaje"><?php echo $mensaje?></span>					
 				</div>
 

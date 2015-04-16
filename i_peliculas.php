@@ -12,19 +12,23 @@ require_once "conexion.php";
 require_once "peliculas.php";
 
 if ((isset($_POST['ruta_imagenes']))){
-	//include_once "ftpupload.php";
+	include_once "ftpupload.php";
 }
 
-if(isset($_POST["id_pelicula"], $_POST["nombre_pelicula"], $_POST["precio_alquiler"], $_POST["genero"], $_POST["ruta_imagenes"],  $_POST["duracion"])){
+
+echo "hola";
+
+if(isset($_POST["id_pelicula"], $_POST["nombre_pelicula"], $_POST["precio_alquiler"], $_POST["genero"],  $_POST["duracion"])){
+	echo "hola";
 	try{
 		$peliculas = new peliculas;
 		$id_pelicula = $_POST["id_pelicula"];
 		$nombre_pelicula = $_POST["nombre_pelicula"];
 		$precio_alquiler = $_POST["precio_alquiler"];
 		$genero = $_POST["genero"];
-		$ruta_imagenes = $_POST["ruta_imagenes"];
+		$ruta_imagenes = ($_FILES["ruta_imagenes"]["name"]);
 		$duracion = $_POST["duracion"];
-		$peliculas -> insertar_peliculas($id_pelicula,$nombre_pelicula,$precio_alquiler,$genero,$ruta_imagenes,$duracion,$conexion);	
+		$peliculas->insertar_peliculas($id_pelicula,$nombre_pelicula,$precio_alquiler,$genero,$ruta_imagenes,$duracion,$conexion);	
 	}catch (Exception $e){
 			$mensaje = $e->GetMessage();
 	}
@@ -44,7 +48,7 @@ if(isset($_POST["id_pelicula"], $_POST["nombre_pelicula"], $_POST["precio_alquil
 
 <body>
 	<section class="estilos_form">
-		<form method="POST" enctype="multipart/form-data" action="i_peliculas.php">		
+		<form method="POST" enctype="multipart/form-data" action="">		
 			<fieldset class="insertar_peliculas">
 				<div class="filas">
 			    	<label for="nombre">ID Pelicula: </label>
@@ -57,11 +61,11 @@ if(isset($_POST["id_pelicula"], $_POST["nombre_pelicula"], $_POST["precio_alquil
 
 				<div class="filas">
 					<label for="precio_alquiler">Precio de alquiler:</label>
-					<input type="text" nombre="precio_alquiler">
+					<input type="text" name="precio_alquiler">
 				</div>
 				<div class="filas">
 					<label for="duracion">Duracion :</label>
-					<input type="text" nombre="duracion">
+					<input type="text" name="duracion">
 				</div>
 				<div class="filas">
 					<label for="genero">Genero:</label>
@@ -73,9 +77,9 @@ if(isset($_POST["id_pelicula"], $_POST["nombre_pelicula"], $_POST["precio_alquil
 					<input type="file" name="ruta_imagenes"/>
 				</div>
 				<div class="filas">
-			    	<input type="submit" value="Insertar" class="button" id="">
+			    	<input type="button" value="Insertar" class="button" id="">
 			    	<input type="hidden" name="action" value="upload" /> 
-			    				    	<?php echo $mensaje?>
+			    	<?php echo $mensaje?>
 
 
 			    </div>
