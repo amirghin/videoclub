@@ -16,7 +16,7 @@
   
   if (in_array($_FILES['ruta_imagenes']['type'],$mime_types)) { //hay q poner q lo q se matchee es el type
     //subir el ruta_imagenes  2
-    $ftpuser = "anonymous";
+    $ftpuser = "daemon";
     $ftppass = "";
     $ftppath = "127.0.0.1";
     if ($tmpname != "") {//3  

@@ -28,8 +28,28 @@ function insertar_genero($id_genero, $nombre, $conexion){
 
 }
 
+
+function llenar_select($conexion){
+	try{
+			$query = "Select * from generos";
+			$resultado = mysqli_query($conexion, $query);
+			$row = mysqli_fetch_assoc($resultado);
+			
+			while($row=mysqli_fetch_assoc($resultado)){
+				$this->datos.='<option value='.$row['id_genero'].'>'.$row['nombre'].'</option>';
+			}
+
+			return $resultado;
+			echo $resultado;
+
+
+		} catch (Exception $e){
+			$this->mensaje = $e->GetMessage();
+		}
 }
 
+
+}
 
 
 ?>

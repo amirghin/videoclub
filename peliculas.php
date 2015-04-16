@@ -32,7 +32,27 @@ function llenar_dropdown(){
 	}
 }
 
-function insertar_peliculas(){}
+function insertar_peliculas($id_pelicula,$nombre_pelicula,$precio_alquiler,$genero,$ruta_imagenes,$duracion,$conexion){
+	try{
+
+		$insert = "INSERT INTO peliculas (id_pelicula, nombre, precio_alquiler, generos_id_genero, ruta_imagenes, duracion, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
+				VALUES ({$id_pelicula}, '{$nombre}', {$precio_alquiler}, {$generos}, '{$ruta_imagenes}', {$duracion},'system', CURDATE(), 'system', CURDATE())";
+
+		$resultado = mysqli_query($conexion, $insert);
+
+		if(!$resultado){
+			throw new Exception("Error al insertar pelicula");
+		}else{
+			echo "hola".$resultado;
+			$this->mensaje = "Se inserto con exito la pelicula";
+	}
+			
+	}catch(Exception $e){
+		$this->mensaje = $e->GetMessage();
+		//echo json_encode($this->mensaje -> "Exception occurred: ".$e->getMessage());
+
+	}
+}
 	
 
 ?>

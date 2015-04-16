@@ -96,10 +96,11 @@ $(function(){
         data: genero
         })
         .success(function( msg ) {
-        alert( "se inserto el genero");
+        alert( "se inserto la pelicula");
         limpiar_campos();
         }); 
     });
+
 
 
 
