@@ -1,6 +1,5 @@
 <?php
 
-echo "entre";
 
 class peliculas{
 
@@ -36,28 +35,7 @@ public $mensaje = "";
 
 	function insertar_peliculas($id_pelicula,$nombre_pelicula,$precio_alquiler,$genero,$ruta_imagenes,$duracion,$conexion){
 		try{
-			$insert = "INSERT INTO peliculas 
-					(id_pelicula, 
-					nombre, 
-					precio_alquiler, 
-					generos_id_genero, 
-					ruta_imagenes, 
-					duracion, 
-					usuario_creacion, 
-					fecha_creacion, 
-					usuario_modificacion, 
-					fecha_modificacion)
-					VALUES (
-						{$id_pelicula}, 
-						'{$nombre_pelicula}', 
-						{$precio_alquiler}, 
-						{$genero}, 
-						'{$ruta_imagenes}', 
-						{$duracion},
-						1, 
-						CURDATE(), 
-						1, 
-						CURDATE())";
+			$insert = "INSERT INTO peliculas (id_pelicula, nombre, precio_alquiler, generos_id_genero, ruta_imagenes, duracion, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)VALUES ({$id_pelicula}, '{$nombre_pelicula}', {$precio_alquiler}, {$genero}, '{$ruta_imagenes}', {$duracion},1, CURDATE(), 1, CURDATE())";
 
 			$resultado = mysqli_query($conexion, $insert);
 
@@ -66,13 +44,23 @@ public $mensaje = "";
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
-				echo "success";
 				$this->mensaje = "Se inserto con exito la pelicula";
+				echo json_encode(array(
+					'success' => array(
+						'mensaje' => "Se inserto con exito la pelicula"
+						)
+					));
 		}
 				
 		}catch(Exception $e){
-			$this->mensaje = $e->GetMessage();
+			//$this->mensaje = $e->GetMessage();
 			//echo json_encode($this->mensaje -> "Exception occurred: ".$e->getMessage());
+		   echo json_encode(array(
+		        'error' => array(
+		            'code' => $e->getCode(),
+		            'message' => $e->getMessage()
+		        )
+		    ));
 
 		}
 	}

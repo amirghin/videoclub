@@ -83,22 +83,30 @@ $(function(){
         data: genero
         })
         .success(function( msg ) {
-        alert( "se inserto el genero");
+         alert( "se inserto el genero");
         //limpiar_campos();
         }); 
     });
 
     /********************* Insertar peliculas *******************/
     $("#crear_peliculas").click(function(){
+        alert("sirve");
         var pelicula = $(":input").serializeArray();
         $.ajax({
         method: "POST",
-        url: "i_peliculas.php",
+        url: "peliculas_controller.php",
         data: pelicula
         })
-        .success(function( msg ) {
-        alert( "se inserto la pelicula");
-        limpiar_campos();
+        .success(function( response ) {
+           if (response.error) {
+                // handle the error
+                throw response.error.message;
+                console.log(response.error.message);
+            }else{
+                console.log(response);
+                alert( "se inserto la pelicula");
+            }
+        //limpiar_campos();
         }); 
     });
 
