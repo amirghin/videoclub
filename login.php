@@ -1,7 +1,7 @@
 <?php 
 
 require "conexion.php";
-require "usuarios_administradores.php";
+require "classes/usuarios_administradores.php";
 $message = "";
 
 if (isset($_POST['usuario'], $_POST['password'])){
