@@ -10,7 +10,7 @@
 
 <body>
 	<section class="estilos_form">
-		<form method="POST" enctype="multipart/form-data" action="">		
+		<form method="POST" enctype="multipart/form-data" action="" id="form_peliculas">		
 			<fieldset class="insertar_peliculas">
 				<div class="filas">
 			    	<label for="nombre">ID Pelicula: </label>
@@ -36,7 +36,10 @@
 				</div>
 				<div class="filas">
 					<label for="ruta_imagenes">Ruta de imagenes: </label>
-					<input type="file" name="ruta_imagenes"/>
+					<input type="file" name="ruta_imagenes" id="ruta_imagenes"/>
+					<div id="fileDisplayArea">
+						<img src="imagenes/noimage.png" alt="">
+					</div>
 				</div>
 				<div class="filas">
 			    	<input type="button" value="Insertar" class="button" id="crear_peliculas">

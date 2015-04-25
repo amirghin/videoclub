@@ -7,6 +7,7 @@ function campos_iguales($primero, $segundo){
 	};
 };
 
+
 /*************************/
 /******Limpia campos******/
 /*************************/ 
@@ -46,6 +47,34 @@ function search(){
 
 
 $(function(){
+
+    var fileInput = document.getElementById('ruta_imagenes');
+    var fileDisplayArea = document.getElementById('fileDisplayArea');
+
+
+    fileInput.addEventListener('change', function(e) {
+        var file = fileInput.files[0];
+        var imageType = /image.*/;
+
+        if (file.type.match(imageType)) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                fileDisplayArea.innerHTML = "";
+
+                var img = new Image();
+                console.log(img);
+                img.src = reader.result;
+
+                fileDisplayArea.appendChild(img);
+            }
+
+            reader.readAsDataURL(file); 
+        } else {
+            fileDisplayArea.innerHTML = "File not supported!"
+        }
+    });
+
     /********** Funciones de AJAX ********
     *********** con JQuery para insertar **
     *********** en la BD ******************/
@@ -80,7 +109,8 @@ $(function(){
         $.ajax({
         method: "POST",
         url: "i_generos.php",
-        data: genero
+        data: genero,
+        contentType: false
         })
         .success(function( msg ) {
          alert( "se inserto el genero");
@@ -90,12 +120,15 @@ $(function(){
 
     /********************* Insertar peliculas *******************/
     $("#crear_peliculas").click(function(){
-        alert("sirve");
+        //alert("sirve");
+        var dato = new FormData(document.getElementById("form_peliculas"));
+  
+
         var pelicula = $(":input").serializeArray();
         $.ajax({
         method: "POST",
-        url: "peliculas_controller.php",
-        data: pelicula
+        url: "ftpupload.php",
+        data: dato
         })
         .success(function( response ) {
            if (response.error) {
@@ -111,9 +144,19 @@ $(function(){
     });
 
 
+  
+
+
+
+
+
+
 
 
     /*****************Funcion de busqueda de usuarios************/
+
+
+
    
     $("#button").on("click", function(){
         search();

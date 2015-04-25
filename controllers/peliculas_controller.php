@@ -12,6 +12,7 @@ require_once "conexion.php";
 require_once "class/peliculas.php";
 
 if ((isset($_POST['ruta_imagenes']))){
+	echo($_POST['ruta_imagenes']);
 	include_once "ftpupload.php";
 }
 
