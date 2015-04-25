@@ -9,7 +9,7 @@ $duracion = "";
 $ruta_imagenes = "";
 
 require_once "conexion.php";
-require_once "peliculas.php";
+require_once "class/peliculas.php";
 
 if ((isset($_POST['ruta_imagenes']))){
 	include_once "ftpupload.php";
