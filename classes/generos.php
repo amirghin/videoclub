@@ -34,7 +34,7 @@ public $mensaje = "";
 								  nombre = '{$nombre}'
 								  where id_genero= {$id_genero}"
 								  ;	
-			echo $modificar;
+			//echo $modificar;
 
 			$resultado = mysqli_query($conexion, $modificar);
 
@@ -60,6 +60,36 @@ public $mensaje = "";
 		    ));
 
 		}		
+	}
+
+	function eliminar_genero($id_genero, $conexion){
+		try{
+			$eliminar = "DELETE FROM generos 
+						WHERE id_genero = {$id_genero}";
+
+			$resultado = mysqli_query($conexion, $eliminar);
+
+			if(!$resultado){
+				echo mysqli_error($conexion);
+				throw new Exception(mysqli_error($conexion));
+
+			}else{
+				$this->mensaje = "Se elimino con exito el genero";
+				echo json_encode(array(
+					'success' => array(
+						'mensaje' => "Se elimino con exito el genero"
+						)
+					));
+			}
+		}catch(Exception $e){
+		   echo json_encode(array(
+		        'error' => array(
+		            'code' => $e->getCode(),
+		            'message' => $e->getMessage()
+		        )
+		    ));
+
+		}
 	}
 
 

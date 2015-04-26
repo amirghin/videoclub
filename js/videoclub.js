@@ -340,15 +340,42 @@ $(function(){
     });
 
     $("#buscar_generos #genero").change(function(){
-        //$("#hidden_genero").val($("#genero option:selected").val());
-        //console.log($("#genero option:selected").text());
-
         id_genero = $("#genero option:selected").val();
         nombre = $("#genero option:selected").text();
 
         $("#id_genero").val(id_genero);
         $("#nombre_genero").val(nombre);
         $("#form_m_generos").removeClass('hidden');
+    });
+
+
+    $("#eliminar_genero").click(function(){
+        console.log("elimnar");
+        id_genero = $("#id_genero").val();
+        nombre = $("#nombre_genero").val();
+
+        var objeto = {
+            id_genero : id_genero,
+            nombre : nombre
+        };
+
+        $.ajax({
+        method: "POST",
+        url: "controllers/eliminar_genero_controller.php",
+        data: objeto
+        })
+        .success(function( response ) {
+            //console.log("hola");
+           if (response.error) {
+                // handle the error
+                //throw response.error.message;
+                alert(response.error.message);
+            }else{
+                console.log(response);
+                alert( "se modifico la pelicula");
+            }
+        //limpiar_campos();
+        }); 
     });
 
 
@@ -380,7 +407,7 @@ $(function(){
             }
         //limpiar_campos();
         }); 
-    })
+    });
 
     /*****************Funcion de busqueda de usuarios************/
 

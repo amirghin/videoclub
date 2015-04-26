@@ -37,7 +37,8 @@
 					<input type="text" name="nombre" id="nombre_genero">
 				</div>
 				<div class="filas">
-					<input type="button" value="Modificar" class="button" id="modificar_genero">				
+					<input type="button" value="Modificar" class="button" id="modificar_genero">
+					<input type="button" value="Eliminar" class="button" id="eliminar_genero">								
 				</div>
 
 			</fieldset>
