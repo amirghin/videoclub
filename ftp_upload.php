@@ -32,7 +32,7 @@ $(function(){
 
             if (id_pelicula!=""){
                 var busqueda = $.ajax({
-                    url: "controllers/peliculas_controller.php",
+                    url: "controllers/busqueda_pelicula_id_controller.php",
                     type: "POST",
                     data: {id_pelicula:id_pelicula},
                 });
