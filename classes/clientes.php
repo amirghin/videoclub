@@ -80,10 +80,68 @@ class clientes{
 			  	)
 			  ));
 		}
-		
-
 	}
 
+	function modificar_cliente($nombre, $apellidos, $email, $fec_nacimiento, $tel_casa, $tel_celular, $observaciones, $id_cliente, $activo_web, $estado, $conexion){
+		try{
+			$update = "UPDATE clientes SET nombre='{$nombre}', apellidos='{$apellidos}', fecha_nacimiento='{$fec_nacimiento}', tel_casa='{$tel_casa}', 
+								tel_celular='{$tel_celular}', email='{$email}', activo_web='{$activo_web}', estado='{$estado}', observaciones='{$observaciones}', 
+								usuario_modificacion=1, fecha_modificacion=CURDATE()
+						WHERE id_cliente=$id_cliente";
+
+			$resultado = mysqli_query($conexion, $update);
+
+			if(!$resultado){
+				echo mysqli_error($conexion);
+				throw new Exception(mysqli_error($conexion));
+
+			}else{
+				echo json_encode(array(
+					'success' => array(
+						'mensaje' => "Se modifico el cliente {$id_cliente}"
+						)
+					));
+		}
+				
+		}catch(Exception $e){
+		   echo json_encode(array(
+		        'error' => array(
+		            'code' => $e->getCode(),
+		            'message' => $e->getMessage()
+		        )
+		    ));
+
+		}
+	}
+
+	function borrar_cliente($id_cliente, $conexion){
+		try{
+			$delete = "DELETE FROM clientes WHERE id_cliente=$id_cliente";
+			$resultado = mysqli_query($conexion, $delete);
+
+			if(!$resultado){
+				echo mysqli_error($conexion);
+				throw new Exception(mysqli_error($conexion));
+
+			}else{
+				echo json_encode(array(
+					'success' => array(
+						'mensaje' => "Se eliminó el cliente {$id_cliente}"
+						)
+					));
+		}
+				
+		}catch(Exception $e){
+		   echo json_encode(array(
+		        'error' => array(
+		            'code' => $e->getCode(),
+		            'message' => $e->getMessage()
+		        )
+		    ));
+
+		}
+
+	}
 
 }
 
