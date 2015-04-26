@@ -47,6 +47,7 @@
 				</div>
 				<div class="filas">
 			    	<input type="button" value="Modificar" class="button" id="modificar_peliculas">
+			    	<input type="button" value="Eliminar" class="button" id="eliminar_peliculas">
 			    	<input type="hidden" name="action" value="upload" /> 
 			    	
 
