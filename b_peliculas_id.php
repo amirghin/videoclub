@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Insertar usuarios</title>
+	<title>Buscar peliculas</title>
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<script src="js/jquery-2.1.3.min.js"></script>
 
