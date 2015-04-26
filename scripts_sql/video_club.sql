@@ -43,7 +43,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `videoclub`.`actores_directores`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`actores_directores` (
-  `id_actor` INT(11) NOT NULL COMMENT 'Llave primaria para cada actor o actriz',
+  `id_actor` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Llave primaria para cada actor o actriz',
   `nombre` VARCHAR(45) NOT NULL COMMENT 'Nombre del actor',
   `genero` CHAR(1) NOT NULL COMMENT '(F)Femenino o (M)Masculo',
   `usuario_creacion` INT(11) NOT NULL,
@@ -71,7 +71,7 @@ DEFAULT CHARACTER SET = big5;
 -- Table `videoclub`.`cargos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`cargos` (
-  `id_cargo` INT(11) NOT NULL,
+  `id_cargo` INT(11) NOT NULL AUTO_INCREMENT,
   `detalle` VARCHAR(45) NOT NULL,
   `tipo` VARCHAR(8) NULL DEFAULT NULL,
   `monto` FLOAT NOT NULL,
@@ -174,7 +174,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `videoclub`.`devoluciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`devoluciones` (
-  `id_devolucion` INT(11) NOT NULL,
+  `id_devolucion` INT(11) NOT NULL AUTO_INCREMENT,
   `reservaciones_id_reservacion` INT(11) NOT NULL,
   `observaciones` LONGTEXT NULL DEFAULT NULL,
   `usuario_creacion` INT(11) NOT NULL,
@@ -247,7 +247,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `videoclub`.`generos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`generos` (
-  `id_genero` INT(11) NOT NULL,
+  `id_genero` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(20) NOT NULL,
   `usuario_creacion` INT(11) NOT NULL,
   `fecha_creacion` DATE NOT NULL,
@@ -274,7 +274,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `videoclub`.`peliculas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`peliculas` (
-  `id_pelicula` INT(11) NOT NULL COMMENT 'LLave Primaria de la pelicula',
+  `id_pelicula` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'LLave Primaria de la pelicula',
   `nombre` VARCHAR(45) NOT NULL COMMENT 'Nombre de la Pelicula',
   `duracion` INT(11) NOT NULL COMMENT 'Duración de la película en minutos',
   `precio_alquiler` INT(11) NOT NULL COMMENT 'Precio de Alquiler de la pelicula, tiene que ser un numero entero',
@@ -338,7 +338,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `videoclub`.`copias`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`copias` (
-  `id_copia` INT(11) NOT NULL,
+  `id_copia` INT(11) NOT NULL AUTO_INCREMENT,
   `peliculas_id_pelicula` INT(11) NOT NULL,
   `ubicaciones_cod_ubicacion` VARCHAR(20) NOT NULL,
   `disponibilidad` VARCHAR(20) NOT NULL,
@@ -418,7 +418,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `videoclub`.`roles`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`roles` (
-  `id_rol` INT(11) NOT NULL,
+  `id_rol` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `usuario_creacion` INT(11) NOT NULL,
   `fecha_creacion` DATE NOT NULL,
