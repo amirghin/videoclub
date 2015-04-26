@@ -1,3 +1,7 @@
+/*************************/
+/****Variables globales***/
+/*************************/
+
 function campos_iguales($primero, $segundo){
 
     if($primero.val() == $segundo.val()){
@@ -40,9 +44,67 @@ function search(){
             alert("error");
         });
 
+    }else{
+        alert("Los campos no pueden ir en blanco");
     }
 
+};
+
+function successPeliculasID(response){
+    var objetoPeliculasId = jQuery.parseJSON(response);
+
+    $("#b_peliculas_id").append("<table id='results'><tr><td>Nombre Pelicula</td><td>Duracion</td><td>Precio Alquiler</td><td>Modificar</td></tr></table>");
+    $("#results").append("<tr><td>"+objetoPeliculasId.peliculas.nombre+"</td><td>"+objetoPeliculasId.peliculas.duracion+"</td><td>"+objetoPeliculasId.peliculas.precio_alquiler+"</td><td><a href='#' class='modificar'>Modificar</a></td></tr>")
+    $(".modificar").click(function(e){
+        e.preventDefault();
+        var form = $("#modificar"),
+            id_pelicula = form.find('#id_pelicula'),
+            nombre_pelicula = form.find('#nombre_pelicula'),
+            precio_alquiler = form.find("#precio_alquiler"),
+            duracion = form.find("#duracion"),
+            genero = form.find("#genero"),
+            ruta_imagenes = form.find("#ruta_imagenes");
+
+        form.removeClass('hidden');
+
+        id_pelicula.val(objetoPeliculasId.peliculas.id_pelicula);
+        nombre_pelicula.val(objetoPeliculasId.peliculas.nombre);
+        precio_alquiler.val(objetoPeliculasId.peliculas.precio_alquiler);
+        duracion.val(objetoPeliculasId.peliculas.duracion);
+        ruta_imagenes.val(objetoPeliculasId.peliculas.ruta_imagenes);
+    });
+
 }
+
+function buscar_peliculas_id(){
+    var id_pelicula= $("#id_pelicula").val();
+
+    var busqueda = $.ajax({
+        url: "controllers/busqueda_pelicula_id_controller.php",
+        type: "POST",
+        data: {id_pelicula:id_pelicula},
+    })
+    .success(function(response){
+        successPeliculasID(response);
+    })
+
+}
+
+function llenar_dropdown(){
+    $.ajax({
+        method:"POST",
+        url: "controllers/generos_controller.php"
+
+    })
+    .success (function (data){
+        var object = jQuery.parseJSON(data);
+        var selectData = "";
+        $.each(object.generos, function(key,value){
+            $("#genero").append("<option value="+value.id_genero+">"+value.nombre+"</option>");
+
+        });
+    })
+};
 
 
 
@@ -53,24 +115,7 @@ $(function(){
     *********** con JQuery para insertar **
     *********** en la BD ******************/
 
-    /*$("#genero").load(function(){*/
-        $.ajax({
-            method:"POST",
-            url: "controllers/generos_controller.php"
-
-        })
-        .success (function (data){
-            console.log(data);
-            var object = jQuery.parseJSON(data);
-            var selectData = "";
-            console.log(object);
-            $.each(object.generos, function(key,value){
-                $("#genero").append("<option value="+value.id_genero+">"+value.nombre+"</option>");
-
-            });
-        })
-   // });
-
+    llenar_dropdown(); // TODO -- validar que esta funcion se ejecute cuando el dropdown de generos esta presente en el form
 
     /********************* Insertar usuario *******************/
     $("#crear_usuario").click(function(){ 
@@ -138,6 +183,9 @@ $(function(){
     });
 
 
+
+
+
   
 
 
@@ -161,6 +209,10 @@ $(function(){
             search();
         }
     });   
+
+    $("#buscar_peliculas_id").on("click", function(){
+        buscar_peliculas_id();
+    })
 
 
 

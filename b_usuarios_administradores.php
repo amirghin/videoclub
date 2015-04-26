@@ -1,19 +1,3 @@
-<?php
-
-//require "conexion.php";
-//require "search.php";
-
-
-/*$search = new search;
-
-if(isset($_POST["nombre_usuario"])){
-
-
-	$search->buscar_usuarios($_POST["nombre_usuario"], $conexion);
-}*/
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
