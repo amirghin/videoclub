@@ -1,7 +1,7 @@
 <?php
 $mensaje = "";  
   require_once("conexion.php");
-  include_once("class/generos.php");
+  include_once("classes/generos.php");
 
   if ((isset($_POST['id_genero'], $_POST['nombre']))){
   	try{

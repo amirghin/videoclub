@@ -1,10 +1,10 @@
 function campos_iguales($primero, $segundo){
 
-	if($primero.val() == $segundo.val()){
+    if($primero.val() == $segundo.val()){
 
-		return true
+        return true
 
-	};
+    };
 };
 
 
@@ -48,42 +48,35 @@ function search(){
 
 $(function(){
 
-    var fileInput = document.getElementById('ruta_imagenes');
-    var fileDisplayArea = document.getElementById('fileDisplayArea');
-
-
-    fileInput.addEventListener('change', function(e) {
-        var file = fileInput.files[0];
-        var imageType = /image.*/;
-
-        if (file.type.match(imageType)) {
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-                fileDisplayArea.innerHTML = "";
-
-                var img = new Image();
-                console.log(img);
-                img.src = reader.result;
-
-                fileDisplayArea.appendChild(img);
-            }
-
-            reader.readAsDataURL(file); 
-        } else {
-            fileDisplayArea.innerHTML = "File not supported!"
-        }
-    });
 
     /********** Funciones de AJAX ********
     *********** con JQuery para insertar **
     *********** en la BD ******************/
 
+    /*$("#genero").load(function(){*/
+        $.ajax({
+            method:"POST",
+            url: "controllers/generos_controller.php"
+
+        })
+        .success (function (data){
+            console.log(data);
+            var object = jQuery.parseJSON(data);
+            var selectData = "";
+            console.log(object);
+            $.each(object.generos, function(key,value){
+                $("#genero").append("<option value="+value.id_genero+">"+value.nombre+"</option>");
+
+            });
+        })
+   // });
+
+
     /********************* Insertar usuario *******************/
     $("#crear_usuario").click(function(){ 
         if(campos_iguales($("#contrasena"), $("#conf_contrasena"))){
 
-        	var usuario = $(":input").serializeArray();
+            var usuario = $(":input").serializeArray();
             $.ajax({
             method: "POST",
             url: "i_usuarios_administradores.php",
@@ -97,7 +90,7 @@ $(function(){
             
         } else{
 
-        	alert("Las contraseñas son diferentes");
+            alert("Las contraseñas son diferentes");
         };
     });
 
