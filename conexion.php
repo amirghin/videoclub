@@ -1,5 +1,5 @@
 <?php
-$servername = "127.0.0.1";
+$servername = "localhost";
 $username = "sys_videoclub";
 $db = "videoclub";
 $password = "v1d30c!ub$";

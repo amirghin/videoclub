@@ -1,7 +1,7 @@
 <?php
 class ftp_session{
 
-	public $ftp_server = "127.0.0.1";
+	public $ftp_server = "localhost";
 	public $ftp_user_name = "sys_videoclub";
 	public $ftp_user_pass = "v1d30c!ub$";
 	public $conn_id = "";
