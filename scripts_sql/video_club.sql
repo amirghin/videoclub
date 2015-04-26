@@ -136,7 +136,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `videoclub`.`reservaciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`reservaciones` (
-  `id_reservacion` INT(11) NOT NULL,
+  `id_reservacion` INT(11) NOT NULL AUTO_INCREMENT,
   `clientes_id_cliente` INT(11) NOT NULL,
   `estado_aprobacion` VARCHAR(15) NOT NULL,
   `fecha_reservacion` DATE NOT NULL,
