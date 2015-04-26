@@ -23,23 +23,20 @@
 
 				<div class="filas">
 					<label for="precio_alquiler">Precio de alquiler:</label>
-					<input type="text" name="precio_alquiler">
+					<input type="text" name="precio_alquiler" id="precio_alquiler">
 				</div>
 				<div class="filas">
 					<label for="duracion">Duracion :</label>
-					<input type="text" name="duracion">
+					<input type="text" name="duracion" id="duracion">
 				</div>
 				<div class="filas">
 					<label for="genero">Genero:</label>
 					<!--<select name="genero" id=""></select><!-- TODO llenar con dropdown de genero-->
-					<input type="text" name="genero">
+					<input type="text" name="genero" id="genero">
 				</div>
 				<div class="filas">
 					<label for="ruta_imagenes">Ruta de imagenes: </label>
-					<input type="file" name="ruta_imagenes" id="ruta_imagenes"/>
-					<div id="fileDisplayArea">
-						<img src="imagenes/noimage.png" alt="">
-					</div>
+					<input type="text" name="ruta_imagenes" id="ruta_imagenes" />
 				</div>
 				<div class="filas">
 			    	<input type="button" value="Insertar" class="button" id="crear_peliculas">
