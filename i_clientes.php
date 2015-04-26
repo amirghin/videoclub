@@ -21,11 +21,11 @@
 				</div>
 				<div class="filas">
 				    <label for="email">Email:</label>
-				    <input type="text" name="email">
+				    <input type="email" name="email">
 				</div>
 				<div class="filas">
 				    <label for="fecha_nacimiento">Fecha de nacimiento</label>
-				    <input type="text" name="fecha_nacimiento">
+				    <input type="date" name="fecha_nacimiento">
 				</div>
 				<div class="filas">
 				    <label for="tel_casa">Telefono Casa</label>
@@ -37,7 +37,7 @@
 				</div>
 				<div class="filas">
 				    <label for="observaciones">Observaciones</label>
-				    <textarea name="observaciones" id="" cols="30" rows="10"></textarea>
+				    <textarea name="observaciones" id="observaciones" cols="30" rows="10"></textarea>
 				</div>
 				<div class="filas">
 				    <input type="submit" class="button" value="Insertar">
