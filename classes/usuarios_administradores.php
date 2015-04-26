@@ -68,41 +68,41 @@ function validar_contrasena($nom_usuario, $password, $conexion){
 
 function encriptar_contrasena($contrasena){
 
-$cost = array('cost' => 11);
-$encrypted = password_hash($contrasena, PASSWORD_BCRYPT, $cost);
+	$cost = array('cost' => 11);
+	$encrypted = password_hash($contrasena, PASSWORD_BCRYPT, $cost);
 
-return $encrypted;
+	return $encrypted;
 
 }
 
 function insertar_usuario($nom_usuario, $nombre, $apellido, $contrasena, $habilitado, $conexion){
 
 
-try{
-	
-	$contrasena_encriptada = $this->encriptar_contrasena($contrasena);
-	if ($this->existencia_usuario($nom_usuario, $conexion)){
+	try{
+		
+		$contrasena_encriptada = $this->encriptar_contrasena($contrasena);
+		if ($this->existencia_usuario($nom_usuario, $conexion)){
 
-		throw new Exception("El usuario {$nom_usuario} ya existe");
-	}
+			throw new Exception("El usuario {$nom_usuario} ya existe");
+		}
 
-	$insert = "INSERT INTO usuarios_administradores (nom_usuario, nombre, apellido, contrasena, habilitado, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
-			VALUES ('{$nom_usuario}', '{$nombre}', '{$apellido}', '{$contrasena_encriptada}', '{$habilitado}','system', CURDATE(), 'system', CURDATE())";
+		$insert = "INSERT INTO usuarios_administradores (nom_usuario, nombre, apellido, contrasena, habilitado, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
+				VALUES ('{$nom_usuario}', '{$nombre}', '{$apellido}', '{$contrasena_encriptada}', '{$habilitado}','system', CURDATE(), 'system', CURDATE())";
 
-	$resultado = mysqli_query($conexion, $insert);
+		$resultado = mysqli_query($conexion, $insert);
 
-	if(!$resultado){
+		if(!$resultado){
 
-		throw new Exception("Error al insertar usuario");
-	}else{
+			throw new Exception("Error al insertar usuario");
+		}else{
 
-		$this->mensaje = "Se inserto con exito el usuario";
-	}
-			
-	}catch(Exception $e){
-		$this->mensaje = $e->GetMessage();
+			$this->mensaje = "Se inserto con exito el usuario";
+		}
+				
+		}catch(Exception $e){
+			$this->mensaje = $e->GetMessage();
 
-	}
+		}
 
 }
 
@@ -110,27 +110,27 @@ try{
 
 function buscar_usuarios($nom_usuario, $conexion){
 
-try{
+	try{
 
-	$query = "SELECT * FROM usuarios_administradores WHERE nom_usuario LIKE '%{$nom_usuario}%'";
-	$resultado = mysqli_query($conexion, $query);
+		$query = "SELECT * FROM usuarios_administradores WHERE nom_usuario LIKE '%{$nom_usuario}%'";
+		$resultado = mysqli_query($conexion, $query);
 
-	$array = array();
+		$array = array();
 
 
-	while($row=mysqli_fetch_assoc($resultado)){
-	$array[] = $row;
+		while($row=mysqli_fetch_assoc($resultado)){
+		$array[] = $row;
 
+		}
+
+		echo '{"usuarios":'.json_encode($array).'}';
+
+
+	}catch (Exception $e){
+		$this->mensaje = $e->GetMessage();
 	}
 
-	echo '{"usuarios":'.json_encode($array).'}';
-
-
-}catch (Exception $e){
-	$this->mensaje = $e->GetMessage();
-}
-
-}
+	}
 
 }
 
