@@ -11,22 +11,56 @@ public $fecha_modificacion = "";
 public $mensaje = "";
 
 
-function insertar_genero($id_genero, $nombre, $conexion){
-	$mensaje = "";
-	try{
-		$query = "INSERT INTO generos (id_genero, nombre, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion) VALUES ({$id_genero}, '${nombre}', 1, NOW(),1, NOW())";
-		if(mysqli_query($conexion,$query)){
-			$this->mensaje = "Genero insertado correctamente";
-		}else{
-			throw new Exception(mysqli_error($conexion)); 
+	function insertar_genero($id_genero, $nombre, $conexion){
+		$mensaje = "";
+		try{
+			$query = "INSERT INTO generos (id_genero, nombre, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion) VALUES ({$id_genero}, '${nombre}', 1, NOW(),1, NOW())";
+			if(mysqli_query($conexion,$query)){
+				$this->mensaje = "Genero insertado correctamente";
+			}else{
+				throw new Exception(mysqli_error($conexion)); 
+			}
+			mysqli_close($conexion); 
+			return $query;
+		}catch(Exception $e){
+		     throw new Exception($e->getMessage());	 
 		}
-		mysqli_close($conexion); 
-		return $query;
-	}catch(Exception $e){
-	     throw new Exception($e->getMessage());	 
+
 	}
 
-}
+	function modificar_genero($id_genero, $nombre, $conexion){
+		try{
+			$modificar = "UPDATE generos set
+								  nombre = '{$nombre}'
+								  where id_genero= {$id_genero}"
+								  ;	
+			echo $modificar;
+
+			$resultado = mysqli_query($conexion, $modificar);
+
+			if(!$resultado){
+				echo mysqli_error($conexion);
+				throw new Exception(mysqli_error($conexion));
+
+			}else{
+				$this->mensaje = "Se modifico con exito el genero";
+				echo json_encode(array(
+					'success' => array(
+						'mensaje' => "Se modifico con exito el genero"
+						)
+					));
+			}
+
+		}catch(Exception $e){
+		   echo json_encode(array(
+		        'error' => array(
+		            'code' => $e->getCode(),
+		            'message' => $e->getMessage()
+		        )
+		    ));
+
+		}		
+	}
 
 
 	function llenar_dropdown($conexion){
