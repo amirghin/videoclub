@@ -10,7 +10,7 @@
 	<section class="estilos_form" id="b_peliculas_id">
 		<!--<form action="" method="POST">-->
 			<div class="filas">
-				<input type="text" name="id_pelicula" id="id_pelicula">
+				<input type="text" name="id_pelicula" id="id_pelicula" class="requerido">
 				<input type="button" value="Enviar" id="buscar_peliculas_id">
 			</div>
 		<!--</form>-->

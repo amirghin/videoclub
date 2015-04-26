@@ -1,7 +1,3 @@
-/*************************/
-/****Variables globales***/
-/*************************/
-
 function campos_iguales($primero, $segundo){
 
     if($primero.val() == $segundo.val()){
@@ -10,6 +6,19 @@ function campos_iguales($primero, $segundo){
 
     };
 };
+
+/*********************************/
+/**** Verficar espacios en *******/
+/********* blanco ***************/
+/********************************/
+
+function verificar_campos(){
+    var campos = $(".requerido");
+    if (campos.val() == ""){
+        alert("No pueden haber espacios en blanco");
+        return false;
+    }else return true;
+}
 
 
 /*************************/
@@ -53,40 +62,57 @@ function search(){
 function successPeliculasID(response){
     var objetoPeliculasId = jQuery.parseJSON(response);
 
-    $("#b_peliculas_id").append("<table id='results'><tr><td>Nombre Pelicula</td><td>Duracion</td><td>Precio Alquiler</td><td>Modificar</td></tr></table>");
-    $("#results").append("<tr><td>"+objetoPeliculasId.peliculas.nombre+"</td><td>"+objetoPeliculasId.peliculas.duracion+"</td><td>"+objetoPeliculasId.peliculas.precio_alquiler+"</td><td><a href='#' class='modificar'>Modificar</a></td></tr>")
-    $(".modificar").click(function(e){
-        e.preventDefault();
-        var form = $("#modificar"),
-            id_pelicula = form.find('#id_pelicula'),
-            nombre_pelicula = form.find('#nombre_pelicula'),
-            precio_alquiler = form.find("#precio_alquiler"),
-            duracion = form.find("#duracion"),
-            genero = form.find("#genero"),
-            ruta_imagenes = form.find("#ruta_imagenes");
+   if (objetoPeliculasId.error) {
+        console.log(objetoPeliculasId);
+        alert(objetoPeliculasId.error.msg);
+    }else{
+        console.log(objetoPeliculasId);
+        if ($("#results").length){
+            $("#results").append("<tr><td>"+objetoPeliculasId.peliculas.nombre+"</td><td>"+objetoPeliculasId.peliculas.duracion+"</td><td>"+objetoPeliculasId.peliculas.precio_alquiler+"</td><td><a href='#' class='modificar'>Modificar</a></td></tr>")
+        }else{
+            $("#b_peliculas_id").append("<table id='results'><tr><td>Nombre Pelicula</td><td>Duracion</td><td>Precio Alquiler</td><td>Modificar</td></tr></table>");
+            $("#results").append("<tr><td>"+objetoPeliculasId.peliculas.nombre+"</td><td>"+objetoPeliculasId.peliculas.duracion+"</td><td>"+objetoPeliculasId.peliculas.precio_alquiler+"</td><td><a href='#' class='modificar'>Modificar</a></td></tr>")
+        }
+        $(".modificar").click(function(e){
+            e.preventDefault();
+            var form = $("#modificar"),
+                id_pelicula = form.find('#id_pelicula'),
+                nombre_pelicula = form.find('#nombre_pelicula'),
+                precio_alquiler = form.find("#precio_alquiler"),
+                duracion = form.find("#duracion"),
+                genero = form.find("#genero"),
+                ruta_imagenes = form.find("#ruta_imagenes");
 
-        form.removeClass('hidden');
+            form.removeClass('hidden');
 
-        id_pelicula.val(objetoPeliculasId.peliculas.id_pelicula);
-        nombre_pelicula.val(objetoPeliculasId.peliculas.nombre);
-        precio_alquiler.val(objetoPeliculasId.peliculas.precio_alquiler);
-        duracion.val(objetoPeliculasId.peliculas.duracion);
-        ruta_imagenes.val(objetoPeliculasId.peliculas.ruta_imagenes);
-    });
+            id_pelicula.val(objetoPeliculasId.peliculas.id_pelicula);
+            nombre_pelicula.val(objetoPeliculasId.peliculas.nombre);
+            precio_alquiler.val(objetoPeliculasId.peliculas.precio_alquiler);
+            duracion.val(objetoPeliculasId.peliculas.duracion);
+            ruta_imagenes.val(objetoPeliculasId.peliculas.ruta_imagenes);
+        });
+    }
+
+
+
+
+    //console.log(objetoPeliculasId);
+
 
 }
 
 function buscar_peliculas_id(){
-    var id_pelicula= $("#id_pelicula").val();
-
-    var busqueda = $.ajax({
-        url: "controllers/busqueda_pelicula_id_controller.php",
-        type: "POST",
-        data: {id_pelicula:id_pelicula},
-    })
-    .success(function(response){
-        successPeliculasID(response);
-    })
+    if (verificar_campos()){
+        var id_pelicula = $("#id_pelicula").val();
+        var busqueda = $.ajax({
+            url: "controllers/busqueda_pelicula_id_controller.php",
+            type: "POST",
+            data: {id_pelicula:id_pelicula},
+        })
+        .success(function(response){
+            successPeliculasID(response);
+        });
+    }
 
 }
 
@@ -186,6 +212,8 @@ $(function(){
     /********************* Modificar peliculas *******************/
 
     $("#modificar_peliculas").click(function(){ 
+        
+
         $("#hidden_genero").val($("#genero option:selected").val());
         var peliculas = $("#modificar :input").serializeArray();
         console.log(peliculas);
@@ -207,19 +235,6 @@ $(function(){
         //limpiar_campos();
         }); 
     });
-
-
-
-
-
-  
-
-
-
-
-
-
-
 
     /*****************Funcion de busqueda de usuarios************/
 
