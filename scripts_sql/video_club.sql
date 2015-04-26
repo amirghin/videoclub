@@ -100,7 +100,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `videoclub`.`clientes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `videoclub`.`clientes` (
-  `id_cliente` INT(11) NOT NULL COMMENT 'Llave Primaria para cada cliente, se conoce como número de afiliado',
+  `id_cliente` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Llave Primaria para cada cliente, se conoce como número de afiliado',
   `fecha_afiliacion` DATE NOT NULL COMMENT 'Fecha de afiliación del cliente, en formato DATE',
   `nombre` VARCHAR(45) NOT NULL COMMENT 'Nombre del cliente',
   `apellidos` VARCHAR(45) NOT NULL COMMENT 'Apellidos del cliente',
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `videoclub`.`clientes` (
   `tel_celular` VARCHAR(8) NOT NULL COMMENT 'Telefono del celular, solo números.',
   `email` VARCHAR(45) NOT NULL COMMENT 'Correo Electrónico del cliente',
   `activo_web` TINYINT(1) NOT NULL COMMENT 'Campo de tipo Booleano, permite reservar peliculas desde la web.',
-  `activo` TINYINT(1) NOT NULL COMMENT 'Este campo especifica si el usuario se encuentra activo o no.',
+  `estado` VARCHAR(10) NOT NULL COMMENT 'Este campo especifica si el usuario se encuentra activo o no.',
   `observaciones` LONGTEXT NULL DEFAULT NULL COMMENT 'Este campo es utilizado para documentar por que el estado_web no se encuentra activo',
   `usuario_creacion` INT(11) NOT NULL,
   `fecha_creacion` DATE NOT NULL,
