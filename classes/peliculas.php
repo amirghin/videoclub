@@ -53,8 +53,6 @@ public $mensaje = "";
 		}
 				
 		}catch(Exception $e){
-			//$this->mensaje = $e->GetMessage();
-			//echo json_encode($this->mensaje -> "Exception occurred: ".$e->getMessage());
 		   echo json_encode(array(
 		        'error' => array(
 		            'code' => $e->getCode(),
@@ -64,6 +62,53 @@ public $mensaje = "";
 
 		}
 	}
+
+	function modificar_peliculas($id_pelicula,$nombre_pelicula,$precio_alquiler,$genero,$ruta_imagenes,$duracion,$conexion){
+		try{
+			echo "hola";
+			$modificar = "UPDATE peliculas set
+								  nombre = '{$nombre_pelicula}',
+								  precio_alquiler = {$precio_alquiler},
+								  generos_id_genero = {$genero},
+								  ruta_imagenes = '{$ruta_imagenes}',
+								  duracion = {$duracion}
+								  where id_pelicula = {$id_pelicula}"
+								  ;	
+
+			echo $modificar;
+			$resultado = mysqli_query($conexion, $modificar);
+
+			if(!$resultado){
+				echo mysqli_error($conexion);
+				throw new Exception(mysqli_error($conexion));
+
+			}else{
+				$this->mensaje = "Se modifico con exito la pelicula";
+				echo json_encode(array(
+					'success' => array(
+						'mensaje' => "Se modifico con exito la pelicula"
+						)
+					));
+			}
+
+		}catch(Exception $e){
+		   echo json_encode(array(
+		        'error' => array(
+		            'code' => $e->getCode(),
+		            'message' => $e->getMessage()
+		        )
+		    ));
+
+		}
+
+	}
+
+
+	function eliminar_peliculas(){
+
+	}
+
+
 
 	function buscar_pelicula($id_pelicula, $conexion){
 		try{

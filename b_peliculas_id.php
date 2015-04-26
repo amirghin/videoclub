@@ -46,7 +46,7 @@
 					<input type="text" name="ruta_imagenes" id="ruta_imagenes" />
 				</div>
 				<div class="filas">
-			    	<input type="button" value="Modificar" class="button" id="crear_peliculas">
+			    	<input type="button" value="Modificar" class="button" id="modificar_peliculas">
 			    	<input type="hidden" name="action" value="upload" /> 
 			    	
 

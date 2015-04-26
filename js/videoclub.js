@@ -183,6 +183,32 @@ $(function(){
     });
 
 
+    /********************* Modificar peliculas *******************/
+
+    $("#modificar_peliculas").click(function(){ 
+        $("#hidden_genero").val($("#genero option:selected").val());
+        var peliculas = $("#modificar :input").serializeArray();
+        console.log(peliculas);
+        $.ajax({
+        method: "POST",
+        url: "controllers/modificar_peliculas_controller.php",
+        data: peliculas
+        })
+        .success(function( response ) {
+            //console.log("hola");
+           if (response.error) {
+                // handle the error
+                throw response.error.message;
+                console.log(response.error.message);
+            }else{
+                console.log(response);
+                alert( "se modifico la pelicula");
+            }
+        //limpiar_campos();
+        }); 
+    });
+
+
 
 
 
