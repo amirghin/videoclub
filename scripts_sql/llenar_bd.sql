@@ -1,8 +1,8 @@
---Crear Roles
+-- Crear Roles
 INSERT INTO `videoclub`.`roles` (`id_rol`, `nombre`, `usuario_creacion`, `fecha_creacion`, `usuario_modificacion`, `fecha_modificacion`) VALUES ('1', 'Actor Principal', '1', '2015-01-01', '1', '2015-01-01');
 INSERT INTO `videoclub`.`roles` (`id_rol`, `nombre`, `usuario_creacion`, `fecha_creacion`, `usuario_modificacion`, `fecha_modificacion`) VALUES ('2', 'Actor Secundario', '1', '2015-01-01', '1', '2015-01-01');
 INSERT INTO `videoclub`.`roles` (`id_rol`, `nombre`, `usuario_creacion`, `fecha_creacion`, `usuario_modificacion`, `fecha_modificacion`) VALUES ('3', 'Director', '1', '2015-01-01', '1', '2015-01-01');
---Crear Generos
+-- Crear Generos
 INSERT INTO `videoclub`.`generos` (`id_genero`, `nombre`, `usuario_creacion`, `fecha_creacion`, `usuario_modificacion`, `fecha_modificacion`) VALUES ('1', 'Accion', '1', '2015-02-02', '1', '2015-02-02');
 INSERT INTO `videoclub`.`generos` (`id_genero`, `nombre`, `usuario_creacion`, `fecha_creacion`, `usuario_modificacion`, `fecha_modificacion`) VALUES ('2', 'Romance', '1', '2015-02-02', '1', '2015-02-02');
 INSERT INTO `videoclub`.`generos` (`id_genero`, `nombre`, `usuario_creacion`, `fecha_creacion`, `usuario_modificacion`, `fecha_modificacion`) VALUES ('3', 'Drama', '1', '2015-02-02', '1', '2015-02-02');
@@ -10,7 +10,7 @@ INSERT INTO `videoclub`.`generos` (`id_genero`, `nombre`, `usuario_creacion`, `f
 
 
 
---Crear Actores / Directores
+-- Crear Actores / Directores
 
 --  Kill Bill
 INSERT INTO videoclub.actores_directores VALUES(1, 'Uma Thurman', 'f', 1, '2015-01-01', 1, '2015-01-01');
@@ -30,7 +30,14 @@ INSERT INTO videoclub.actores_directores VALUES(10, 'Robin Wright', 'f', 1, '201
 INSERT INTO videoclub.actores_directores VALUES(11, 'Haley Joel Osment', 'm', 1, '2015-01-01', 1, '2015-01-01');
 
 -- Billy Madison
-INSERT INTO videoclub.actores_directores VALUES(12 'Tamra Davis', 'f', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.actores_directores VALUES(12, 'Tamra Davis', 'f', 1, '2015-01-01', 1, '2015-01-01');
 INSERT INTO videoclub.actores_directores VALUES(13, 'Adam Sandler', 'm', 1, '2015-01-01', 1, '2015-01-01');
-INSERT INTO videoclub.actores_directores VALUES(14 'Bridgette Wilson-Sampras', 'f', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.actores_directores VALUES(14, 'Bridgette Wilson-Sampras', 'f', 1, '2015-01-01', 1, '2015-01-01');
 INSERT INTO videoclub.actores_directores VALUES(15, 'Steve Buscemi', 'm', 1, '2015-01-01', 1, '2015-01-01');
+
+-- Peliculas
+
+INSERT INTO videoclub.peliculas VALUES ('1', 'Kill Bill', '90', '2000', '1', '/kill_bill', '1', '2015-01-01', '1', '2015-01-01');
+INSERT INTO videoclub.peliculas VALUES ('2', 'El Descanso', '90', '2000', '2', '/descanso', '1', '2015-01-01', '1', '2015-01-01');
+INSERT INTO videoclub.peliculas VALUES ('3', 'Forrest Gump', '90', '2000', '3', '/forrest_gump', '1', '2015-01-01', '1', '2015-01-01');
+INSERT INTO videoclub.peliculas VALUES ('4', 'Billy Madison', '90', '2000', '4', '/billy_madison', '1', '2015-01-01', '1', '2015-01-01');
