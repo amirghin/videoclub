@@ -1,7 +1,7 @@
 <?php
 
 require "conexion.php";
-require "class/usuarios_administradores.php";
+require "classes/usuarios_administradores.php";
 
 $usuario_administrador = new usuarios_administradores;
 
