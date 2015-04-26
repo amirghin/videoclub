@@ -31,8 +31,8 @@
 				</div>
 				<div class="filas">
 					<label for="genero">Genero:</label>
-					<select name="genero" id="genero"></select><!-- TODO llenar con dropdown de genero-->
-					<!--<input type="text" name="genero" >-->
+					<select id="genero"></select><!-- TODO llenar con dropdown de genero-->
+					<input type="hidden" name="genero" id="hidden_genero">
 				</div>
 				<div class="filas">
 					<label for="ruta_imagenes">Ruta de imagenes: </label>

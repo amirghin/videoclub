@@ -113,15 +113,16 @@ $(function(){
 
     /********************* Insertar peliculas *******************/
     $("#crear_peliculas").click(function(){
-        //alert("sirve");
-        var dato = new FormData(document.getElementById("form_peliculas"));
-  
+        $("#hidden_genero").val($("#genero option:selected").val());
+        var peliculas = $(":input").serializeArray();
+
+        console.log(peliculas);
 
         var pelicula = $(":input").serializeArray();
         $.ajax({
         method: "POST",
-        url: "ftpupload.php",
-        data: dato
+        url: "controllers/peliculas_controller.php",
+        data: peliculas
         })
         .success(function( response ) {
            if (response.error) {
