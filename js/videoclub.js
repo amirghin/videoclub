@@ -166,7 +166,7 @@ $(function(){
         var pelicula = $(":input").serializeArray();
         $.ajax({
         method: "POST",
-        url: "controllers/peliculas_controller.php",
+        url: "controllers/insertar_peliculas_controller.php",
         data: peliculas
         })
         .success(function( response ) {
