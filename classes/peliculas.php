@@ -64,6 +64,33 @@ public $mensaje = "";
 
 		}
 	}
+
+	function buscar_pelicula($id_pelicula, $conexion){
+		try{
+			$query = "SELECT * FROM peliculas WHERE id_pelicula = {$id_pelicula}";
+			$resultado = mysqli_query($conexion, $query);
+
+			if(!$resultado){
+
+				throw new Exception(mysqli_error($resultado));	
+			}elseif(mysqli_num_rows($resultado) == 0){
+
+				throw new Exception("No se encontraron registros para el usuario: {$nombre_paciente}", 1);
+				
+			}else{
+				$row=mysqli_fetch_assoc($resultado);
+				echo '{"peliculas":'.json_encode($row).'}';
+			}
+
+		}catch (Exception $e){
+			  echo json_encode(array(
+			  'error' => array(	
+			  	'msg' => $e->GetMessage(),
+			  	'error' => $e->GetCode(),
+			  	)
+			  ));
+		}
+	}	
 	
 }
 ?>
