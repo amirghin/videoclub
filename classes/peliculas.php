@@ -16,7 +16,14 @@ public $fecha_modificacion = "";
 public $mensaje = "";
 
 
+	function ruta_imagenes($id_pelicula, $conexion){
 
+		$update = "UPDATE peliculas SET ruta_imagenes=CONCAT('/', {$id_pelicula}) WHERE id_pelicula = {$id_pelicula}";
+		$resultado = mysqli_query($conexion, $update);
+
+
+
+	}
 	function llenar_dropdown(){
 		try{
 			$query = "SELECT * FROM generos";
@@ -33,9 +40,11 @@ public $mensaje = "";
 		}
 	}
 
-	function insertar_peliculas($id_pelicula,$nombre_pelicula,$precio_alquiler,$genero,$ruta_imagenes,$duracion,$conexion){
+	function insertar_peliculas($nombre_pelicula,$precio_alquiler,$genero,$duracion,$conexion){
 		try{
-			$insert = "INSERT INTO peliculas (id_pelicula, nombre, precio_alquiler, generos_id_genero, ruta_imagenes, duracion, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)VALUES ({$id_pelicula}, '{$nombre_pelicula}', {$precio_alquiler}, {$genero}, '{$ruta_imagenes}', {$duracion},1, CURDATE(), 1, CURDATE())";
+
+			$insert = "INSERT INTO peliculas (nombre, precio_alquiler, generos_id_genero, duracion, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
+				VALUES ('{$nombre_pelicula}', {$precio_alquiler}, {$genero}, {$duracion},1, CURDATE(), 1, CURDATE())";
 
 			$resultado = mysqli_query($conexion, $insert);
 
@@ -44,6 +53,7 @@ public $mensaje = "";
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
+				$this->ruta_imagenes(mysqli_insert_id($conexion),$conexion);
 				$this->mensaje = "Se inserto con exito la pelicula";
 				echo json_encode(array(
 					'success' => array(

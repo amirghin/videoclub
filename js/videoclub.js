@@ -206,10 +206,8 @@ $(function(){
     $("#crear_peliculas").click(function(){
         $("#hidden_genero").val($("#genero option:selected").val());
         var peliculas = $(":input").serializeArray();
-
         console.log(peliculas);
 
-        var pelicula = $(":input").serializeArray();
         $.ajax({
         method: "POST",
         url: "controllers/insertar_peliculas_controller.php",

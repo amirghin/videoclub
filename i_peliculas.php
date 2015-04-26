@@ -12,10 +12,6 @@
 	<section class="estilos_form">
 		<form method="POST" enctype="multipart/form-data" action="" id="form_peliculas">		
 			<fieldset class="insertar_peliculas">
-				<div class="filas">
-			    	<label for="nombre">ID Pelicula: </label>
-			    	<input type="text" name="id_pelicula" id="id_pelicula">
-				</div>
 				<div class="filas">	
 			    	<label for="nombre">Nombre Pelicula: </label>
 			    	<input type="text" name="nombre_pelicula" id="nombre_pelicula">
@@ -33,10 +29,6 @@
 					<label for="genero">Genero:</label>
 					<select id="genero"></select><!-- TODO llenar con dropdown de genero-->
 					<input type="hidden" name="genero" id="hidden_genero">
-				</div>
-				<div class="filas">
-					<label for="ruta_imagenes">Ruta de imagenes: </label>
-					<input type="text" name="ruta_imagenes" id="ruta_imagenes" />
 				</div>
 				<div class="filas">
 			    	<input type="button" value="Insertar" class="button" id="crear_peliculas">
