@@ -12,7 +12,6 @@ class roles{
 			$resultado = mysqli_query($conexion, $insert);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
@@ -43,7 +42,6 @@ class roles{
 			$resultado = mysqli_query($conexion, $update);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
@@ -71,7 +69,6 @@ class roles{
 			$resultado = mysqli_query($conexion, $delete);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 
 			}else{

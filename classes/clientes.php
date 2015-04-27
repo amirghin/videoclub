@@ -3,9 +3,6 @@
 class clientes{
 
 
-	public $mensaje = "";
-
-
 	function insertar_cliente($nombre, $apellidos, $email, $fec_nacimiento, $tel_casa, $tel_celular, $observaciones,$conexion){
 		try{
 			$insert = "INSERT INTO clientes (nombre, apellidos, fecha_nacimiento, tel_casa, tel_celular, email, activo_web, estado, observaciones, 
@@ -17,7 +14,6 @@ class clientes{
 			$resultado = mysqli_query($conexion, $insert);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
@@ -84,7 +80,6 @@ class clientes{
 			$resultado = mysqli_query($conexion, $update);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
@@ -112,7 +107,6 @@ class clientes{
 			$resultado = mysqli_query($conexion, $delete);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 
 			}else{

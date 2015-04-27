@@ -112,7 +112,6 @@ public $mensaje = "";
 			$resultado = mysqli_query($conexion, $eliminar);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
@@ -147,7 +146,6 @@ public $mensaje = "";
 			$resultado = mysqli_query($conexion, $update);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 
 			}else{

@@ -3,16 +3,6 @@
 
 class peliculas{
 
-public $id_pelicula = "";
-public $nombre = "";
-public $duracion = "";
-public $precio_alquiler = "";
-public $id_genero = "";
-public $ruta_imagenes = "";
-public $usuario_creacion = "";
-public $fecha_creacion = "";
-public $usuario_modificacion = "";
-public $fecha_modificacion = "";
 public $mensaje = "";
 
 
@@ -49,7 +39,6 @@ public $mensaje = "";
 			$resultado = mysqli_query($conexion, $insert);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
@@ -87,7 +76,6 @@ public $mensaje = "";
 			$resultado = mysqli_query($conexion, $modificar);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
@@ -120,7 +108,6 @@ public $mensaje = "";
 			$resultado = mysqli_query($conexion, $eliminar);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 
 			}else{

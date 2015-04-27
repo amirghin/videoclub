@@ -21,7 +21,6 @@ public $mensaje = "";
 			$resultado = mysqli_query($conexion, $insertar);
 
 			if(!$resultado){
-				echo mysqli_error($conexion);
 				throw new Exception(mysqli_error($conexion));
 			}else{
 				$this->mensaje = "Se inserto con exito la copia";
