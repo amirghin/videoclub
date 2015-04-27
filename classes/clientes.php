@@ -143,6 +143,39 @@ class clientes{
 
 	}
 
+	function buscar_cliente($id_cliente, $conexion){
+
+		try{
+			$query = "SELECT * FROM clientes WHERE id_cliente = {$id_cliente}";
+			$resultado = mysqli_query($conexion, $query);
+			$clientes = array();
+
+			if(!$resultado){
+
+				throw new Exception(mysqli_error($resultado));	
+			}elseif(mysqli_num_rows($resultado) == 0){
+
+				throw new Exception("No se encontro ningún cliente con el id {$id_cliente}", 1);
+				
+			}else{
+				while($row=mysqli_fetch_assoc($resultado)){
+
+					$clientes[] = $row;
+
+				}
+				echo '{"clientes":'.json_encode($clientes).'}';
+			}
+
+		}catch (Exception $e){
+			  echo json_encode(array(
+			  'error' => array(	
+			  	'msg' => $e->GetMessage(),
+			  	'error' => $e->GetCode(),
+			  	)
+			  ));
+		}
+	}
+
 }
 
 
