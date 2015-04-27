@@ -343,6 +343,30 @@ $(function(){
     });
 
 
+    /*****************Insertar copias************/
+    $("#insertar_copias").click(function(){
+        var copias = $(":input").serializeArray();
+
+        $.ajax({
+        method: "POST",
+        url: "controllers/insertar_copias_controller.php",
+        data: copias
+        })
+
+        .success(function( response ) {
+           if (response.error) {
+                // handle the error
+                throw response.error.message;
+                console.log(response.error.message);
+            }else{
+                var objeto = jQuery.parseJSON(response);
+                alert( objeto.success.mensaje);
+            }
+        //limpiar_campos();
+        }); 
+    })
+
+
     /********************* Modificar peliculas *******************/
 
     $("#modificar_peliculas").click(function(){ 
@@ -485,9 +509,6 @@ $(function(){
 
 
     /*****************Funcion de busqueda de usuarios************/
-
-
-
    
     $("#button").on("click", function(){
         search();
@@ -499,6 +520,7 @@ $(function(){
         }
     });   
 
+    /*****************Funcion de busqueda de peliculas id************/
     $("#buscar_peliculas_id").on("click", function(){
         buscar_peliculas_id();
     })

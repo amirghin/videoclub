@@ -20,7 +20,7 @@ if (isset($_POST['usuario'], $_POST['password'])){
 		$message = "El usuario se encuentra deshabilitado"; 
 
 	} else {
-		$message = "La combinación de usuario y contraseña es incorrecta";
+		$message = "La combinaci&oacute;n de usuario y contrase&ntilde;a es incorrecta";
 	}
 }
 
@@ -30,36 +30,55 @@ if (isset($_POST['usuario'], $_POST['password'])){
 <html>
 <head>
 	<title>Sistema de Manejo de VideoClub</title>
-    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/styles.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/estilos.css">-->
 
 </head>
 
 <body>
+	<nav id="top-nav" class="navbar navbar-inverse navbar-static-top">
 
-	<section class="login_section">
-		<div class="">
-			<!--<h1>Iniciar Sesion</h1>	-->
+		<div class="container-fluid">
+			<div class="navbar-header">
+	          <a class="navbar-brand" href="#">Video Club</a>
+	        </div>
+			<div class="navbar-collapse collapse">				
+				<!--<h1>Iniciar Sesion</h1>	-->
 
-		
-			<form method="POST">	
-				<fieldset class="login">
-					<div class="filas">
-					    <label for="usuario">Usuario:</label>
-					    <input type="text" name="usuario" id="usuario" required>
-				    </div>
-				    <div class="filas">
-				    	<label for="password">Contrase&ntilde;a:</label>
-				    	<input type="password" name="password" id="password" required>
-					</div>
-					<div class="filas buttons">
-				    	<input type="submit" value="Iniciar Sesion" class="button">
-				    </div>
-				    <p class="error"><?php echo $message?></p>
+			
+				<form method="POST" class="navbar-form navbar-right">	
+					<fieldset class="login">
+						<div class="form-group">
+						   
+						    <input type="text" name="usuario" id="usuario" required class="form-control" placeholder="Usuario">
+					    </div>
+					    <div class="form-group">
+					    	<input type="password" name="password" id="password" required class="form-control" placeholder="Contrase&ntilde;a">
+						</div>
+						<div class="form-group buttons">
+					    	<input type="submit" value="Iniciar Sesion" class="button form-control">
+					    </div>
+					    <p class="error"><?php echo $message?></p>
 
-				</fieldset>
-			</form>
+					</fieldset>
+				</form>
+			</div>
 		</div>
-	</section>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<h3><i class="glyphicon glyphicon-briefcase"></i> Busqueda peliculas</h3>
+		  		<hr>
+				<ul class="nav nav-stacked">
+					<li><a href="">Buscar peliculas</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"></div>
+		</div>
+	</div>
 </body>
 
 </html>
