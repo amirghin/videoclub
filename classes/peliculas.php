@@ -213,9 +213,10 @@ public $mensaje = "";
 
 	function buscar_pelicula_nombre($nombre_pelicula, $conexion){
 		try{
-			$query = "SELECT * WHERE nombre LIKE '%{$nombre_pelicula}%' ORDER BY disponibilidad ASC";
+			$query = "SELECT * FROM disponibilidad_peliculas
+						WHERE nombre LIKE '%{$nombre_pelicula}%' GROUP BY nombre ORDER BY nombre ASC";
 
-			//echo $query;
+			$peliculas = array();
 
 			$resultado = mysqli_query($conexion, $query);
 
@@ -224,8 +225,11 @@ public $mensaje = "";
 			}elseif(mysqli_num_rows($resultado) == 0){
 				throw new Exception("No se encontro ninguna pelicula con ese Nombre", 1);
 			}else{
-				$row=mysqli_fetch_assoc($resultado);
-				echo '{"peliculas":'.json_encode($row).'}';
+				while($row=mysqli_fetch_assoc($resultado)){
+					$peliculas[] = $row;
+				}
+				echo '{"peliculas":'.json_encode($peliculas).'}';
+
 			}
 
 		}catch (Exception $e){
