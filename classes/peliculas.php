@@ -213,16 +213,7 @@ public $mensaje = "";
 
 	function buscar_pelicula_nombre($nombre_pelicula, $conexion){
 		try{
-			$query = "SELECT 
-					 pel.id_pelicula, 
-					 pel.nombre, 
-					 pel.duracion, 
-					 pel.generos_id_genero, 
-					 cop.disponibilidad,
-					 gen.nombre genero, pel.precio_alquiler FROM peliculas pel
-					 LEFT JOIN generos gen ON pel.generos_id_genero = gen.id_genero 
-					 LEFT JOIN copias cop on pel.id_pelicula = cop.peliculas_id_pelicula
-					 WHERE pel.nombre LIKE '%{$nombre_pelicula}%'";
+			$query = "SELECT * WHERE nombre LIKE '%{$nombre_pelicula}%' ORDER BY disponibilidad ASC";
 
 			//echo $query;
 
