@@ -10,6 +10,37 @@ public $usuario_modificacion = "";
 public $fecha_modificacion = "";
 public $mensaje = "";
 
+
+	function insertar_ubicacion($cod_ubicacion,$detalle, $conexion){
+		$mensaje = "";
+		try{
+			$insertar = "INSERT INTO ubicaciones (cod_ubicacion, detalle, usuario_creacion,fecha_creacion, usuario_modificacion, fecha_modificacion) 
+					  VALUES ({$cod_ubicacion}, '{$detalle}', 1, NOW(),1, NOW())";
+			
+			$resultado = mysqli_query($conexion, $insertar);
+
+			if(!$resultado){
+				echo mysqli_error($conexion);
+				throw new Exception(mysqli_error($conexion));
+			}else{
+				//$this->mensaje = "Se inserto con exito la copia";
+				echo json_encode(array(
+					'success' => array(
+						'mensaje' => "Se inserto con exito la ubicacion"
+						)
+					));
+			}
+		}catch(Exception $e){
+		   echo json_encode(array(
+		        'error' => array(
+		            'code' => $e->getCode(),
+		            'message' => $e->getMessage()
+		        )
+		    ));
+
+		}
+	}
+
 }
 
 
