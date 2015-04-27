@@ -9,11 +9,11 @@ if(isset($_POST["nombre"], $_POST["apellido"], $_POST["nombre_usuario"], $_POST[
 
 	if (isset($_POST["habilitado"])){
 
-		$habilitado = 0;
+		$habilitado = 1;
 
 	}else{
 
-		$habilitado = 1;
+		$habilitado = 0;
 	}
 
 	$usuario_administrador->insertar_usuario($_POST["nombre_usuario"], $_POST["nombre"], $_POST["apellido"], $_POST["contrasena"], $habilitado, $conexion);
