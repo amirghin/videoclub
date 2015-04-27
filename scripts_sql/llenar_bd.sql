@@ -41,3 +41,28 @@ INSERT INTO videoclub.peliculas VALUES ('1', 'Kill Bill', '90', '2000', '1', '/k
 INSERT INTO videoclub.peliculas VALUES ('2', 'El Descanso', '90', '2000', '2', '/descanso', '1', '2015-01-01', '1', '2015-01-01');
 INSERT INTO videoclub.peliculas VALUES ('3', 'Forrest Gump', '90', '2000', '3', '/forrest_gump', '1', '2015-01-01', '1', '2015-01-01');
 INSERT INTO videoclub.peliculas VALUES ('4', 'Billy Madison', '90', '2000', '4', '/billy_madison', '1', '2015-01-01', '1', '2015-01-01');
+
+-- Ubicaciones 
+
+INSERT INTO videoclub.ubicaciones VALUES ('A01', 'Primera Fila, Seccion Uno', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.ubicaciones VALUES ('A02', 'Primera Fila, Seccion Dos', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.ubicaciones VALUES ('A03', 'Primera Fila, Seccion Tres', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.ubicaciones VALUES ('A04', 'Primera Fila, Seccion Cuatro', 1, '2015-01-01', 1, '2015-01-01');
+
+-- Copias
+
+INSERT INTO videoclub.copias VALUES (1, 1, 'A01', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.copias VALUES (2, 1, 'A01', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.copias VALUES (3, 1, 'A01', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
+
+INSERT INTO videoclub.copias VALUES (4, 2, 'A02', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.copias VALUES (5, 2, 'A02', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.copias VALUES (6, 2, 'A02', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
+
+INSERT INTO videoclub.copias VALUES (7, 3, 'A03', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.copias VALUES (8, 3, 'A03', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.copias VALUES (9, 3, 'A03', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
+
+INSERT INTO videoclub.copias VALUES (10, 4, 'A04', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.copias VALUES (11, 4, 'A04', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
+INSERT INTO videoclub.copias VALUES (12, 4, 'A04', 'disponible', 1, '2015-01-01', 1, '2015-01-01');
