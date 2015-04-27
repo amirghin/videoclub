@@ -133,7 +133,29 @@ function successPeliculasNombre(response){
         console.log(objetoPeliculasNombre);
         alert(objetoPeliculasNombre.error.msg);
     }else{
-        console.log(objetoPeliculasNombre);
+        var table = "<tr><td>ID Pelicula</td><td>Nombre Pelicula</td><td>Disponibilidad</td><td>Precio Alquiler</td><td>Reservar</td></tr>";
+        var tableValues = "";
+        $.each(objetoPeliculasNombre, function(key,value){
+            tableValues += "<tr><td>"+value.id_pelicula+"</td><td>"+value.nombre+"</td><td>"+value.disponibilidad+"</td><td>"+value.precio_alquiler+"</td><td> <a href='' class='reservar' id="+key+">Reservar</a> </td></tr>";
+            
+        });
+        $("#result").html(table+tableValues);
+
+
+        $('.reservar').click(function(e){
+            e.preventDefault();
+            var key = $(this).attr("id"),
+                estado = objetoPeliculasNombre[key].disponibilidad;
+           
+            if(estado === "disponible"){
+                $("#reservar_peliculas").removeClass("hidden");
+            }else{
+                alert("No hay peliculas disponibles para reservar");
+            }
+            
+            //if (objetoPeliculasNombre)
+            
+        });
 
     }   
 };
@@ -145,7 +167,21 @@ function successPeliculasGenero(response){
         console.log(objetoPeliculasGenero);
         alert(objetoPeliculasGenero.error.msg);
     }else{
-        console.log(objetoPeliculasGenero);
+        var table = "<tr><td>ID Pelicula</td><td>Nombre Pelicula</td><td>Disponibilidad</td><td>Precio Alquiler</td><td>Reservar</td></tr>";
+        var tableValues = "";
+        $.each(objetoPeliculasGenero, function(key,value){
+            tableValues += "<tr><td>"+value.id_pelicula+"</td><td>"+value.nombre+"</td><td>"+value.Disponibilidad+"</td><td>"+value.precio_alquiler+"</td><td> <a href='' class='reservar' id="+key+">Reservar</a> </td></tr>";
+            
+        });
+        $("#result").html(table+tableValues);
+
+
+        $('.eliminar').click(function(e){
+            e.preventDefault();
+            var key = $(this).attr("id");
+            $("#form_m_usuarios").removeClass("hidden");
+            
+        });
 
     }   
 }

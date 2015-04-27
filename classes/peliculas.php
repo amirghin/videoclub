@@ -218,8 +218,10 @@ public $mensaje = "";
 					 pel.nombre, 
 					 pel.duracion, 
 					 pel.generos_id_genero, 
+					 cop.disponibilidad,
 					 gen.nombre genero, pel.precio_alquiler FROM peliculas pel
-					 JOIN generos gen ON pel.generos_id_genero = gen.id_genero 
+					 LEFT JOIN generos gen ON pel.generos_id_genero = gen.id_genero 
+					 LEFT JOIN copias cop on pel.id_pelicula = cop.peliculas_id_pelicula
 					 WHERE pel.nombre LIKE '%{$nombre_pelicula}%'";
 
 			//echo $query;
