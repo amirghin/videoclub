@@ -1,5 +1,4 @@
 <?php
-
 require "../conexion.php";
 require "../classes/roles.php";
 $rol = new roles;

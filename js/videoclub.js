@@ -27,6 +27,7 @@ function verificar_campos(){
 
 function limpiar_campos(){
     $("input[type='text']").val("");
+    $("input[type='password']").val("");
 }
 
 function search(){
@@ -285,7 +286,7 @@ $(function(){
             var usuario = $(":input").serializeArray();
             $.ajax({
             method: "POST",
-            url: "i_usuarios_administradores.php",
+            url: "controllers/insertar_usuarios_administradores.php",
             data: usuario
             })
             .success(function( msg ) {
