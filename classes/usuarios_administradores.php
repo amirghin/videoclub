@@ -132,11 +132,40 @@ function buscar_usuarios($nom_usuario, $conexion){
 
 	}
 
+
+	function eliminar_usuarios($id_usuario, $conexion){
+		try{
+			$eliminar = "DELETE FROM usuarios_administradores 
+						WHERE id_usuario = {$id_usuario}";
+
+			$resultado = mysqli_query($conexion, $eliminar);
+
+			if(!$resultado){
+				echo mysqli_error($conexion);
+				throw new Exception(mysqli_error($conexion));
+
+			}else{
+				$this->mensaje = "Se elimino con exito el usuario";
+				echo json_encode(array(
+					'success' => array(
+						'message' => "Se elimino con exito el usuario"
+						)
+					));
+			}
+		}catch(Exception $e){
+		   echo json_encode(array(
+		        'error' => array(
+		            'code' => $e->getCode(),
+		            'message' => $e->getMessage()
+		        )
+		    ));
+
+		}
+	}
+
 }
 
-function eliminar_usuarios(){
-	
-}
+
 
 
 

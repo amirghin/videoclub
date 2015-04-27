@@ -49,7 +49,7 @@
 					<input type="checkbox" name="habilitado" checked>
 				</div>
 				<div class="filas">
-				    <input type="button" value="Crear Usuario" class="button" id="crear_usuario">
+				    <input type="button" value="Eliminar Usuario" class="button" id="crear_usuario">
 				</div>
 			</fieldset>
 		</form>
