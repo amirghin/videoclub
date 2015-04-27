@@ -30,17 +30,21 @@ function limpiar_campos(){
 }
 
 function search(){
+    //console.log("hola");
 
     var buscar = $("#nombre_usuario").val();
+    //console.log(buscar);
 
     if (buscar!=""){
         var busqueda = $.ajax({
-            url: "search.php",
+            url: "controllers/busqueda_usuarios_controller.php",
             type: "POST",
             data: {nombre_usuario:buscar},
         });
         busqueda.done(function(response){
+            console.log(response);
             var object = jQuery.parseJSON(response);
+            console.log(object);
             var table = "<tr><td>Nombre</td><td>Apellido</td><td>Nombre de usuario</td></tr>";
             var tableValues = "";
             $.each(object.usuarios, function(key,value){

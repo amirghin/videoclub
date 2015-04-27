@@ -119,7 +119,7 @@ function buscar_usuarios($nom_usuario, $conexion){
 
 
 		while($row=mysqli_fetch_assoc($resultado)){
-		$array[] = $row;
+			$array[] = $row;
 
 		}
 
@@ -132,6 +132,10 @@ function buscar_usuarios($nom_usuario, $conexion){
 
 	}
 
+}
+
+function eliminar_usuarios(){
+	
 }
 
 
