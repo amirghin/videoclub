@@ -33,7 +33,6 @@ function search(){
     //console.log("hola");
 
     var buscar = $("#nombre_usuario").val();
-    //console.log(buscar);
 
     if (buscar!=""){
         var busqueda = $.ajax({
@@ -43,6 +42,7 @@ function search(){
         });
         busqueda.done(function(response){
             var object = jQuery.parseJSON(response);
+            console.log(object);
             var table = "<tr><td>Nombre</td><td>Apellido</td><td>Nombre de usuario</td><td>Eliminar</td><td>Modificar</td></tr>";
             var tableValues = "";
             $.each(object.usuarios, function(key,value){
@@ -55,7 +55,28 @@ function search(){
             $('.eliminar').click(function(e){
                 e.preventDefault();
                 var key = $(this).attr("id");
-                $("#form_m_usuarios").removeClass("hidden");
+                var id_usuario = object.usuarios[key].id_usuario;
+                console.log(id_usuario);
+
+                $.ajax({
+                method: "POST",
+                url: "controllers/eliminar_usuarios_controller.php",
+                data: {id_usuario:id_usuario}
+                })
+                .success(function( response ) {
+                   if (response.error) {
+                        // handle the error
+                        //throw response.error.message;
+                        alert(response.error.message);
+                    }else{
+                        console.log(response);
+                        alert("Usuario eliminado");
+                        
+                        search();
+                        //alert( "se modifico la pelicula");
+                    }
+                //limpiar_campos();
+                }); 
                 
             });
         });
