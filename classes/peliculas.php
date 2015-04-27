@@ -151,7 +151,7 @@ public $mensaje = "";
 
 			if(!$resultado){
 
-				throw new Exception(mysqli_error($resultado));	
+				throw new Exception(mysqli_error($conexion));	
 			}elseif(mysqli_num_rows($resultado) == 0){
 
 				throw new Exception("No se encontro ninguna pelicula con ese ID", 1);
@@ -169,7 +169,81 @@ public $mensaje = "";
 			  	)
 			  ));
 		}
+	}
+
+
+	function buscar_pelicula_genero($genero_pelicula, $conexion){
+		try{
+			//echo "hola";
+			$query = "SELECT 
+					 pel.id_pelicula, 
+					 pel.nombre, 
+					 pel.duracion, 
+					 pel.generos_id_genero, 
+					 gen.nombre genero, pel.precio_alquiler FROM peliculas pel
+					 JOIN generos gen ON pel.generos_id_genero = gen.id_genero 
+					 WHERE gen.nombre LIKE '%{$genero_pelicula}%'";
+
+			
+
+			$resultado = mysqli_query($conexion, $query);
+			$array = array();
+			if(!$resultado){
+				throw new Exception(mysqli_error($conexion));	
+			}elseif(mysqli_num_rows($resultado) == 0){
+				throw new Exception("No se encontro ninguna pelicula con ese genero", 1);
+			}else {
+				while($row=mysqli_fetch_assoc($resultado)){
+					$array[] = $row;
+				}
+				//$row = mysqli_fetch_assoc($resultado);
+				echo '{"peliculas":'.json_encode($array).'}';
+			}
+
+		}catch (Exception $e){
+			  echo json_encode(array(
+			  'error' => array(	
+			  	'msg' => $e->GetMessage(),
+			  	'error' => $e->GetCode(),
+			  	)
+			  ));
+		}
 	}	
+
+
+	function buscar_pelicula_nombre($nombre_pelicula, $conexion){
+		try{
+			$query = "SELECT 
+					 pel.id_pelicula, 
+					 pel.nombre, 
+					 pel.duracion, 
+					 pel.generos_id_genero, 
+					 gen.nombre genero, pel.precio_alquiler FROM peliculas pel
+					 JOIN generos gen ON pel.generos_id_genero = gen.id_genero 
+					 WHERE pel.nombre LIKE '%{$nombre_pelicula}%'";
+
+			//echo $query;
+
+			$resultado = mysqli_query($conexion, $query);
+
+			if(!$resultado){
+				throw new Exception(mysqli_error($conexion));	
+			}elseif(mysqli_num_rows($resultado) == 0){
+				throw new Exception("No se encontro ninguna pelicula con ese Nombre", 1);
+			}else{
+				$row=mysqli_fetch_assoc($resultado);
+				echo '{"peliculas":'.json_encode($row).'}';
+			}
+
+		}catch (Exception $e){
+			  echo json_encode(array(
+			  'error' => array(	
+			  	'msg' => $e->GetMessage(),
+			  	'error' => $e->GetCode(),
+			  	)
+			  ));
+		}
+	}
 	
 }
 ?>

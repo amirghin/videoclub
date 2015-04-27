@@ -30,17 +30,21 @@ function limpiar_campos(){
 }
 
 function search(){
+    //console.log("hola");
 
     var buscar = $("#nombre_usuario").val();
+    //console.log(buscar);
 
     if (buscar!=""){
         var busqueda = $.ajax({
-            url: "search.php",
+            url: "controllers/busqueda_usuarios_controller.php",
             type: "POST",
             data: {nombre_usuario:buscar},
         });
         busqueda.done(function(response){
+            console.log(response);
             var object = jQuery.parseJSON(response);
+            console.log(object);
             var table = "<tr><td>Nombre</td><td>Apellido</td><td>Nombre de usuario</td></tr>";
             var tableValues = "";
             $.each(object.usuarios, function(key,value){
@@ -112,14 +116,62 @@ function successPeliculasID(response){
             ruta_imagenes.val(objetoPeliculasId.peliculas.ruta_imagenes);            
         })
     }
+};
 
 
 
+function successPeliculasNombre(response){
+    console.log(response);
+    var objetoPeliculasNombre = jQuery.parseJSON(response);
+    if (objetoPeliculasNombre.error) {
+        console.log(objetoPeliculasNombre);
+        alert(objetoPeliculasNombre.error.msg);
+    }else{
+        console.log(objetoPeliculasNombre);
 
-    //console.log(objetoPeliculasId);
+    }   
+};
 
+function successPeliculasGenero(response){
+    console.log(response);
+    var objetoPeliculasGenero = jQuery.parseJSON(response);
+    if (objetoPeliculasGenero.error) {
+        console.log(objetoPeliculasGenero);
+        alert(objetoPeliculasGenero.error.msg);
+    }else{
+        console.log(objetoPeliculasGenero);
 
+    }   
 }
+
+function buscar_pelicula_nombre(filtro, texto_buscar){
+    if (verificar_campos()){
+        var nombre_pelicula_pelicula = texto_buscar;
+        var busqueda = $.ajax({
+            url: "controllers/busqueda_pelicula_nombre_controller.php",
+            type: "POST",
+            data: {nombre_pelicula:nombre_pelicula_pelicula},
+        })
+        .success(function(response){
+            successPeliculasNombre(response);
+        });
+    }
+};
+
+function buscar_pelicula_genero(filtro, texto_buscar){
+    if (verificar_campos()){
+        var genero_pelicula = texto_buscar;
+        var busqueda = $.ajax({
+            url: "controllers/busqueda_pelicula_genero_controller.php",
+            type: "POST",
+            data: {genero_pelicula:genero_pelicula},
+        })
+        .success(function(response){
+            successPeliculasGenero(response);
+        });
+    }
+};
+
 
 function buscar_peliculas_id(){
     if (verificar_campos()){
@@ -134,7 +186,7 @@ function buscar_peliculas_id(){
         });
     }
 
-}
+};
 
 function llenar_dropdown(){
     $.ajax({
@@ -256,7 +308,6 @@ $(function(){
     /********************* Eliminar peliculas *******************/
 
     $("#eliminar_peliculas").click(function(){
-        //$("#modificar_peliculas").hide();
         $("#hidden_genero").val($("#genero option:selected").val());
         var peliculas = $("#modificar :input").serializeArray();
         console.log(peliculas);
@@ -279,7 +330,88 @@ $(function(){
         }); 
     });
 
+    /*********** Busqueda parte transaccional *******************/
 
+    $("#buscar_peliculas").click(function(){
+        var filtro = ($('input[name=busqueda]:checked').val());
+        var texto_buscar = ($('#texto_busqueda').val());
+        if (filtro === "genero"){
+            buscar_pelicula_genero(filtro, texto_buscar);
+        }else if (filtro === "nombre"){
+            buscar_pelicula_nombre(filtro, texto_buscar);
+        }
+
+    });
+
+    $("#buscar_generos #genero").change(function(){
+        id_genero = $("#genero option:selected").val();
+        nombre = $("#genero option:selected").text();
+
+        $("#id_genero").val(id_genero);
+        $("#nombre_genero").val(nombre);
+        $("#form_m_generos").removeClass('hidden');
+    });
+
+
+    $("#eliminar_genero").click(function(){
+        console.log("elimnar");
+        id_genero = $("#id_genero").val();
+        nombre = $("#nombre_genero").val();
+
+        var objeto = {
+            id_genero : id_genero,
+            nombre : nombre
+        };
+
+        $.ajax({
+        method: "POST",
+        url: "controllers/eliminar_genero_controller.php",
+        data: objeto
+        })
+        .success(function( response ) {
+            //console.log("hola");
+           if (response.error) {
+                // handle the error
+                //throw response.error.message;
+                alert(response.error.message);
+            }else{
+                console.log(response);
+                alert( "se modifico la pelicula");
+            }
+        //limpiar_campos();
+        }); 
+    });
+
+
+    $("#modificar_genero").click(function(){
+        id_genero = $("#id_genero").val();
+        nombre = $("#nombre_genero").val();
+
+        var objeto = {
+            id_genero : id_genero,
+            nombre : nombre
+        };
+
+        console.log(objeto);
+
+        $.ajax({
+        method: "POST",
+        url: "controllers/modificar_generos_controller.php",
+        data: objeto
+        })
+        .success(function( response ) {
+            //console.log("hola");
+           if (response.error) {
+                // handle the error
+                //throw response.error.message;
+                alert(response.error.message);
+            }else{
+                console.log(response);
+                alert( "se modifico la pelicula");
+            }
+        //limpiar_campos();
+        }); 
+    });
 
     /*****************Funcion de busqueda de usuarios************/
 

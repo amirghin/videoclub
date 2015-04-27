@@ -13,6 +13,8 @@
 				<input type="text" name="nombre_usuario" id="nombre_usuario">
 				<input type="button" value="Enviar" id="button">
 			</div>
+
+			<table id="result"></table>
 			
 		
 		<!--</form>-->
