@@ -6,14 +6,6 @@ class clientes{
 	public $mensaje = "";
 
 
-	function last_id($conexion){
-		$query = 'SELECT LAST_INSERT_ID() id_cliente';
-		$resultado = mysqli_query($conexion, $query);
-		$row = mysqli_fetch_assoc($resultado);
-		return $row["id_cliente"];
-	}
-
-
 	function insertar_cliente($nombre, $apellidos, $email, $fec_nacimiento, $tel_casa, $tel_celular, $observaciones,$conexion){
 		try{
 			$insert = "INSERT INTO clientes (nombre, apellidos, fecha_nacimiento, tel_casa, tel_celular, email, activo_web, estado, observaciones, 
@@ -29,7 +21,7 @@ class clientes{
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
-				$last_id = $this->last_id($conexion);
+				$last_id = mysqli_insert_id($conexion);
 				echo json_encode(array(
 					'success' => array(
 						'mensaje' => "Se creo un nuevo usuario con el id {$last_id}, todavía necesita ser validado por un administrador"
