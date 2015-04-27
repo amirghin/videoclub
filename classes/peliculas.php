@@ -64,7 +64,7 @@ public $mensaje = "";
 
 	function modificar_peliculas($id_pelicula,$nombre_pelicula,$precio_alquiler,$genero,$ruta_imagenes,$duracion,$conexion){
 		try{
-			$modificar = "UPDATE peliculas set
+			$modificar = "UPDATE peliculas SET
 								  nombre = '{$nombre_pelicula}',
 								  precio_alquiler = {$precio_alquiler},
 								  generos_id_genero = {$genero},
