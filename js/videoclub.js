@@ -42,16 +42,22 @@ function search(){
             data: {nombre_usuario:buscar},
         });
         busqueda.done(function(response){
-            console.log(response);
             var object = jQuery.parseJSON(response);
-            console.log(object);
-            var table = "<tr><td>Nombre</td><td>Apellido</td><td>Nombre de usuario</td></tr>";
+            var table = "<tr><td>Nombre</td><td>Apellido</td><td>Nombre de usuario</td><td>Eliminar</td><td>Modificar</td></tr>";
             var tableValues = "";
             $.each(object.usuarios, function(key,value){
-                tableValues += "<tr><td>"+value.nombre+"</td><td>"+value.apellido+"</td><td>"+value.nom_usuario+"</td><td> <input type='button' value='Eliminar'/> </td> <td> <input type='button' value='Modificar'/> </td></tr>";
+                tableValues += "<tr><td>"+value.nombre+"</td><td>"+value.apellido+"</td><td>"+value.nom_usuario+"</td><td> <a href='' class='eliminar' id="+key+">Eliminar</a> </td> <td> <a href='' class='modificar' id="+key+">Modificar</a>  </td></tr>";
                 
             });
             $("#result").html(table+tableValues);
+
+
+            $('.eliminar').click(function(e){
+                e.preventDefault();
+                var key = $(this).attr("id");
+                $("#form_m_usuarios").removeClass("hidden");
+                
+            });
         });
         busqueda.error(function(error){
             alert("error");
@@ -343,6 +349,8 @@ $(function(){
 
     });
 
+    /*********** Buscar generos *******************/
+
     $("#buscar_generos #genero").change(function(){
         id_genero = $("#genero option:selected").val();
         nombre = $("#genero option:selected").text();
@@ -352,6 +360,7 @@ $(function(){
         $("#form_m_generos").removeClass('hidden');
     });
 
+    /*********** Borrar generos *******************/
 
     $("#eliminar_genero").click(function(){
         console.log("elimnar");
@@ -382,6 +391,7 @@ $(function(){
         }); 
     });
 
+    /*************** Eliminar generos *******************/
 
     $("#modificar_genero").click(function(){
         id_genero = $("#id_genero").val();
@@ -412,6 +422,9 @@ $(function(){
         //limpiar_campos();
         }); 
     });
+
+
+
 
     /*****************Funcion de busqueda de usuarios************/
 
