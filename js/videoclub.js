@@ -364,7 +364,7 @@ $(function(){
             }
         //limpiar_campos();
         }); 
-    })
+    });
 
     /*****************Insertar ubicaciones ************/
     $("#insertar_ubicacion").click(function(){
@@ -388,8 +388,31 @@ $(function(){
             }
         //limpiar_campos();
         }); 
-    })
+    });
 
+    /*****************Insertar Cargos ************/
+    $("#insertar_cargo").click(function(){
+        var cargos = $(":input").serializeArray();
+
+        $.ajax({
+        method: "POST",
+        url: "controllers/insertar_cargo_controller.php",
+        data: cargos
+        })
+
+        .success(function( response ) {
+           if (response.error) {
+                // handle the error
+                throw response.error.message;
+                console.log(response.error.message);
+            }else{
+                console.log(response)
+                var objeto = jQuery.parseJSON(response);
+                alert( objeto.success.mensaje);
+            }
+        //limpiar_campos();
+        }); 
+    })
 
     /********************* Modificar peliculas *******************/
 

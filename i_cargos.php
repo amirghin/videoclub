@@ -3,6 +3,7 @@
 <head>
 	<title>Insertar Cargos</title>
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <script src="js/jquery-2.1.3.min.js"></script>
 
 </head>
 <body>
@@ -22,9 +23,11 @@
                    <input type="text" name="tipo">                  
                </div>
                <div class="filas">
-                    <input type="submit" class="button" value="Insertar">
+                    <input type="button" class="button" value="Insertar" id="insertar_cargo">
                </div>
             </fieldset>
         </form>
     </section>
+    <script src="js/videoclub.js"></script>
+
 </body>
