@@ -1,6 +1,6 @@
 <?php
 require "../conexion.php";
-require "../classes/actor_director.php";
+require "../classes/actores_directores.php";
 $actor_director = new actores_directores;
 
 if(isset($_POST["nombre"], $_POST["genero"])){		

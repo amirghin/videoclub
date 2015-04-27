@@ -5,7 +5,7 @@ class actores_directores{
 	function insertar_actores_directores($nombre, $genero, $conexion){
 		try{
 			$insert = "INSERT INTO actores_directores (nombre, genero, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
-						VALUES ({$nombre}, {$genero}, 1, CURDATE(), 1, CURDATE())";
+						VALUES ('{$nombre}', '{$genero}', 1, CURDATE(), 1, CURDATE())";
 	
 
 			$resultado = mysqli_query($conexion, $insert);
