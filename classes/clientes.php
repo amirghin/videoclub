@@ -158,7 +158,6 @@ class clientes{
 		    ));
 
 		}
-
 	}
 
 	function buscar_cliente($id_cliente, $conexion){
@@ -174,6 +173,38 @@ class clientes{
 			}elseif(mysqli_num_rows($resultado) == 0){
 
 				throw new Exception("No se encontro ningún cliente con el id {$id_cliente}", 1);
+				
+			}else{
+				while($row=mysqli_fetch_assoc($resultado)){
+
+					$clientes[] = $row;
+
+				}
+				echo '{"clientes":'.json_encode($clientes).'}';
+			}
+
+		}catch (Exception $e){
+			  echo json_encode(array(
+			  'error' => array(	
+			  	'msg' => $e->GetMessage(),
+			  	'error' => $e->GetCode(),
+			  	)
+			  ));
+		}
+	}
+
+	function clientes_acceso_web($conexion, $opcion){
+		try{
+			$query = "SELECT * FROM clientes WHERE activo_web = {$opcion}";
+			$resultado = mysqli_query($conexion, $query);
+			$clientes = array();
+
+			if(!$resultado){
+
+				throw new Exception(mysqli_error($resultado));	
+			}elseif(mysqli_num_rows($resultado) == 0){
+
+				throw new Exception("No se encontraron registros", 1);
 				
 			}else{
 				while($row=mysqli_fetch_assoc($resultado)){
