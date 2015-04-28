@@ -28,33 +28,32 @@
 		<!--</form>-->
 	</section>
 
-	<section class="estilos_form hidden" id="reservar_peliculas">
+	<section class="estilos_form hidden" id="f_reservar_peliculas">
 		<div class="filas">
 			<label for="">ID Cliente:</label>
-			<input type="text" name="id_cliente" id="id_cliente">
+			<input type="text" name="id_cliente" id="id_cliente" class="requerido">
 		</div>
 		<div class="filas">
-			<label for="">Estado aprobacion</label>
-			<input type="text" name="estado_aprobacion" id="estado_aprobacion">
+			<input type="hidden" name="estado_aprobacion" id="estado_aprobacion">
 		</div>
 		<div class="filas">
 			<label for="">Fecha entrega</label>
-			<input type="text" name="fecha_entrega" id="fecha_entrega">
+			<input type="date" name="fecha_entrega" id="fecha_entrega" class="requerido" disabled>
 		</div>
 		<div class="filas">
 			<label for="">Fecha reservacion</label>
-			<input type="date" name="fecha_reservacion" id="fecha_reservacion">
+			<input type="date" name="fecha_reservacion" id="fecha_reservacion" class="requerido" disabled>
 		</div>
 		<div class="filas">
 			<label for="">Fecha retiro</label>
-			<input type="date" name="fecha_retiro" id="fecha_retiro">
+			<input type="date" name="fecha_retiro" id="fecha_retiro" class="requerido" disabled>
 		</div>
 		<div class="filas">
 			<label for="">Hora retiro</label>
-			<input type="time" name="hora_retiro" id="hora_retiro">
+			<input type="time" name="hora_retiro" id="hora_retiro" class="requerido" disabled>
 		</div>
 		<div class="filas">
-			<input type="button" value="reservar" id="boton_reservar">
+			<input type="button" value="reservar" id="insertar_reserva">
 		</div>
 	</section>
 

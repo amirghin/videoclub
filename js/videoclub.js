@@ -149,16 +149,17 @@ function successPeliculasID(response){
 
 
 function successPeliculasNombre(response){
-    console.log(response);
     var objetoPeliculasNombre = jQuery.parseJSON(response);
+    //console.log(objetoPeliculasNombre.peliculas[0].nombre_pelicula);
     if (objetoPeliculasNombre.error) {
         console.log(objetoPeliculasNombre);
         alert(objetoPeliculasNombre.error.msg);
     }else{
-        var table = "<tr><td>ID Pelicula</td><td>Nombre Pelicula</td><td>Disponibilidad</td><td>Precio Alquiler</td><td>Reservar</td></tr>";
+        console.log(objetoPeliculasNombre );
+        var table = "<tr><td>ID Pelicula</td><td>Nombre Pelicula</td><td>Cantidad copias</td><td>Precio Alquiler</td><td>Reservar</td></tr>";
         var tableValues = "";
-        $.each(objetoPeliculasNombre, function(key,value){
-            tableValues += "<tr><td>"+value.id_pelicula+"</td><td>"+value.nombre+"</td><td>"+value.disponibilidad+"</td><td>"+value.precio_alquiler+"</td><td> <a href='' class='reservar' id="+key+">Reservar</a> </td></tr>";
+        $.each(objetoPeliculasNombre.peliculas, function(key,value){
+            tableValues += "<tr><td>"+value.id_pelicula+"</td><td>"+value.nombre+"</td><td>"+value.num_copia+"</td><td>"+value.precio_alquiler+"</td><td> <a href='' class='reservar' id="+key+">Reservar</a> </td></tr>";
             
         });
         $("#result").html(table+tableValues);
@@ -167,10 +168,10 @@ function successPeliculasNombre(response){
         $('.reservar').click(function(e){
             e.preventDefault();
             var key = $(this).attr("id"),
-                estado = objetoPeliculasNombre[key].disponibilidad;
+                cantidad = objetoPeliculasNombre.peliculas[key].num_copia;
            
-            if(estado === "disponible"){
-                $("#reservar_peliculas").removeClass("hidden");
+            if(cantidad > 0){
+                $("#f_reservar_peliculas").removeClass("hidden");
             }else{
                 alert("No hay peliculas disponibles para reservar");
             }
@@ -268,6 +269,26 @@ function llenar_dropdown(){
     })
 };
 
+
+function verficar_estado_cliente(id_cliente){
+    $.ajax({
+        url: "controllers/verificar_estado_cliente_controller.php",
+        method:"POST",
+        data: {id_cliente:id_cliente},
+    })
+    .success (function (data){
+       // console.log(data);
+        var object = jQuery.parseJSON(data),
+            activo_web = parseFloat(object.clientes[0].activo_web),
+            estado = object.clientes[0].estado;
+        console.log(activo_web);
+        console.log(estado);
+        if (activo_web === 1 && estado === "aprobado"){
+            $("#f_reservar_peliculas .requerido").removeAttr("disabled");
+            //$("#estado_aprobacion").val(estado);
+        }else{return false}
+    })
+}
 
 
 $(function(){
@@ -553,7 +574,37 @@ $(function(){
     });
 
 
+    $("#id_cliente").keyup(function(e) {
+        id_cliente = $(this).val();
+        console.log(id_cliente);
+        if(e.keyCode == 13) {
+            verficar_estado_cliente(id_cliente);
+        }
+    });   
 
+    /******************** Insertar reservacion *****************/
+
+    $("#insertar_reserva").click(function(){
+        var reservacion = $("#f_reservar_peliculas :input").serializeArray();
+        //console.log(reservacion);
+        $.ajax({
+            method:"POST",
+            url: "controllers/insertar_reservaciones_controllers.php",
+            data: reservacion            
+        })
+        .success(function( response ) {
+           if (response.error) {
+                // handle the error
+                throw response.error.message;
+                console.log(response.error.message);
+            }else{
+                console.log(response)
+                var objeto = jQuery.parseJSON(response);
+                alert( objeto.success.mensaje);
+            }
+        //limpiar_campos();
+        }); 
+    });
 
     /*****************Funcion de busqueda de usuarios************/
    

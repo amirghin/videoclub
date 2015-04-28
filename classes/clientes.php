@@ -70,6 +70,38 @@ class clientes{
 		}
 	}
 
+	function verificar_estado_cliente($id_cliente, $conexion){
+		try{
+			$query = "SELECT * FROM clientes WHERE id_cliente = ${id_cliente}";
+			//echo $query;
+			$resultado = mysqli_query($conexion, $query);
+
+			if(!$resultado){
+
+				throw new Exception(mysqli_error($resultado));	
+			}elseif(mysqli_num_rows($resultado) == 0){
+
+				throw new Exception("No se encontro ese cliente", 1);
+				
+			}else{
+				while($row=mysqli_fetch_assoc($resultado)){
+
+					$clientes[] = $row;
+
+				}
+				echo '{"clientes":'.json_encode($clientes).'}';
+			}
+
+		}catch (Exception $e){
+			  echo json_encode(array(
+			  'error' => array(	
+			  	'msg' => $e->GetMessage(),
+			  	'error' => $e->GetCode(),
+			  	)
+			  ));
+		}
+	}
+
 	function modificar_cliente($nombre, $apellidos, $email, $fec_nacimiento, $tel_casa, $tel_celular, $observaciones, $id_cliente, $activo_web, $estado, $conexion){
 		try{
 			$update = "UPDATE clientes SET nombre='{$nombre}', apellidos='{$apellidos}', fecha_nacimiento='{$fec_nacimiento}', tel_casa='{$tel_casa}', 
