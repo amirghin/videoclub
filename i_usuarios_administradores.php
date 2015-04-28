@@ -9,9 +9,11 @@ session_start();
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<script src="js/jquery-2.1.3.min.js"></script>
 		<script src="js/videoclub.js"></script>
+		<script src="js/dropdown-menu.js"></script>
 
 </head>
 <body>
+	<?php include 'menu.html';?>
 	<section class="estilos_form">
 		<form method="POST" action="" id="insert_usuario_administrador">
 			<fieldset>

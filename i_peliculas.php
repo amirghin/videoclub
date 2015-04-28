@@ -6,9 +6,11 @@
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<script src="js/jquery-2.1.3.min.js"></script>
 	<script src="js/videoclub.js"></script>
+	<script src="js/dropdown-menu.js"></script>
 </head>
 
 <body>
+	<?php include 'menu.html';?>
 	<section class="estilos_form">
 		<form method="POST" enctype="multipart/form-data" action="" id="form_peliculas">		
 			<fieldset class="insertar_peliculas">
@@ -33,9 +35,6 @@
 				<div class="filas">
 			    	<input type="button" value="Insertar" class="button" id="crear_peliculas">
 			    	<input type="hidden" name="action" value="upload" /> 
-			    	
-
-
 			    </div>
 			</fieldset>
 		</form>

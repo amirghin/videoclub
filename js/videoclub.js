@@ -168,8 +168,11 @@ function successPeliculasNombre(response){
         $('.reservar').click(function(e){
             e.preventDefault();
             var key = $(this).attr("id"),
+                //id_pelicula = objetoPeliculasNombre.peliculas[key].id_pelicula,
+                id_copia = objetoPeliculasNombre.peliculas[key].id_copia,
                 cantidad = objetoPeliculasNombre.peliculas[key].num_copia;
-           
+            //$("#id_pelicula").val(id_pelicula);
+            $("#id_copia").val(id_copia);
             if(cantidad > 0){
                 $("#f_reservar_peliculas").removeClass("hidden");
             }else{
@@ -277,16 +280,23 @@ function verficar_estado_cliente(id_cliente){
         data: {id_cliente:id_cliente},
     })
     .success (function (data){
-       // console.log(data);
-        var object = jQuery.parseJSON(data),
-            activo_web = parseFloat(object.clientes[0].activo_web),
-            estado = object.clientes[0].estado;
-        console.log(activo_web);
-        console.log(estado);
-        if (activo_web === 1 && estado === "aprobado"){
-            $("#f_reservar_peliculas .requerido").removeAttr("disabled");
-            //$("#estado_aprobacion").val(estado);
-        }else{return false}
+        //console.log(data);
+        var object = jQuery.parseJSON(data);
+        //console.log(object);
+        if (object.error) {
+            //throw data.error.message;
+            alert(object.error.msg);
+            
+        }
+        else{
+            
+            var activo_web = parseFloat(object.clientes[0].activo_web),
+                estado = object.clientes[0].estado;
+            if (activo_web === 1 && estado === "aprobado"){
+                $("#f_reservar_peliculas .requerido").removeAttr("disabled");
+                //$("#estado_aprobacion").val(estado);
+            }else{return false}
+        }
     })
 }
 
@@ -576,7 +586,6 @@ $(function(){
 
     $("#id_cliente").keyup(function(e) {
         id_cliente = $(this).val();
-        console.log(id_cliente);
         if(e.keyCode == 13) {
             verficar_estado_cliente(id_cliente);
         }
@@ -586,7 +595,7 @@ $(function(){
 
     $("#insertar_reserva").click(function(){
         var reservacion = $("#f_reservar_peliculas :input").serializeArray();
-        //console.log(reservacion);
+        console.log(reservacion);
         $.ajax({
             method:"POST",
             url: "controllers/insertar_reservaciones_controllers.php",

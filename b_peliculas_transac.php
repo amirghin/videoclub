@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Buscar peliculas por nombre o genero</title>
+	<title>Sistema de Manejo de VideoClub</title>
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<script src="js/jquery-2.1.3.min.js"></script>
+		<script src="js/dropdown-menu.js"></script>
 
 </head>
 <body>
+	<?php include 'menu.html';?>
 	<section class="estilos_form" id="b_peliculas_id">
 		<!--<form action="" method="POST">-->
 			<div class="filas">
@@ -34,7 +36,8 @@
 			<input type="text" name="id_cliente" id="id_cliente" class="requerido">
 		</div>
 		<div class="filas">
-			<input type="hidden" name="estado_aprobacion" id="estado_aprobacion">
+			<input type="hidden" name="estado_aprobacion" id="estado_aprobacion" value="pendiente">
+			<input type="hidden" name="id_copia" id="id_copia" >
 		</div>
 		<div class="filas">
 			<label for="">Fecha entrega</label>

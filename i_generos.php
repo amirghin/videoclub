@@ -26,9 +26,10 @@ $mensaje = "";
 		<script src="js/dropdown-menu.js"></script>
 
 </head>
-<?php include 'menu.html';?>
+
 
 <body>
+	<?php include 'menu.html';?>
 	<section class="estilos_form">
 		<form action="" id="i_generos" method="POST">
 			<fieldset>
