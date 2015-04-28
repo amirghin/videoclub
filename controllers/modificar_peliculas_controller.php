@@ -4,7 +4,7 @@ require "../conexion.php";
 require "../classes/peliculas.php";
 $peliculas = new peliculas;
 
-//echo $_POST["nombre_pelicula"];
+session_start();
 
 if(isset($_POST["id_pelicula"], $_POST["nombre_pelicula"], $_POST["precio_alquiler"], $_POST["genero"], $_POST["ruta_imagenes"], 
 		$_POST["duracion"])){	

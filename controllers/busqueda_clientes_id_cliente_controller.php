@@ -2,6 +2,7 @@
 
 require "../conexion.php";
 require "../classes/clientes.php";
+session_start();
 $cliente = new clientes;
 
 if(isset($_POST["id_cliente"])){		

@@ -56,7 +56,7 @@ public $mensaje = "";
 
 		return $encrypted;
 	}
-	function insertar_usuario($nom_usuario, $nombre, $apellido, $contrasena, $habilitado, $conexion){
+	function insertar_usuario($nom_usuario, $nombre, $apellido, $contrasena, $habilitado, $us_creacion, $conexion){
 		try{
 			
 			$contrasena_encriptada = $this->encriptar_contrasena($contrasena);
@@ -66,7 +66,7 @@ public $mensaje = "";
 			}
 
 			$insert = "INSERT INTO usuarios_administradores (nom_usuario, nombre, apellido, contrasena, habilitado, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
-					VALUES ('{$nom_usuario}', '{$nombre}', '{$apellido}', '{$contrasena_encriptada}', '{$habilitado}','system', CURDATE(), 'system', CURDATE())";
+					VALUES ('{$nom_usuario}', '{$nombre}', '{$apellido}', '{$contrasena_encriptada}', '{$habilitado}','{$us_creacion}', CURDATE(), '{$us_creacion}', CURDATE())";
 
 			$resultado = mysqli_query($conexion, $insert);
 

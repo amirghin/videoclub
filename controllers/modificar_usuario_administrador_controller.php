@@ -2,7 +2,7 @@
 
 require "../conexion.php";
 require "../classes/usuarios_administradores.php";
-
+session_start();
 $usuario_administrador = new usuarios_administradores;
 
 if(isset($_POST["id_usuario"], $_POST["nombre"], $_POST["apellido"], $_POST["contrasena"])){
