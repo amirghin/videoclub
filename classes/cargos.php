@@ -32,6 +32,22 @@ public $mensaje = "";
 		}
 	}
 
+	function llenar_dropdown_cargos($conexion){
+		try{
+			$query = "SELECT * FROM cargos";
+			$resultado = mysqli_query($conexion, $query);
+			//$row = mysqli_fetch_assoc($resultado);
+			$array = array();
+			while($row=mysqli_fetch_assoc($resultado)){
+				$array[] = $row;
+			}
+			echo '{"cargos":'.json_encode($array).'}';
+
+		}catch (Exception $e){
+			$this->mensaje = $e->GetMessage();
+		}		
+	}
+
 }
 
 

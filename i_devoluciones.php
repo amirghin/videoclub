@@ -18,12 +18,16 @@
 			    	<label for="nombre">ID de reservacion:  </label>
 			    	<input type="text" name="id_reservacion" id="id_reservacion" class="requerido">
 			    </div>
-
+				<div class="filas">
+					<label for="">Cargos</label>
+					<select name="cargos" id="cargos"></select>
+				</div>
 				<div class="filas">
 					<label for="precio_alquiler">Observaciones:</label>
 					<textarea name="observaciones" id="observaciones" cols="30" rows="5" class="requerido"></textarea>
 				</div>
 				<div class="filas">
+					<!--<input type="hidden" id="hidden_cargos" name="id_cargo">-->
 			    	<input type="button" value="Insertar" class="button" id="insertar_devoluciones">
 			    </div>
 			</fieldset>

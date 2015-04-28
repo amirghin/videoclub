@@ -273,6 +273,25 @@ function llenar_dropdown(){
 };
 
 
+function llenar_dropdown_cargos(){
+    $.ajax({
+        method:"POST",
+        url: "controllers/llenar_cargos_controller.php"
+
+    })
+    .success (function (data){
+        console.log(data);
+        var object = jQuery.parseJSON(data);
+        console.log(object);
+        var selectData = "";
+        $.each(object.cargos, function(key,value){
+            $("#cargos").append("<option value="+value.id_cargo+">"+value.tipo+"</option>");
+
+        });
+    })
+};
+
+
 function verficar_estado_cliente(id_cliente){
     $.ajax({
         url: "controllers/verificar_estado_cliente_controller.php",
@@ -309,7 +328,7 @@ $(function(){
     *********** en la BD ******************/
 
     llenar_dropdown(); // TODO -- validar que esta funcion se ejecute cuando el dropdown de generos esta presente en el form
-
+    llenar_dropdown_cargos();
     /********************* Insertar usuario *******************/
     $("#crear_usuario").click(function(){ 
         if(campos_iguales($("#contrasena"), $("#conf_contrasena"))){

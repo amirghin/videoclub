@@ -22,6 +22,7 @@ public $mensaje = "";
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
+				$this->id_devolucion = mysqli_insert_id($conexion);
 				$this->mensaje = "Se inserto con exito la devolucion";
 				echo json_encode(array(
 					'success' => array(
