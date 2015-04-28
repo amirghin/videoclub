@@ -8,6 +8,18 @@ class reservaciones{
 				VALUES ({$id_cliente}, '${estado_aprobacion}', '{$fecha_entrega}', '{$fecha_reservacion}', '{$fecha_retiro}', '{$hora_retiro}',1, CURDATE(), 1, CURDATE())";
 			
 			//echo $insert;
+			if (mysqli_query($conexion, $insert)) {	
+			    $last_id = mysqli_insert_id($conexion);
+				$this->mensaje = "Se inserto con exito la reservacion";
+				echo json_encode(array(
+					'success' => array(
+						'mensaje' => "Se inserto con exito la reservacion"
+						)
+					));
+			} else {
+				throw new Exception(mysqli_error($conexion));
+			}
+
 			$resultado = mysqli_query($conexion, $insert);
 
 			if(!$resultado){
@@ -15,12 +27,7 @@ class reservaciones{
 
 			}else{
 				//$this->ruta_imagenes(mysqli_insert_id($conexion),$conexion);
-				$this->mensaje = "Se inserto con exito la reservacion";
-				echo json_encode(array(
-					'success' => array(
-						'mensaje' => "Se inserto con exito la reservacion"
-						)
-					));
+
 			}
 		}catch(Exception $e){
 		   echo json_encode(array(
