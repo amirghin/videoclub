@@ -2,12 +2,6 @@
 
 class ubicaciones{
 
-public $cod_ubicacion = "";
-public $detalle = "";
-public $usuario_creacion = "";
-public $fecha_creacion = "";
-public $usuario_modificacion = "";
-public $fecha_modificacion = "";
 public $mensaje = "";
 
 
@@ -15,7 +9,7 @@ public $mensaje = "";
 		$mensaje = "";
 		try{
 			$insertar = "INSERT INTO ubicaciones (cod_ubicacion, detalle, usuario_creacion) 
-					  VALUES ({$cod_ubicacion}, '{$detalle}','{$id_user}'";
+					  VALUES ({$cod_ubicacion}, '{$detalle}','{$id_user})'";
 			
 			$resultado = mysqli_query($conexion, $insertar);
 
