@@ -201,7 +201,7 @@ public $mensaje = "";
 	function buscar_pelicula_nombre($nombre_pelicula, $conexion){
 		try{
 			$query = "SELECT * FROM disponibilidad_peliculas
-						WHERE nombre LIKE '%{$nombre_pelicula}%' GROUP BY nombre ORDER BY nombre ASC";
+						WHERE nombre LIKE '%{$nombre_pelicula}%' GROUP BY id_pelicula ORDER BY disponibilidad ASC";
 
 			$peliculas = array();
 
