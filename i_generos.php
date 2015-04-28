@@ -1,21 +1,4 @@
-<?php
-$mensaje = "";  
-  require_once("conexion.php");
-  include_once("classes/generos.php");
-
-  if ((isset($_POST['id_genero'], $_POST['nombre']))){
-  	try{
-  		$id_genero = $_POST['id_genero'];
-  		$nombre = $_POST['nombre'];
-  		$genero = new generos;
-  		$resultado = $genero->insertar_genero($id_genero,$nombre, $conexion);
-  	}catch (Exception $e){
-			$mensaje = $e->GetMessage();
-		  }
-
-  }
-?>
-
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,16 +17,12 @@ $mensaje = "";
 		<form action="" id="i_generos" method="POST">
 			<fieldset>
 				<div class="filas">
-					<label for="id_genero">ID Genero:</label>
-					<input type="text" name="id_genero">					
-				</div>
-				<div class="filas">
 					<label for="nombre">Nombre:</label>
 					<input type="text" name="nombre">
 				</div>
 				<div class="filas">
-					<input type="submit" value="Insertar" class="button" id="crear_genero">
-					<span class="Mensaje" id="Mensaje"><?php echo $mensaje?></span>					
+					<input type="button" value="Insertar" class="button" id="insertar_genero">
+					<span class="Mensaje" id="Mensaje"></span>					
 				</div>
 
 			</fieldset>

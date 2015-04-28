@@ -10,10 +10,10 @@ public $usuario_modificacion = "";
 public $fecha_modificacion = "";
 public $mensaje = "";
 
-	function insertar_cargos_devolucion($id_devolucion, $id_cargos, $conexion){
+	function insertar_cargos_devolucion($id_devolucion, $id_cargos, $conexion, $id_user){
 		try{
 			$insert = "INSERT INTO cargos_devolucion (cargos_id_cargo, devoluciones_id_devolucion, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
-				VALUES ({$id_cargos}, '{$id_devolucion}',1, CURDATE(), 1, CURDATE())";
+				VALUES ({$id_cargos}, '{$id_devolucion}', '{$id_user}')";
 
 			$resultado = mysqli_query($conexion, $insert);
 

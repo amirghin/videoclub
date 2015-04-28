@@ -1,12 +1,16 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Insertar copias</title>
-		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/videoclub.js"></script>
+    <script src="js/dropdown-menu.js"></script>
 
 </head>
 <body>
+    <?php include 'menu.html';?>
     <section class="estilos_form">
 		<form action="" method="POST" >
 			<fieldset>
@@ -24,7 +28,6 @@
             </fieldset>
         </form>
     </section>
-    <script src="js/videoclub.js"></script>
 
 </body>
 </html>

@@ -659,7 +659,31 @@ $(function(){
             }); 
         }
         
+    })
 
+    $("#insertar_genero").click(function(){
+        if (verificar_campos()){
+            var genero = $(":input").serializeArray();
+            console.log(genero);
+            $.ajax({
+                method: "POST",
+                url : "controllers/insertar_genero_controller.php",
+                data: genero
+            })
+            .success(function( response ) {
+               if (response.error) {
+                    // handle the error
+                    //throw response.error.message;
+                    alert(response.error.message);
+                }else{
+                    console.log(response)
+                    var objeto = jQuery.parseJSON(response);
+                    alert( objeto.success.mensaje);
+                }
+            //limpiar_campos();
+            }); 
+        }
+        
     })
 
 

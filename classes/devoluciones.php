@@ -2,19 +2,12 @@
 
 class devoluciones{
 
-public $id_devolucion = "";
-public $id_reservacion = "";
-public $observaciones = "";
-public $usuario_creacion = "";
-public $fecha_creacion = "";
-public $usuario_modificacion = "";
-public $fecha_modificacion = "";
 public $mensaje = "";
 
-	function insertar_devolucion($id_reservacion,$observaciones,$conexion){
+	function insertar_devolucion($id_reservacion,$observaciones,$conexion, $id_user){
 		try{
-			$insert = "INSERT INTO devoluciones (reservaciones_id_reservacion, observaciones, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
-				VALUES ({$id_reservacion}, '{$observaciones}',1, CURDATE(), 1, CURDATE())";
+			$insert = "INSERT INTO devoluciones (reservaciones_id_reservacion, observaciones, usuario_creacion)
+				VALUES ({$id_reservacion}, '{$observaciones}','{$id_user}')";
 
 			$resultado = mysqli_query($conexion, $insert);
 

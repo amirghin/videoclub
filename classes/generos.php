@@ -5,19 +5,29 @@ class generos{
 public $mensaje = "";
 
 
-	function insertar_genero($id_genero, $nombre, $conexion, $id_user){
-		$mensaje = "";
+	function insertar_genero($nombre, $conexion, $id_user){
 		try{
-			$query = "INSERT INTO generos (id_genero, nombre, usuario_creacion) VALUES ({$id_genero}, '${nombre}', '{$id_user}')";
-			if(mysqli_query($conexion,$query)){
-				$this->mensaje = "Genero insertado correctamente";
+			$insertar = "INSERT INTO generos (nombre, usuario_creacion) VALUES ('${nombre}', '{$id_user}')";
+			$resultado = mysqli_query($conexion, $insertar);
+
+			if(!$resultado){
+				throw new Exception(mysqli_error($conexion));
+
 			}else{
-				throw new Exception(mysqli_error($conexion)); 
+			echo json_encode(array(
+					'success' => array(
+						'mensaje' => "Se insertó con exito el genero {$nombre}"
+						)
+					));
 			}
-			mysqli_close($conexion); 
-			return $query;
+
 		}catch(Exception $e){
-		     throw new Exception($e->getMessage());	 
+		     echo json_encode(array(
+		        'error' => array(
+		            'code' => $e->getCode(),
+		            'message' => $e->getMessage()
+		        )
+		    ));	 
 		}
 
 	}
@@ -29,7 +39,6 @@ public $mensaje = "";
 								  usuario_modificacion = '{$id_user}'
 								  where id_genero= {$id_genero}"
 								  ;	
-			//echo $modificar;
 
 			$resultado = mysqli_query($conexion, $modificar);
 
@@ -37,10 +46,9 @@ public $mensaje = "";
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
-				$this->mensaje = "Se modifico con exito el genero";
 				echo json_encode(array(
 					'success' => array(
-						'mensaje' => "Se modifico con exito el genero"
+						'mensaje' => "Se modifico con exito el genero {$nombre}"
 						)
 					));
 			}
@@ -67,7 +75,6 @@ public $mensaje = "";
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
-				$this->mensaje = "Se elimino con exito el genero";
 				echo json_encode(array(
 					'success' => array(
 						'mensaje' => "Se elimino con exito el genero"
