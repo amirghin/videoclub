@@ -615,6 +615,35 @@ $(function(){
         }); 
     });
 
+
+    /******************** Insertar devoluciones *****************/
+    $("#insertar_devoluciones").click(function(){
+        if (verificar_campos()){
+            var devoluciones = $(":input").serializeArray();
+            console.log(devoluciones);
+            $.ajax({
+                method: "POST",
+                url : "controllers/insertar_devoluciones_controllers.php",
+                data: devoluciones
+            })
+            .success(function( response ) {
+               if (response.error) {
+                    // handle the error
+                    //throw response.error.message;
+                    alert(response.error.message);
+                }else{
+                    console.log(response)
+                    var objeto = jQuery.parseJSON(response);
+                    alert( objeto.success.mensaje);
+                }
+            //limpiar_campos();
+            }); 
+        }
+        
+
+    })
+
+
     /*****************Funcion de busqueda de usuarios************/
    
     $("#button").on("click", function(){
