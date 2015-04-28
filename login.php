@@ -26,17 +26,10 @@ if (isset($_POST['usuario'], $_POST['password'])){
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Sistema de Manejo de VideoClub</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/styles.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/estilos.css">-->
-
-</head>
+<?php include 'includes/header.php';?>
 
 <body>
+
 	<nav id="top-nav" class="navbar navbar-inverse navbar-static-top">
 
 		<div class="container-fluid">
@@ -69,16 +62,13 @@ if (isset($_POST['usuario'], $_POST['password'])){
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
-				<h3><i class="glyphicon glyphicon-briefcase"></i> Busqueda peliculas</h3>
-		  		<hr>
-				<ul class="nav nav-stacked">
-					<li><a href="">Buscar peliculas</a></li>
-				</ul>
+			<div class="col-sm-3 ">
+				<?php include 'includes/menu.php';?>
 			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"></div>
+			<div class="col-sm-9 "></div>
 		</div>
 	</div>
+	<script src="js/bootstrap.js"></script>
 </body>
 
 </html>
