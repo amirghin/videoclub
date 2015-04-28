@@ -3,10 +3,10 @@
 class roles{
 
 
-	function insertar_roles($nombre, $conexion){
+	function insertar_roles($nombre, $conexion, $id_user){
 		try{
-			$insert = "INSERT INTO roles (nombre, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
-						VALUES ('{$nombre}', 1, CURDATE(), 1, CURDATE())";
+			$insert = "INSERT INTO roles (nombre, usuario_creacion)
+						VALUES ('{$nombre}', '{$id_user}')";
 	
 
 			$resultado = mysqli_query($conexion, $insert);
@@ -34,9 +34,9 @@ class roles{
 		}
 	}
 
-	function modificar_roles($id_rol, $nombre, $conexion){
+	function modificar_roles($id_rol, $nombre, $conexion, $id_user){
 		try{
-			$update = "UPDATE roles SET nombre='{$nombre}', usuario_modificacion=1, fecha_modificacion=CURDATE() WHERE id_rol = {$id_rol}";
+			$update = "UPDATE roles SET nombre='{$nombre}', usuario_modificacion='{$id_user}' WHERE id_rol = {$id_rol}";
 	
 
 			$resultado = mysqli_query($conexion, $update);

@@ -2,21 +2,13 @@
 
 class copias{
 
-public $id_copia = "";
-public $id_pelicula = "";
-public $cod_ubicacion = "";
-public $disponibilidad = "";
-public $usuario_creacion = "";
-public $fecha_creacion = "";
-public $usuario_modificacion = "";
-public $fecha_modificacion = "";
 public $mensaje = "";
 
-	function insertar_copia($id_pelicula,$disponibilidad, $cod_ubicacion, $conexion){
+	function insertar_copia($id_pelicula,$disponibilidad, $cod_ubicacion, $conexion, $id_user){
 		$mensaje = "";
 		try{
-			$insertar = "INSERT INTO copias (peliculas_id_pelicula, ubicaciones_cod_ubicacion, disponibilidad, usuario_creacion,fecha_creacion, usuario_modificacion, fecha_modificacion) 
-					  VALUES ({$id_pelicula}, {$cod_ubicacion}, '{$disponibilidad}', 1, NOW(),1, NOW())";
+			$insertar = "INSERT INTO copias (peliculas_id_pelicula, ubicaciones_cod_ubicacion, disponibilidad, usuario_creacion) 
+					  VALUES ({$id_pelicula}, {$cod_ubicacion}, '{$disponibilidad}', '{$id_user}')";
 			
 			$resultado = mysqli_query($conexion, $insertar);
 

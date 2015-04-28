@@ -3,12 +3,12 @@
 class clientes{
 
 
-	function insertar_cliente($nombre, $apellidos, $email, $fec_nacimiento, $tel_casa, $tel_celular, $observaciones,$conexion){
+	function insertar_cliente($nombre, $apellidos, $email, $fec_nacimiento, $tel_casa, $tel_celular, $observaciones,$conexion, $id_user){
 		try{
 			$insert = "INSERT INTO clientes (nombre, apellidos, fecha_nacimiento, tel_casa, tel_celular, email, activo_web, estado, observaciones, 
-						fecha_afiliacion, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
+						fecha_afiliacion, usuario_creacion)
 						VALUES ('{$nombre}', '{$apellidos}', '{$fec_nacimiento}', '{$tel_casa}', '{$tel_celular}', '{$email}', 0 , 'pendiente', '{$observaciones}',  
-							CURDATE(),1, CURDATE(), 1, CURDATE())";
+							CURDATE(),'{$id_user}')";
 	
 
 			$resultado = mysqli_query($conexion, $insert);
@@ -102,11 +102,11 @@ class clientes{
 		}
 	}
 
-	function modificar_cliente($nombre, $apellidos, $email, $fec_nacimiento, $tel_casa, $tel_celular, $observaciones, $id_cliente, $activo_web, $estado, $conexion){
+	function modificar_cliente($nombre, $apellidos, $email, $fec_nacimiento, $tel_casa, $tel_celular, $observaciones, $id_cliente, $activo_web, $estado, $conexion, $id_user){
 		try{
 			$update = "UPDATE clientes SET nombre='{$nombre}', apellidos='{$apellidos}', fecha_nacimiento='{$fec_nacimiento}', tel_casa='{$tel_casa}', 
 								tel_celular='{$tel_celular}', email='{$email}', activo_web='{$activo_web}', estado='{$estado}', observaciones='{$observaciones}', 
-								usuario_modificacion=1, fecha_modificacion=CURDATE()
+								usuario_modificacion='{$id_user}'
 						WHERE id_cliente=$id_cliente";
 
 			$resultado = mysqli_query($conexion, $update);

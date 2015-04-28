@@ -11,11 +11,11 @@ public $fecha_modificacion = "";
 public $mensaje = "";
 
 
-	function insertar_ubicacion($cod_ubicacion,$detalle, $conexion){
+	function insertar_ubicacion($cod_ubicacion,$detalle, $conexion, $id_user){
 		$mensaje = "";
 		try{
-			$insertar = "INSERT INTO ubicaciones (cod_ubicacion, detalle, usuario_creacion,fecha_creacion, usuario_modificacion, fecha_modificacion) 
-					  VALUES ({$cod_ubicacion}, '{$detalle}', 1, NOW(),1, NOW())";
+			$insertar = "INSERT INTO ubicaciones (cod_ubicacion, detalle, usuario_creacion) 
+					  VALUES ({$cod_ubicacion}, '{$detalle}','{$id_user}'";
 			
 			$resultado = mysqli_query($conexion, $insertar);
 

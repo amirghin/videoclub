@@ -6,7 +6,7 @@ session_start();
 $cliente = new clientes;
 
 if(isset($_POST["nombre_cliente"], $_POST["apellidos"], $_POST["email"], $_POST["fecha_nacimiento"], $_POST["tel_casa"], $_POST["tel_celular"], 
-			$_POST["id_cliente"], $_POST["estado"])){
+			$_POST["id_cliente"], $_POST["estado"], $_SESSION["id_usuario"])){
 
 	$observaciones = "";
 	$activo_web = 0;
@@ -18,6 +18,6 @@ if(isset($_POST["nombre_cliente"], $_POST["apellidos"], $_POST["email"], $_POST[
 		$activo_web = 1;
 	}
 
-	$cliente->modificar_cliente($_POST["nombre_cliente"], $_POST["apellidos"], $_POST["email"], $_POST["fecha_nacimiento"], $_POST["tel_casa"], $_POST["tel_celular"], $observaciones, $_POST["id_cliente"], $activo_web, $_POST["estado"], $conexion);
+	$cliente->modificar_cliente($_POST["nombre_cliente"], $_POST["apellidos"], $_POST["email"], $_POST["fecha_nacimiento"], $_POST["tel_casa"], $_POST["tel_celular"], $observaciones, $_POST["id_cliente"], $activo_web, $_POST["estado"], $conexion, $_SESSION["id_usuario"]);
 }
 ?>

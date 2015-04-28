@@ -56,7 +56,7 @@ public $mensaje = "";
 
 		return $encrypted;
 	}
-	function insertar_usuario($nom_usuario, $nombre, $apellido, $contrasena, $habilitado, $us_creacion, $conexion){
+	function insertar_usuario($nom_usuario, $nombre, $apellido, $contrasena, $habilitado, $conexion, $id_user){
 		try{
 			
 			$contrasena_encriptada = $this->encriptar_contrasena($contrasena);
@@ -65,8 +65,8 @@ public $mensaje = "";
 				throw new Exception("El usuario {$nom_usuario} ya existe");
 			}
 
-			$insert = "INSERT INTO usuarios_administradores (nom_usuario, nombre, apellido, contrasena, habilitado, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
-					VALUES ('{$nom_usuario}', '{$nombre}', '{$apellido}', '{$contrasena_encriptada}', '{$habilitado}','{$us_creacion}', CURDATE(), '{$us_creacion}', CURDATE())";
+			$insert = "INSERT INTO usuarios_administradores (nom_usuario, nombre, apellido, contrasena, habilitado, usuario_creacion)
+					VALUES ('{$nom_usuario}', '{$nombre}', '{$apellido}', '{$contrasena_encriptada}', '{$habilitado}','{$id_user}')";
 
 			$resultado = mysqli_query($conexion, $insert);
 
@@ -132,7 +132,7 @@ public $mensaje = "";
 
 		}
 	}
-	function modificar_usuario($id_usuario, $nombre, $apellido, $contrasena, $habilitado, $encriptar, $conexion){
+	function modificar_usuario($id_usuario, $nombre, $apellido, $contrasena, $habilitado, $encriptar, $conexion, $id_user){
 		try{
 			if($encriptar){
 
@@ -140,7 +140,7 @@ public $mensaje = "";
 			}
 			$update = "UPDATE usuarios_administradores 
 						SET nombre = '{$nombre}', apellido = '{$apellido}', contrasena = '{$contrasena}', habilitado = {$habilitado},
-						usuario_modificacion = 1, fecha_modificacion = CURDATE()
+						usuario_modificacion = '{$id_user}'
 						WHERE id_usuario = {$id_usuario}";
 
 			$resultado = mysqli_query($conexion, $update);

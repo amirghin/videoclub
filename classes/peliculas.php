@@ -30,11 +30,11 @@ public $mensaje = "";
 		}
 	}
 
-	function insertar_peliculas($nombre_pelicula,$precio_alquiler,$genero,$duracion,$conexion){
+	function insertar_peliculas($nombre_pelicula,$precio_alquiler,$genero,$duracion,$conexion, $id_user){
 		try{
 
-			$insert = "INSERT INTO peliculas (nombre, precio_alquiler, generos_id_genero, duracion, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
-				VALUES ('{$nombre_pelicula}', {$precio_alquiler}, {$genero}, {$duracion},1, CURDATE(), 1, CURDATE())";
+			$insert = "INSERT INTO peliculas (nombre, precio_alquiler, generos_id_genero, duracion, usuario_creacion)
+				VALUES ('{$nombre_pelicula}', {$precio_alquiler}, {$genero}, {$duracion}, '{$id_user}')";
 
 			$resultado = mysqli_query($conexion, $insert);
 
@@ -62,14 +62,15 @@ public $mensaje = "";
 		}
 	}
 
-	function modificar_peliculas($id_pelicula,$nombre_pelicula,$precio_alquiler,$genero,$ruta_imagenes,$duracion,$conexion){
+	function modificar_peliculas($id_pelicula,$nombre_pelicula,$precio_alquiler,$genero,$ruta_imagenes,$duracion,$conexion,$id_user){
 		try{
 			$modificar = "UPDATE peliculas SET
 								  nombre = '{$nombre_pelicula}',
 								  precio_alquiler = {$precio_alquiler},
 								  generos_id_genero = {$genero},
 								  ruta_imagenes = '{$ruta_imagenes}',
-								  duracion = {$duracion}
+								  duracion = {$duracion},
+								  usuario_modificacion = '{$id_user}'
 								  where id_pelicula = {$id_pelicula}"
 								  ;	
 

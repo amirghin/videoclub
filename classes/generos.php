@@ -2,19 +2,13 @@
 
 class generos{
 
-public $id_genero = "";
-public $nombre = "";
-public $usuario_creacion = "";
-public $fecha_creacion = "";
-public $usuario_modificacion = "";
-public $fecha_modificacion = "";
 public $mensaje = "";
 
 
-	function insertar_genero($id_genero, $nombre, $conexion){
+	function insertar_genero($id_genero, $nombre, $conexion, $id_user){
 		$mensaje = "";
 		try{
-			$query = "INSERT INTO generos (id_genero, nombre, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion) VALUES ({$id_genero}, '${nombre}', 1, NOW(),1, NOW())";
+			$query = "INSERT INTO generos (id_genero, nombre, usuario_creacion) VALUES ({$id_genero}, '${nombre}', '{$id_user}')";
 			if(mysqli_query($conexion,$query)){
 				$this->mensaje = "Genero insertado correctamente";
 			}else{
@@ -28,10 +22,11 @@ public $mensaje = "";
 
 	}
 
-	function modificar_genero($id_genero, $nombre, $conexion){
+	function modificar_genero($id_genero, $nombre, $conexion, $id_user){
 		try{
 			$modificar = "UPDATE generos set
-								  nombre = '{$nombre}'
+								  nombre = '{$nombre}', 
+								  usuario_modificacion = '{$id_user}'
 								  where id_genero= {$id_genero}"
 								  ;	
 			//echo $modificar;

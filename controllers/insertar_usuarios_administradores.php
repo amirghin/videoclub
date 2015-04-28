@@ -12,6 +12,6 @@ if(isset($_POST["nombre"], $_POST["apellido"], $_POST["nombre_usuario"], $_POST[
 		$habilitado = 1;
 	}
 
-	$usuario_administrador->insertar_usuario($_POST["nombre_usuario"], $_POST["nombre"], $_POST["apellido"], $_POST["contrasena"], $habilitado, $_SESSION["id_usuario"], $conexion);
+	$usuario_administrador->insertar_usuario($_POST["nombre_usuario"], $_POST["nombre"], $_POST["apellido"], $_POST["contrasena"], $habilitado, $conexion, $_SESSION["id_usuario"] );
 }
 ?>

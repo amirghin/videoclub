@@ -4,10 +4,10 @@
 
 class reservaciones{
 
-	function insertar_reservacion($id_cliente, $id_copia, $estado_aprobacion,$fecha_entrega, $fecha_reservacion, $fecha_retiro, $hora_retiro, $conexion){
+	function insertar_reservacion($id_cliente, $id_copia, $estado_aprobacion,$fecha_entrega, $fecha_reservacion, $fecha_retiro, $hora_retiro, $conexion, $id_user){
 		try{
-			$insert = "INSERT INTO reservaciones (clientes_id_cliente, copias_id_copia, estado_aprobacion, fecha_entrega, fecha_reservacion, fecha_retiro, hora_retiro, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
-				VALUES ({$id_cliente}, {$id_copia}, '${estado_aprobacion}','{$fecha_entrega}', '{$fecha_reservacion}', '{$fecha_retiro}', '{$hora_retiro}',1, CURDATE(), 1, CURDATE())";
+			$insert = "INSERT INTO reservaciones (clientes_id_cliente, copias_id_copia, estado_aprobacion, fecha_entrega, fecha_reservacion, fecha_retiro, hora_retiro, usuario_creacion)
+				VALUES ({$id_cliente}, {$id_copia}, '${estado_aprobacion}','{$fecha_entrega}', '{$fecha_reservacion}', '{$fecha_retiro}', '{$hora_retiro}', '{$id_user}')";
 			
 			//echo $insert;
 			if (mysqli_query($conexion, $insert)) {	

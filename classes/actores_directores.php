@@ -2,10 +2,10 @@
 
 class actores_directores{
 
-	function insertar_actores_directores($nombre, $genero, $conexion){
+	function insertar_actores_directores($nombre, $genero, $conexion, $id_user){
 		try{
-			$insert = "INSERT INTO actores_directores (nombre, genero, usuario_creacion, fecha_creacion, usuario_modificacion, fecha_modificacion)
-						VALUES ('{$nombre}', '{$genero}', 1, CURDATE(), 1, CURDATE())";
+			$insert = "INSERT INTO actores_directores (nombre, genero, usuario_creacion)
+						VALUES ('{$nombre}', '{$genero}', '{$id_user}')";
 	
 
 			$resultado = mysqli_query($conexion, $insert);
@@ -33,13 +33,12 @@ class actores_directores{
 		}
 	}
 
-	function modificar_actores_directores($id_actor, $nombre, $genero, $conexion){
+	function modificar_actores_directores($id_actor, $nombre, $genero, $conexion, $id_user){
 		try{
 			$modificar = "UPDATE actores_directores SET
 								  nombre = '{$nombre}',
 								  genero = '{$genero}',
-								  fecha_modificacion = CURDATE(),
-								  usuario_modificacion = 1
+								  usuario_modificacion = '{$id_user}'
 								  WHERE id_actor = {$id_actor}";
 
 			$resultado = mysqli_query($conexion, $modificar);
