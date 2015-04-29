@@ -74,11 +74,11 @@ if(isset($_POST["upload_image"], $_POST["id_pelicula"], $_POST["ruta"])) {
                             <input type="text" name="ruta" id="ruta" readonly="true">
                         </div>
                         <div class="filas form-group">
-                            <input type="file" name="fileToUpload" id="fileToUpload" required > 
+                            <input type="file" name="fileToUpload" id="fileToUpload" required style="float:right; width:60%"> 
                         </div>
-                        <div class="filas form-group">
-                            <input type="button" name="buscar" id="buscar" value="Buscar" class="button col-12">
-                            <input type="submit" value="Upload Image" name="upload_image" id="upload_image" class="button col-12">
+                        <div class="filas form-group" style="width: 37%; margin: 0 auto;">
+                            <input type="button" name="buscar" id="buscar" value="Buscar" class="button col-12"  style="float: left;margin-right: 16px;">
+                            <input type="submit" value="Upload Image" name="upload_image" id="upload_image" class="button col-12" style="float:left">
                         </div>
 
 
