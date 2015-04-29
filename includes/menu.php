@@ -1,4 +1,5 @@
 <nav class="navegacion">
+    <h3><i class="glyphicon glyphicon-briefcase"></i> Panel de control</h3>  
     <ul class="accordeon">
         <li><a href="" ><i class="glyphicon glyphicon-briefcase"></i> Peliculas <span>&#9660;</span></a>
             <ul class="hiddenMenu">
