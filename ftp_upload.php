@@ -1,9 +1,7 @@
-<?php
-
+<?php session_start();
+if($_SESSION["id_usuario"] == "2" || (!isset($_SESSION["id_usuario"]))) {header("Location: login.php");}
 require "classes/ftp_session.php";
 require "classes/peliculas.php";
-
-session_start();
 $ftp = new ftp_session;
 
 if(isset($_POST["upload_image"], $_POST["id_pelicula"], $_POST["ruta"])) {
@@ -53,7 +51,7 @@ if(isset($_POST["upload_image"], $_POST["id_pelicula"], $_POST["ruta"])) {
                 <?php include 'includes/menu.php';?>
             </div>
             <div class="col-sm-9 ">
-                <h3><i class="glyphicon glyphicon-dashboard"></i> Ingresar una devolucion</h3>  
+                <h3><i class="glyphicon glyphicon-dashboard"></i> Subir Imagen al FTP</h3>  
                         
                 <hr>
                 <section class="estilos_form" id="i_upload">
@@ -64,10 +62,6 @@ if(isset($_POST["upload_image"], $_POST["id_pelicula"], $_POST["ruta"])) {
                            <select name="id_pelicula" id="id_pelicula">
                              <option disabled="true" checked="true" value="0">Seleccione una Pelicula</option>
                            </select>
-                        </div>
-                        <div class="filas form-group">
-                            <label for="">Nombre</label>
-                            <input type="text" name="nombre" id="nombre" readonly="true">
                         </div>
                         <div class="filas form-group">
                             <label for="">Ruta:</label>
