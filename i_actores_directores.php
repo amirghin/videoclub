@@ -36,13 +36,13 @@
             
         <hr>
         <section class="estilos_form">
-    		<form action="" method="POST" >
+    		<form action="" method="POST" class="form-horizontal">
     			<fieldset>
-                   <div class="filas">
+                   <div class="filas form-group">
                        <label for="nombre">Nombre</label>
                        <input type="text" name="nombre">
                    </div>
-                   <div class="filas">
+                   <div class="filas form-group">
                        <label for="genero">Genero</label>
                        <select id="actor_genero" name="actor_genero">
                         <option value="0" disabled selected="true">Seleccione un Genero</option>
@@ -50,7 +50,7 @@
                         <option value="f">Femenino</option>
                        </select>
                    </div>
-                   <div class="filas">
+                   <div class="filas form-group">
                         <input type="submit" class="button" value="Insertar">
                    </div>
                 </fieldset>

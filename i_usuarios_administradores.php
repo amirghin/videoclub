@@ -36,9 +36,9 @@
 						
 				<hr>
 				<section class="estilos_form">
-					<form method="POST" action="" id="insert_usuario_administrador">
+					<form method="POST" action="" id="insert_usuario_administrador" class="form-horizontal">
 						<fieldset>
-							<div class="filas form-group" class="form-horizontal">
+							<div class="filas form-group" >
 								<label for="nombre">Nombre: </label>
 								<input type="text" name="nombre" required>
 							</div>
