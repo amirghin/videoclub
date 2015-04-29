@@ -762,6 +762,32 @@ $(function(){
         
     })
 
+    /************* Insertar Cliente ****************************/
+    $("#i_clientes").click(function(){
+            if (verificar_campos()){
+                var cliente = $(":input").serializeArray();
+                console.log(cliente);
+                $.ajax({
+                    method: "POST",
+                    url : "controllers/insertar_cliente_controller.php",
+                    data: cliente
+                })
+                .success(function( response ) {
+                   if (response.error) {
+                        // handle the error
+                        //throw response.error.message;
+                        alert(response.error.message);
+                    }else{
+                        console.log(response)
+                        var objeto = jQuery.parseJSON(response);
+                        alert( objeto.success.mensaje);
+                    }
+                //limpiar_campos();
+                }); 
+            }
+            
+        });
+
 
     /*****************Funcion de busqueda de usuarios************/
    

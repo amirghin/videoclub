@@ -40,34 +40,34 @@
 						<fieldset>
 							<div class="filas form-group">
 								<label for="nombre_cliente">Nombre:</label>
-								<input type="text" name="nombre_cliente">					
+								<input type="text" name="nombre_cliente" class="requerido">					
 							</div>
 							<div class="filas form-group">
 								<label for="apellidos">Apellidos:</label>
-								<input type="text" name="apellidos">
+								<input type="text" name="apellidos" class="requerido">
 							</div>
 							<div class="filas form-group">
 							    <label for="email">Email:</label>
-							    <input type="email" name="email">
+							    <input type="email" name="email" class="requerido">
 							</div>
 							<div class="filas form-group">
 							    <label for="fecha_nacimiento">Fecha de nacimiento:</label>
-							    <input type="date" name="fecha_nacimiento">
+							    <input type="date" name="fecha_nacimiento" class="requerido">
 							</div>
 							<div class="filas form-group">
 							    <label for="tel_casa">Telefono Casa:</label>
-							    <input type="text" name="tel_casa">
+							    <input type="text" name="tel_casa" class="requerido">
 							</div>
 							<div class="filas form-group">
 							    <label for="tel_celular">Celular:</label>
-							    <input type="text" name="tel_celular">
+							    <input type="text" name="tel_celular" class="requerido">
 							</div>
 							<div class="filas form-group">
 							    <label for="observaciones">Observaciones:</label>
 							    <textarea name="observaciones" id="observaciones" cols="30" rows="5"></textarea>
 							</div>
 							<div class="filas form-group">
-							    <input type="button" class="button" value="Enviar">
+							    <input type="button" class="button" value="Enviar" id="i_clientes">
 							</div>
 						</fieldset>
 					</form>

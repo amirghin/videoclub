@@ -40,7 +40,7 @@
     			<fieldset>
                    <div class="filas form-group">
                        <label for="nombre">Nombre</label>
-                       <input type="text" name="nombre">
+                       <input type="text" name="nombre" id="nombre" class="requerido">
                    </div>
                    <div class="filas form-group">
                        <label for="genero">Genero</label>
@@ -49,9 +49,10 @@
                         <option value="m">Masculino</option>
                         <option value="f">Femenino</option>
                        </select>
+                       <input type="hidden" id="h_genero">
                    </div>
                    <div class="filas form-group">
-                        <input type="submit" class="button" value="Insertar">
+                        <input type="submit" class="button" value="Insertar" id="insertar_actor_director">
                    </div>
                 </fieldset>
             </form>
