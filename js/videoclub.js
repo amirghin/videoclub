@@ -432,7 +432,7 @@ $(function(){
                 throw response.error.message;
                 console.log(response.error.message);
             }else{
-                console.log(response)
+                console.log(response);
                 var objeto = jQuery.parseJSON(response);
                 alert( objeto.success.mensaje);
             }
@@ -442,27 +442,35 @@ $(function(){
 
     /*****************Insertar Cargos ************/
     $("#insertar_cargo").click(function(){
+        
+        var tipo = $("#tipo option:selected").val();
+        $("#h_tipo").val(tipo);
         var cargos = $(":input").serializeArray();
+        if(tipo != "0" && verificar_campos()){
+            $.ajax({
+            method: "POST",
+            url: "controllers/insertar_cargo_controller.php",
+            data: cargos
+            })
 
-        $.ajax({
-        method: "POST",
-        url: "controllers/insertar_cargo_controller.php",
-        data: cargos
-        })
+            .success(function( response ) {
+                console.log(objeto = jQuery.parseJSON(response));
+               if (response.error) {
+                    // handle the error
+                    throw response.error.message;
+                    console.log(response.error.message);
+                }else{
+                    var objeto = jQuery.parseJSON(response);
+                    alert( objeto.success.mensaje);
+                }
+            //limpiar_campos();
+            }); 
 
-        .success(function( response ) {
-           if (response.error) {
-                // handle the error
-                throw response.error.message;
-                console.log(response.error.message);
-            }else{
-                console.log(response)
-                var objeto = jQuery.parseJSON(response);
-                alert( objeto.success.mensaje);
-            }
-        //limpiar_campos();
-        }); 
-    })
+        }else if(tipo == "0"){
+
+            alert("Tiene que seleccionar un tipo");
+        }
+    });
 
     /********************* Modificar peliculas *******************/
 

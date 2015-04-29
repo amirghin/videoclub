@@ -21,7 +21,11 @@
                </div>
                <div class="filas">
                    <label for="genero">Genero</label>
-                   <input type="text" name="genero">
+                   <select id="actor_genero" name="actor_genero">
+                    <option value="0" disabled selected="true">Seleccione un Genero</option>
+                    <option value="m">Masculino</option>
+                    <option value="f">Femenino</option>
+                   </select>
                </div>
                <div class="filas">
                     <input type="submit" class="button" value="Insertar">
