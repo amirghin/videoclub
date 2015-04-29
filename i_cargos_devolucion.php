@@ -1,4 +1,5 @@
-<?php session_start();?>
+<?php session_start();
+if($_SESSION["id_usuario"] == "2" || (!isset($_SESSION["id_usuario"]))) {header("Location: login.php");}?>
 <!DOCTYPE html>
 <html>
 <head>
