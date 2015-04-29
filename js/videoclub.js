@@ -757,7 +757,8 @@ $(function(){
             }else{
                 console.log(response)
                 var objeto = jQuery.parseJSON(response);
-                alert( objeto.success.mensaje);
+                console.log(objeto);
+                alert( "Su numero de reservacion es: " + objeto.confirmacion_reservacion.id_reservacion);
             }
         //limpiar_campos();
         }); 

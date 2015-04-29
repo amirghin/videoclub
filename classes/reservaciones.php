@@ -12,9 +12,10 @@ class reservaciones{
 			//echo $insert;
 			if (mysqli_query($conexion, $insert)) {	
 				$this->mensaje = "Se inserto con exito la reservacion";
+				$this->id_reservacion = mysqli_insert_id($conexion);
 				echo json_encode(array(
-					'success' => array(
-						'mensaje' => "Se inserto con exito la reservacion"
+					'confirmacion_reservacion' => array(
+						'id_reservacion' => $this->id_reservacion
 						)
 					));
 			} else {
