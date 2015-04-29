@@ -12,7 +12,7 @@
 <body>
     <?php include 'menu.html';?>
     <section class="estilos_form">
-        <form action="" method="POST" >
+        <form action="" method="POST" class="form-horizontal">
             <div class="filas">
                 <label for="id_devolucion">ID Devolucion</label>
                 <input type="text" name="id_devolucion">

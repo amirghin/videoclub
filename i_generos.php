@@ -36,7 +36,7 @@
 					
 			   <hr>
 				<section class="estilos_form">
-					<form action="" id="i_generos" method="POST">
+					<form action="" id="i_generos" method="POST" class="form-horizontal">
 						<fieldset>
 							<div class="filas form-group">
 								<label for="nombre">Nombre:</label>

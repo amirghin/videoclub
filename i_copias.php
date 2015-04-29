@@ -36,8 +36,8 @@
             
         <hr>
         <section class="estilos_form">
-        <form action="" method="POST" >
-        	<fieldset>
+          <form action="" method="POST" class="form-horizontal">
+          	<fieldset>
                    <div class="filas">
                        <label for="id_pelicula">ID Pelicula: </label>
                        <input type="text" name="id_pelicula"> 
