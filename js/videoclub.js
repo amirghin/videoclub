@@ -201,7 +201,7 @@ function successPeliculasGenero(response){
     }else{
         var table = "<tr><td>ID Pelicula</td><td>Nombre Pelicula</td><td>Disponibilidad</td><td>Precio Alquiler</td><td>Reservar</td></tr>";
         var tableValues = "";
-        $.each(objetoPeliculasGenero, function(key,value){
+        $.each(objetoPeliculasGenero.peliculas, function(key,value){
             tableValues += "<tr><td>"+value.id_pelicula+"</td><td>"+value.nombre+"</td><td>"+value.Disponibilidad+"</td><td>"+value.precio_alquiler+"</td><td> <a href='' class='reservar' id="+key+">Reservar</a> </td></tr>";
             
         });

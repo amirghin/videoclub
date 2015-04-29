@@ -162,14 +162,17 @@ public $mensaje = "";
 	function buscar_pelicula_genero($genero_pelicula, $conexion){
 		try{
 			//echo "hola";
-			$query = "SELECT 
+			/*$query = "SELECT 
 					 pel.id_pelicula, 
 					 pel.nombre, 
 					 pel.duracion, 
 					 pel.generos_id_genero, 
 					 gen.nombre genero, pel.precio_alquiler FROM peliculas pel
 					 JOIN generos gen ON pel.generos_id_genero = gen.id_genero 
-					 WHERE gen.nombre LIKE '%{$genero_pelicula}%'";
+					 WHERE gen.nombre LIKE '%{$genero_pelicula}%'";*/
+
+			$query = "SELECT * FROM disponibilidad_peliculas
+						WHERE genero LIKE '%{$genero_pelicula}%' GROUP BY id_pelicula ORDER BY disponibilidad ASC";
 
 			
 
