@@ -333,6 +333,42 @@ function llenar_dropdown_ubicaciones(){
     })   
 };
 
+function llenar_dropdown_roles(){
+     $.ajax({
+        method:"POST",
+        url: "controllers/llenar_roles_controller.php"
+
+    })
+    .success (function (data){
+        console.log(data);
+        var object = jQuery.parseJSON(data);
+        console.log(object);
+        var selectData = "";
+        $.each(object.roles_dropdown, function(key,value){
+            $("#roles_id_rol").append("<option value="+value.id_rol+">"+value.nombre+"</option>");
+
+        });
+    })   
+};
+
+function llenar_dropdown_actores(){
+     $.ajax({
+        method:"POST",
+        url: "controllers/llenar_actores_controller.php"
+
+    })
+    .success (function (data){
+        console.log(data);
+        var object = jQuery.parseJSON(data);
+        console.log(object);
+        var selectData = "";
+        $.each(object.actores_dropdown, function(key,value){
+            $("#actores_id_actor").append("<option value="+value.id_actor+">"+value.nombre+"</option>");
+
+        });
+    })   
+};
+
 
 function verficar_estado_cliente(id_cliente){
     $.ajax({
@@ -582,6 +618,38 @@ $(function(){
                     throw response.error.message;
                     console.log(response.error.message);
                 }else{
+                    var objeto = jQuery.parseJSON(response);
+                    alert( objeto.success.mensaje);
+                }
+            //limpiar_campos();
+            }); 
+
+        }else if(genero == "0"){
+
+            alert("Tiene que seleccionar un genero");
+        }
+    });
+  /**************Insertar Personajes********************/
+    $("#insertar_personajes").click(function(){
+        var personajes = $(":input").serializeArray();
+        console.log(personajes);
+        if( verificar_campos()){
+            $.ajax({
+            method: "POST",
+            url: "controllers/insertar_personajes_controller.php",
+            data: personajes
+            })
+
+            .success(function( response ) {
+                console.log(response);
+                console.log(objeto = jQuery.parseJSON(response));
+               if (response.error) {
+                    // handle the error
+
+                    throw response.error.message;
+                    console.log(response.error.message);
+                }else{
+                    console.log(response);
                     var objeto = jQuery.parseJSON(response);
                     alert( objeto.success.mensaje);
                 }
@@ -919,6 +987,12 @@ $(function(){
 
     if ($("#i_upload").length > 0){
         llenar_dropdown_peliculas();
+    };
+
+    if ($("#i_personajes").length > 0){
+        llenar_dropdown_peliculas();
+        llenar_dropdown_roles();
+        llenar_dropdown_actores();
     };
 
     

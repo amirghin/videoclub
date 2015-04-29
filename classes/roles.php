@@ -90,6 +90,23 @@ class roles{
 		}
 	}
 
+	function llenar_dropdown_roles($conexion){
+		try{
+			$query = "SELECT * FROM roles";
+			$resultado = mysqli_query($conexion, $query);
+			//$row = mysqli_fetch_assoc($resultado);
+			$array = array();
+			while($row=mysqli_fetch_assoc($resultado)){
+				$array[] = $row;
+			}
+			echo '{"roles_dropdown":'.json_encode($array).'}';
+
+		}catch (Exception $e){
+			$this->mensaje = $e->GetMessage();
+		}		
+	}
+
+
 }
 
 

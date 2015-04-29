@@ -92,6 +92,23 @@ class actores_directores{
 
 		}
 	}
+
+	function llenar_dropdown_actores($conexion){
+		try{
+			$query = "SELECT * FROM actores_directores";
+			$resultado = mysqli_query($conexion, $query);
+			//$row = mysqli_fetch_assoc($resultado);
+			$array = array();
+			while($row=mysqli_fetch_assoc($resultado)){
+				$array[] = $row;
+			}
+			echo '{"actores_dropdown":'.json_encode($array).'}';
+
+		}catch (Exception $e){
+			$this->mensaje = $e->GetMessage();
+		}		
+	}
+
 }
 ?>
 
