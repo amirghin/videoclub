@@ -44,12 +44,18 @@ function search(){
         busqueda.done(function(response){
             var object = jQuery.parseJSON(response);
             console.log(object);
-            var table = "<tr><td>Nombre</td><td>Apellido</td><td>Nombre de usuario</td><td>Eliminar</td><td>Modificar</td></tr>";
-            var tableValues = "";
-            $.each(object.usuarios, function(key,value){
-                tableValues += "<tr><td>"+value.nombre+"</td><td>"+value.apellido+"</td><td>"+value.nom_usuario+"</td><td> <a href='' class='eliminar' id="+key+">Eliminar</a> </td> <td> <a href='' class='modificar' id="+key+">Modificar</a>  </td></tr>";
-                
-            });
+            if (object.usuarios.length !== 0 ){
+                var table = "<tr><td>Nombre</td><td>Apellido</td><td>Nombre de usuario</td><td>Eliminar</td><td>Modificar</td></tr>";
+                var tableValues = "";
+                //console.log(object.usuarios.length);
+            
+                $.each(object.usuarios, function(key,value){
+                    tableValues += "<tr><td>"+value.nombre+"</td><td>"+value.apellido+"</td><td>"+value.nom_usuario+"</td><td> <a href='#' class='eliminar' id="+key+">Eliminar</a> </td> <td> <a href='#' class='modificar' id="+key+">Modificar</a>  </td></tr>";
+                    
+                });
+            }else{
+                alert ("No se han encontrado coincidencias");
+            }
             $("#result").html(table+tableValues);
 
 
