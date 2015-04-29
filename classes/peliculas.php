@@ -43,7 +43,6 @@ public $mensaje = "";
 
 			}else{
 				$this->ruta_imagenes(mysqli_insert_id($conexion),$conexion);
-				$this->mensaje = "Se inserto con exito la pelicula";
 				echo json_encode(array(
 					'success' => array(
 						'mensaje' => "Se inserto con exito la pelicula"

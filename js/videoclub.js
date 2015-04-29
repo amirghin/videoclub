@@ -375,27 +375,34 @@ $(function(){
     });
 
     /********************* Insertar peliculas *******************/
-    $("#crear_peliculas").click(function(){
-        $("#hidden_genero").val($("#genero option:selected").val());
+    $("#insertar_peliculas").click(function(){
+        genero = $("#genero option:selected").val();
+        $("#hidden_genero").val(genero);
+        console.log(genero);
         var peliculas = $(":input").serializeArray();
         console.log(peliculas);
+        if(verificar_campos() && genero != '0'){
+            $.ajax({
+            method: "POST",
+            url: "controllers/insertar_peliculas_controller.php",
+            data: peliculas
+            })
+            .success(function( response ) {
+               if (response.error) {
+                    // handle the error
+                    throw response.error.message;
+                    console.log(response.error.message);
+                }else{
+                    console.log(response);
+                    alert( "se inserto la pelicula");
+                }
+            //limpiar_campos();
+            }); 
 
-        $.ajax({
-        method: "POST",
-        url: "controllers/insertar_peliculas_controller.php",
-        data: peliculas
-        })
-        .success(function( response ) {
-           if (response.error) {
-                // handle the error
-                throw response.error.message;
-                console.log(response.error.message);
-            }else{
-                console.log(response);
-                alert( "se inserto la pelicula");
-            }
-        //limpiar_campos();
-        }); 
+        }else if(genero == "0"){
+            alert("Por favor seleccione un Genero");
+
+        }
     });
 
 

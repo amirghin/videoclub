@@ -41,24 +41,26 @@
 						<fieldset class="insertar_peliculas">
 							<div class="filas form-group">	
 						    	<label for="nombre">Nombre Pelicula: </label>
-						    	<input type="text" name="nombre_pelicula" id="nombre_pelicula">
+						    	<input type="text" name="nombre_pelicula" id="nombre_pelicula" class="requerido">
 						    </div>
 
 							<div class="filas form-group">
 								<label for="precio_alquiler">Precio de alquiler:</label>
-								<input type="text" name="precio_alquiler" id="precio_alquiler">
+								<input type="text" name="precio_alquiler" id="precio_alquiler" class="requerido">
 							</div>
 							<div class="filas form-group">
 								<label for="duracion">Duracion :</label>
-								<input type="text" name="duracion" id="duracion">
+								<input type="text" name="duracion" id="duracion" class="requerido">
 							</div>
 							<div class="filas form-group">
 								<label for="genero">Genero:</label>
-								<select id="genero"></select><!-- TODO llenar con dropdown de genero-->
+								<select id="genero">
+									<option value="0" disabled="true" checked>Seleccione un Género</option>
+								</select><!-- TODO llenar con dropdown de genero-->
 								<input type="hidden" name="genero" id="hidden_genero">
 							</div>
 							<div class="filas form-group">
-						    	<input type="button" value="Insertar" class="button" id="crear_peliculas">
+						    	<input type="button" value="Insertar" class="button" id="insertar_peliculas">
 						    	<input type="hidden" name="action" value="upload" /> 
 						    </div>
 						</fieldset>
