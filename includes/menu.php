@@ -18,5 +18,6 @@
                 <li><a href="b_peliculas_transac.php"><i class="glyphicon glyphicon-list-alt"></i> Ingresar Reservacion</a></li>               
            </ul> 
         </li>
+        <li><a href="i_clientes.php"><i class="glyphicon glyphicon-briefcase"></i> Formulario de afiliacion</a></li>
     </ul>
 </nav>

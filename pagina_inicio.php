@@ -22,13 +22,6 @@
 			<div class="navbar-header">
 	          <a class="navbar-brand" href="#">Video Club</a>
 	        </div>
-			<!--<div class="navbar-collapse collapse">
-				
-			</div>
-			<div class="navbar-collapse collapse">
-				<a class="navbar-brand" href="logout.php"> Cerrar Session</a>
-			</div>-->
-
 			<div class="navbar-collapse collapse">
 			  <ul class="nav navbar-nav navbar-right">
 				
