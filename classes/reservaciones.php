@@ -26,13 +26,13 @@ class reservaciones{
 			}
 
 
-			if(!$resultado){
+			/*if(!$resultado){
 				throw new Exception(mysqli_error($conexion));
 
 			}else{
 				//$this->ruta_imagenes(mysqli_insert_id($conexion),$conexion);
 
-			}
+			}*/
 		}catch(Exception $e){
 		   echo json_encode(array(
 		        'error' => array(
