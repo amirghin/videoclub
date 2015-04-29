@@ -2,7 +2,7 @@
 
 class copias{
 
-public $mensaje = "";
+
 
 	function insertar_copia($id_pelicula,$disponibilidad, $cod_ubicacion, $conexion, $id_user){
 		$mensaje = "";
@@ -15,7 +15,6 @@ public $mensaje = "";
 			if(!$resultado){
 				throw new Exception(mysqli_error($conexion));
 			}else{
-				$this->mensaje = "Se inserto con exito la copia";
 				echo json_encode(array(
 					'success' => array(
 						'mensaje' => "Se inserto con exito la copia"
