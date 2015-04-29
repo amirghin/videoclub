@@ -6,6 +6,9 @@ class reservaciones{
 
 	function insertar_reservacion($id_cliente, $id_copia, $estado_aprobacion,$fecha_entrega, $fecha_reservacion, $fecha_retiro, $hora_retiro, $conexion, $id_user){
 		try{
+			if($id_user != "2"){
+				$estado_aprobacion = "aprobado";
+			}
 			$insert = "INSERT INTO reservaciones (clientes_id_cliente, copias_id_copia, estado_aprobacion, fecha_entrega, fecha_reservacion, fecha_retiro, hora_retiro, usuario_creacion)
 				VALUES ({$id_cliente}, {$id_copia}, '${estado_aprobacion}','{$fecha_entrega}', '{$fecha_reservacion}', '{$fecha_retiro}', '{$hora_retiro}', '{$id_user}')";
 			
@@ -22,7 +25,6 @@ class reservaciones{
 				throw new Exception(mysqli_error($conexion));
 			}
 
-			//$resultado = mysqli_query($conexion, $insert);
 
 			if(!$resultado){
 				throw new Exception(mysqli_error($conexion));
