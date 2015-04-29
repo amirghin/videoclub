@@ -364,6 +364,7 @@ CREATE TRIGGER insertar_reservaciones
 BEFORE INSERT ON reservaciones
 FOR EACH ROW
 BEGIN
+	UPDATE copias SET disponibilidad= 'reservado' WHERE id_copia = NEW.copias_id_copia;
 	IF NEW.fecha_creacion IS NULL THEN 
 		SET NEW.fecha_creacion = CURDATE();
 	END IF;
@@ -385,7 +386,9 @@ CREATE TRIGGER modificar_reservaciones
 BEFORE UPDATE ON reservaciones
 FOR EACH ROW
 BEGIN
-	 
+	IF NEW.estado_aprobacion = 'rechazado' THEN
+		UPDATE copias SET disponibilidad = 'disponible' WHERE id_copia = NEW.copias_id_copia; 
+	END IF;
 	SET NEW.fecha_creacion = CURDATE();
 	SET NEW.fecha_modificacion = CURDATE();
 	
