@@ -8,7 +8,7 @@ public $mensaje = "";
 		$mensaje = "";
 		try{
 			$insertar = "INSERT INTO copias (peliculas_id_pelicula, ubicaciones_cod_ubicacion, disponibilidad, usuario_creacion) 
-					  VALUES ({$id_pelicula}, {$cod_ubicacion}, '{$disponibilidad}', '{$id_user}')";
+					  VALUES ({$id_pelicula}, '{$cod_ubicacion}', '{$disponibilidad}', '{$id_user}')";
 			
 			$resultado = mysqli_query($conexion, $insertar);
 

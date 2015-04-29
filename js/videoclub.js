@@ -409,6 +409,7 @@ $(function(){
                 throw response.error.message;
                 console.log(response.error.message);
             }else{
+                console.log(response);
                 var objeto = jQuery.parseJSON(response);
                 alert( objeto.success.mensaje);
             }
