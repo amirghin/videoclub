@@ -855,6 +855,49 @@ $(function(){
         }
     });   
 
+
+    function buscar_ruta(){
+        var id_pelicula = $("#id_pelicula").val();
+
+        if (id_pelicula!=""){
+            var busqueda = $.ajax({
+                url: "controllers/busqueda_pelicula_id_controller.php",
+                type: "POST",
+                data: {id_pelicula:id_pelicula},
+            });
+            busqueda.done(function(response){
+                var object = jQuery.parseJSON(response);
+                if(!object.error){
+                    $("#ruta").val(object.peliculas.ruta_imagenes);
+                    $("#nombre").val(object.peliculas.nombre);
+                    $("#ready").val("true");
+                }else{
+                    console.log("aca");
+                    $("p").text = object.error.msg;
+                }
+
+            });
+            busqueda.error(function(error){
+                alert("error");
+            });
+
+        }
+
+    }
+
+    $('#buscar').click(function(){  
+            
+            buscar_ruta();
+        });  
+
+    $( "#f_subir_imagen" ).submit(function( event ) {
+      if ( $( "#ready" ).val() != "false" ) {
+        return;
+      }
+     
+      event.preventDefault();
+    } );
+
     /*****************Funcion de busqueda de peliculas id************/
     $("#buscar_peliculas_id").on("click", function(){
         buscar_peliculas_id();
@@ -873,6 +916,12 @@ $(function(){
     if ($("#i_devoluciones").length > 0){
         llenar_dropdown_cargos();
     };
+
+    if ($("#i_upload").length > 0){
+        llenar_dropdown_peliculas();
+    };
+
+    
 
 
 

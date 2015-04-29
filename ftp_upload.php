@@ -3,6 +3,7 @@
 require "classes/ftp_session.php";
 require "classes/peliculas.php";
 
+session_start();
 $ftp = new ftp_session;
 
 if(isset($_POST["upload_image"], $_POST["id_pelicula"], $_POST["ruta"])) {
@@ -19,76 +20,75 @@ if(isset($_POST["upload_image"], $_POST["id_pelicula"], $_POST["ruta"])) {
     }
 }
 ?>
-<!DOCTYPE html>
-<html>
+<?php include 'includes/header.php';?>
+
 <body>
-<head>
-<script src="js/jquery-2.1.3.min.js"></script>
-<script>
-$(function(){
+    <nav id="top-nav" class="navbar navbar-inverse navbar-static-top">
 
-        function buscar_ruta(){
-            var id_pelicula = $("#id_pelicula").val();
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Video Club</a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+                        <i class="glyphicon glyphicon-user"></i> <?php echo $_SESSION["nombre_usuario"]; ?>
+                        <span class="caret"></span>
+                    </a>
+                    <ul id="g-account-menu" class="dropdown-menu" role="menu">
+                        <li><a href="logout.php"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
+                    </ul>
+                </li>
 
-            if (id_pelicula!=""){
-                var busqueda = $.ajax({
-                    url: "controllers/busqueda_pelicula_id_controller.php",
-                    type: "POST",
-                    data: {id_pelicula:id_pelicula},
-                });
-                busqueda.done(function(response){
-                    var object = jQuery.parseJSON(response);
-                    if(!object.error){
-                        $("#ruta").val(object.peliculas.ruta_imagenes);
-                        $("#nombre").val(object.peliculas.nombre);
-                        $("#ready").val("true");
-                    }else{
-                        console.log("aca");
-                        $("p").text = object.error.msg;
-                    }
+              </ul>
 
-                });
-                busqueda.error(function(error){
-                    alert("error");
-                });
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 ">
+                <?php include 'includes/menu.php';?>
+            </div>
+            <div class="col-sm-9 ">
+                <h3><i class="glyphicon glyphicon-dashboard"></i> Ingresar una devolucion</h3>  
+                        
+                <hr>
+                <section class="estilos_form" id="i_upload">
+                    <form action="" method="post" enctype="multipart/form-data" id="f_subir_imagen">
+                        <div class="filas form-group">
+                            <label for="">ID Pelicula:</label>
+                            <!--<input type="text" name="id_pelicula" id="id_pelicula" required>-->
+                           <select name="id_pelicula" id="id_pelicula">
+                             <option disabled="true" checked="true" value="0">Seleccione una Pelicula</option>
+                           </select>
+                        </div>
+                        <div class="filas form-group">
+                            <label for="">Nombre</label>
+                            <input type="text" name="nombre" id="nombre" readonly="true">
+                        </div>
+                        <div class="filas form-group">
+                            <label for="">Ruta:</label>
+                            <input type="text" name="ruta" id="ruta" readonly="true">
+                        </div>
+                        <div class="filas form-group">
+                            <input type="file" name="fileToUpload" id="fileToUpload" required > 
+                        </div>
+                        <div class="filas form-group">
+                            <input type="button" name="buscar" id="buscar" value="Buscar" class="button col-12">
+                            <input type="submit" value="Upload Image" name="upload_image" id="upload_image" class="button col-12">
+                        </div>
 
-            }
 
-        }
-
-$('#buscar').click(function(){  
-        
-        buscar_ruta();
-    });  
-
-$( "#f_subir_imagen" ).submit(function( event ) {
-  if ( $( "#ready" ).val() != "false" ) {
-    return;
-  }
- 
-  event.preventDefault();
-} );
- });
-</script>
-   
-</head>
-<form action="" method="post" enctype="multipart/form-data" id="f_subir_imagen">
-    ID Pelicula:
-    <input type="text" name="id_pelicula" id="id_pelicula" required>
-    Nombre:
-    <input type="text" name="nombre" id="nombre" readonly="true">
-    Ruta:
-    <input type="text" name="ruta" id="ruta" readonly="true">
-    <input type="button" name="buscar" id="buscar" value="Buscar">
-
-    <br>
-    <input type="file" name="fileToUpload" id="fileToUpload" required>
-    <br>
-    <input type="submit" value="Upload Image" name="upload_image" id="upload_image">
-    <input  type="hidden" value="false" id="ready">
-    <p></p>
-    
-</form>
-
+                        <input  type="hidden" value="false" id="ready">
+                        <p></p>
+                        
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
