@@ -228,6 +228,22 @@ public $mensaje = "";
 			  ));
 		}
 	}
+
+	function llenar_dropdown_peliculas($conexion){
+		try{
+			$query = "SELECT * FROM peliculas";
+			$resultado = mysqli_query($conexion, $query);
+			//$row = mysqli_fetch_assoc($resultado);
+			$array = array();
+			while($row=mysqli_fetch_assoc($resultado)){
+				$array[] = $row;
+			}
+			echo '{"peliculas_dropdown":'.json_encode($array).'}';
+
+		}catch (Exception $e){
+			$this->mensaje = $e->GetMessage();
+		}		
+	}
 	
 }
 ?>

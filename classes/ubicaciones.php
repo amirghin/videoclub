@@ -35,6 +35,22 @@ public $mensaje = "";
 		}
 	}
 
+	function llenar_dropdown_ubicaciones($conexion){
+		try{
+			$query = "SELECT * FROM ubicaciones";
+			$resultado = mysqli_query($conexion, $query);
+			//$row = mysqli_fetch_assoc($resultado);
+			$array = array();
+			while($row=mysqli_fetch_assoc($resultado)){
+				$array[] = $row;
+			}
+			echo '{"ubicaciones_dropdown":'.json_encode($array).'}';
+
+		}catch (Exception $e){
+			$this->mensaje = $e->GetMessage();
+		}		
+	}
+
 }
 
 

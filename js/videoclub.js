@@ -297,6 +297,42 @@ function llenar_dropdown_cargos(){
     })
 };
 
+function llenar_dropdown_peliculas(){
+     $.ajax({
+        method:"POST",
+        url: "controllers/llenar_peliculas_controller.php"
+
+    })
+    .success (function (data){
+        console.log(data);
+        var object = jQuery.parseJSON(data);
+        console.log(object);
+        var selectData = "";
+        $.each(object.peliculas_dropdown, function(key,value){
+            $("#id_pelicula").append("<option value="+value.id_pelicula+">"+value.nombre+"</option>");
+
+        });
+    })   
+};
+
+function llenar_dropdown_ubicaciones(){
+     $.ajax({
+        method:"POST",
+        url: "controllers/llenar_ubicaciones_controller.php"
+
+    })
+    .success (function (data){
+        console.log(data);
+        var object = jQuery.parseJSON(data);
+        console.log(object);
+        var selectData = "";
+        $.each(object.ubicaciones_dropdown, function(key,value){
+            $("#ubicaciones_cod_ubicacion").append("<option value="+value.cod_ubicacion+">"+value.detalle+"</option>");
+
+        });
+    })   
+};
+
 
 function verficar_estado_cliente(id_cliente){
     $.ajax({
@@ -333,8 +369,9 @@ $(function(){
     *********** con JQuery para insertar **
     *********** en la BD ******************/
 
-    llenar_dropdown(); // TODO -- validar que esta funcion se ejecute cuando el dropdown de generos esta presente en el form
-    llenar_dropdown_cargos();
+    //llenar_dropdown(); // TODO -- validar que esta funcion se ejecute cuando el dropdown de generos esta presente en el form
+    //llenar_dropdown_cargos();
+
     /********************* Insertar usuario *******************/
     $("#crear_usuario").click(function(){ 
         if(campos_iguales($("#contrasena"), $("#conf_contrasena"))){
@@ -812,6 +849,21 @@ $(function(){
     $("#buscar_peliculas_id").on("click", function(){
         buscar_peliculas_id();
     })
+
+
+    if ($("#i_copias").length > 0){
+        llenar_dropdown_peliculas();
+        llenar_dropdown_ubicaciones();
+    };
+
+    if ($("#i_peliculas").length > 0){
+        llenar_dropdown();
+    };
+
+    if ($("#i_devoluciones").length > 0){
+        llenar_dropdown_cargos();
+    };
+
 
 
 

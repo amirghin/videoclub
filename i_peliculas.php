@@ -36,7 +36,7 @@
 			   <h3><i class="glyphicon glyphicon-dashboard"></i> Ingresar pelicula</h3>  
 					
 			   <hr>
-				<section class="estilos_form">
+				<section class="estilos_form" id="i_peliculas">
 					<form method="POST" enctype="multipart/form-data" action="" id="form_peliculas" class="form-horizontal">		
 						<fieldset class="insertar_peliculas">
 							<div class="filas form-group">	

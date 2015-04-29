@@ -35,7 +35,7 @@
 				<h3><i class="glyphicon glyphicon-dashboard"></i> Ingresar una devolucion</h3>  
 						
 				<hr>
-				<section class="estilos_form">
+				<section class="estilos_form" id="i_devoluciones">
 					<form method="POST" enctype="multipart/form-data" action="" id="form_peliculas">		
 						<fieldset class="insertar_peliculas">
 							<div class="filas form-group">	

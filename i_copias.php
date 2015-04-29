@@ -35,19 +35,22 @@
         <h3><i class="glyphicon glyphicon-dashboard"></i> Ingresar copias de peliculas</h3>  
             
         <hr>
-        <section class="estilos_form">
+        <section class="estilos_form" id="i_copias">
           <form action="" method="POST" class="form-horizontal">
           	<fieldset>
                    <div class="filas">
-                       <label for="id_pelicula">ID Pelicula: </label>
-                       <input type="text" name="id_pelicula"> 
+                       <label for="id_pelicula">Pelicula: </label>
+                       <!--<input type="text" name="id_pelicula"> -->
+                       <select name="id_pelicula" id="id_pelicula"></select>
                    </div>
                    <div class="filas">
                        <input type="hidden" name="disponibilidad" value="disponible" readonly>
                    </div>
                    <div class="filas">
                        <label for="ubicaciones_cod">Codigo ubicacion:</label>
-                       <input type="text" name="ubicaciones_cod_ubicacion"> <!-- TODO Creo que esto puede ser un dropdown-->
+                       <!--<input type="text" name="ubicaciones_cod_ubicacion"> <!-- TODO Creo que esto puede ser un dropdown-->
+                        <select name="ubicaciones_cod_ubicacion" id="ubicaciones_cod_ubicacion"></select>
+
                    </div>
                    <div class="filas">
                         <input type="button" class="button" value="Insertar" id="insertar_copias">
