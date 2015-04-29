@@ -16,7 +16,7 @@
 			<fieldset>
                <div class="filas">
                    <label for="detalle">Detalle: </label>
-                   <input type="text" name="detalle">
+                   <input type="text" name="detalle" >
                </div>
                <div class="filas">
                    <label for="monto">Monto</label>
