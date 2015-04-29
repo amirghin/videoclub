@@ -2,7 +2,7 @@
 
 require "../conexion.php";
 require "../classes/reservaciones.php";
-require "../classes/peliculas_reservacion.php";
+//require "../classes/peliculas_reservacion.php";
 $reservacion = new reservaciones;
 session_start();
 
