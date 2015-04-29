@@ -412,8 +412,8 @@ $(function(){
         .success(function( response ) {
            if (response.error) {
                 // handle the error
-                throw response.error.message;
-                console.log(response.error.message);
+                //throw response.error.message;
+                alert(response.error.message);
             }else{
                 console.log(response);
                 var objeto = jQuery.parseJSON(response);

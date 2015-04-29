@@ -4,9 +4,11 @@
         <li><a href="" ><i class="glyphicon glyphicon-briefcase"></i> Peliculas <span>&#9660;</span></a>
             <ul class="hiddenMenu">
                 <li><a href="i_peliculas.php"><i class="glyphicon glyphicon-list-alt"></i> Insertar Peliculas</a></li>
-                <li><a href="b_peliculas_transac.php"><i class="glyphicon glyphicon-list-alt"></i> Buscar Peliculas</a></li>
-                <li><a href="b_peliculas_transac.php"><i class="glyphicon glyphicon-list-alt"></i> Insertar generos de peliculas</a></li>
+                <li><a href="b_peliculas_transac.php"><i class="glyphicon glyphicon-list-alt"></i> Buscar Peliculas para reservar</a></li>
+                <li><a href="i_generos.php"><i class="glyphicon glyphicon-list-alt"></i> Insertar generos de peliculas</a></li>
                 <li><a href="i_actores_directos.php"><i class="glyphicon glyphicon-list-alt"></i> Insertar Actores</a></li>
+                <li><a href="i_copias.php"><i class="glyphicon glyphicon-list-alt"></i> Insertar copias</a></li>
+                <li><a href="b_peliculas_transac.php"><i class="glyphicon glyphicon-list-alt"></i> Consultar Peliculas</a></li>
             </ul>
         </li>
         <li><a href=""><i class="glyphicon glyphicon-briefcase"></i> Usuarios <span>&#9660;</span></a>
@@ -22,7 +24,6 @@
         </li>
         <li><a href="i_clientes.php"><i class="glyphicon glyphicon-briefcase"></i> Formulario de afiliacion</a></li>
         <li><a href="i_ubicaciones.php"><i class="glyphicon glyphicon-briefcase"></i> Ingreso de ubicacion</a></li>
-
-
+        <li><a href="i_devoluciones.php"><i class="glyphicon glyphicon-briefcase"></i> Devolucion de peliculas</a></li>
     </ul>
 </nav>
