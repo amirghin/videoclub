@@ -1,5 +1,6 @@
 <?php session_start();?>
 <?php include 'includes/header.php';?>
+<?php if(!isset($_SESSION["id_usuario"])){$_SESSION["id_usuario"] = "2";}?>
 
 <body>
 	<nav id="top-nav" class="navbar navbar-inverse navbar-static-top">
