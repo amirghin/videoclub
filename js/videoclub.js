@@ -501,7 +501,39 @@ $(function(){
             alert("Tiene que seleccionar un tipo");
         }
     });
+    /**************Insertar Actores Directores********************/
 
+    $("#insertar_actor_director").click(function(){
+    
+        var genero = $("#actor_genero option:selected").val();
+        $("#h_genero").val(genero);
+        var actores = $(":input").serializeArray();
+        console.log(actores);
+        if(genero != "0" && verificar_campos()){
+            $.ajax({
+            method: "POST",
+            url: "controllers/insertar_actor_director_controller.php",
+            data: actores
+            })
+
+            .success(function( response ) {
+                console.log(objeto = jQuery.parseJSON(response));
+               if (response.error) {
+                    // handle the error
+                    throw response.error.message;
+                    console.log(response.error.message);
+                }else{
+                    var objeto = jQuery.parseJSON(response);
+                    alert( objeto.success.mensaje);
+                }
+            //limpiar_campos();
+            }); 
+
+        }else if(genero == "0"){
+
+            alert("Tiene que seleccionar un genero");
+        }
+    });
     /********************* Modificar peliculas *******************/
 
     $("#modificar_peliculas").click(function(){ 
