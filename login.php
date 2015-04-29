@@ -65,7 +65,10 @@ if (isset($_POST['usuario'], $_POST['password'])){
 			<div class="col-sm-3 ">
 				<?php include 'includes/menu.php';?>
 			</div>
-			<div class="col-sm-9 "></div>
+			<div class="col-sm-9 ">
+					<h1>Bienvenido al sistema</h1>
+					<p>Seleccione alguna opcion del menu de la izquierda</p>
+			</div>
 		</div>
 	</div>
 	<script src="js/bootstrap.js"></script>

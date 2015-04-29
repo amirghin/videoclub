@@ -48,7 +48,8 @@
 
 			</div>
 			<div class="col-sm-9 main">
-				<h3><?php echo "Bienvenido ". $_SESSION["nombre_usuario"];?></h3>
+				<h3><?php echo "Bienvenido al panel de control". $_SESSION["nombre_usuario"];?></h3>
+				<p>Seleccione alguna opcion del menu de la izquierda</p>
 			</div>
 		</div>
 	</div>

@@ -9,6 +9,7 @@
                 <li><a href="i_actores_directos.php"><i class="glyphicon glyphicon-list-alt"></i> Insertar Actores</a></li>
                 <li><a href="i_copias.php"><i class="glyphicon glyphicon-list-alt"></i> Insertar copias</a></li>
                 <li><a href="b_peliculas_transac.php"><i class="glyphicon glyphicon-list-alt"></i> Consultar Peliculas</a></li>
+                <li><a href="ftp_upload.php"><i class="glyphicon glyphicon-list-alt"></i> Ingresar imagenes de peliculas</a></li>
             </ul>
         </li>
         <li><a href=""><i class="glyphicon glyphicon-briefcase"></i> Usuarios <span>&#9660;</span></a>
