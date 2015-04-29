@@ -18,10 +18,10 @@
 			<fieldset>
 				<div class="filas">
 					<label for="nombre">Nombre:</label>
-					<input type="text" name="nombre">
+					<input type="text" name="nombre_rol" id="nombre_rol" class="requerido">
 				</div>
 				<div class="filas">
-					<input type="submit" value="Insertar" class="button" id="crear_genero">
+					<input type="button" value="Insertar" class="button" id="insertar_rol">
 					<span class="Mensaje" id="Mensaje"></span>					
 				</div>
 

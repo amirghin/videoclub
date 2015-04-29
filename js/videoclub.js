@@ -417,6 +417,32 @@ $(function(){
         }); 
     });
 
+    /*****************Insertar Roles*******************/
+    $("#insertar_rol").click(function(){       
+        var rol = $(":input").serializeArray();
+
+        if(verificar_campos()){
+            $.ajax({
+            method: "POST",
+            url: "controllers/insertar_rol_controller.php",
+            data: rol
+            })
+
+            .success(function( response ) {
+               if (response.error) {
+                    // handle the error
+                    throw response.error.message;
+                    console.log(response.error.message);
+                }else{
+                    console.log(response);
+                    var objeto = jQuery.parseJSON(response);
+                    alert( objeto.success.mensaje);
+                }
+            //limpiar_campos();
+            }); 
+        }
+    });
+
     /*****************Insertar ubicaciones ************/
     $("#insertar_ubicacion").click(function(){
         var ubicacion = $(":input").serializeArray();
@@ -672,7 +698,7 @@ $(function(){
         }
         
     })
-
+    /******************* Insertar Genero **********************/
     $("#insertar_genero").click(function(){
         if (verificar_campos()){
             var genero = $(":input").serializeArray();
