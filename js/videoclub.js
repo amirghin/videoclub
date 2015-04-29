@@ -445,26 +445,35 @@ $(function(){
 
     /*****************Insertar copias************/
     $("#insertar_copias").click(function(){
+        var h_pelicula = $("#id_pelicula option:selected").val();
+        var h_ubicacion = $("#ubicaciones_cod_ubicacion option:selected").val();
+        $("#h_pelicula").val(h_pelicula);
+        $("#h_ubicacion").val(h_ubicacion);
         var copias = $(":input").serializeArray();
 
-        $.ajax({
-        method: "POST",
-        url: "controllers/insertar_copias_controller.php",
-        data: copias
-        })
+        if(h_ubicacion != "0" && h_pelicula != "0"){
+            $.ajax({
+            method: "POST",
+            url: "controllers/insertar_copias_controller.php",
+            data: copias
+            })
 
-        .success(function( response ) {
-           if (response.error) {
-                // handle the error
-                //throw response.error.message;
-                alert(response.error.message);
-            }else{
-                console.log(response);
-                var objeto = jQuery.parseJSON(response);
-                alert( objeto.success.mensaje);
-            }
-        //limpiar_campos();
-        }); 
+            .success(function( response ) {
+               if (response.error) {
+                    // handle the error
+                    //throw response.error.message;
+                    alert(response.error.message);
+                }else{
+                    console.log(response);
+                    var objeto = jQuery.parseJSON(response);
+                    alert( objeto.success.mensaje);
+                }
+            //limpiar_campos();
+            }); 
+        }else{
+            alert("Por Favor seleccione una pelicula y una ubicacion");
+        }
+
     });
 
     /*****************Insertar Roles*******************/

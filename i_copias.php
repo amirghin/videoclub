@@ -41,7 +41,10 @@
                    <div class="filas">
                        <label for="id_pelicula">Pelicula: </label>
                        <!--<input type="text" name="id_pelicula"> -->
-                       <select name="id_pelicula" id="id_pelicula"></select>
+                       <select name="id_pelicula" id="id_pelicula">
+                         <option disabled="true" checked="true" value="0">Seleccione una Pelicula</option>
+                       </select>
+                       <input type="hidden" id="h_pelicula" name="h_pelicula">
                    </div>
                    <div class="filas">
                        <input type="hidden" name="disponibilidad" value="disponible" readonly>
@@ -49,7 +52,10 @@
                    <div class="filas">
                        <label for="ubicaciones_cod">Codigo ubicacion:</label>
                        <!--<input type="text" name="ubicaciones_cod_ubicacion"> <!-- TODO Creo que esto puede ser un dropdown-->
-                        <select name="ubicaciones_cod_ubicacion" id="ubicaciones_cod_ubicacion"></select>
+                        <select name="ubicaciones_cod_ubicacion" id="ubicaciones_cod_ubicacion">
+                          <option disabled="true" checked="true" value="0">Seleccione una Ubicacion</option>
+                        </select>
+                        <input type="hidden" id="h_ubicacion" name="h_ubicacion">
 
                    </div>
                    <div class="filas">

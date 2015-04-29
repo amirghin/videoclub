@@ -66,13 +66,14 @@
 						<input type="hidden" name="estado_aprobacion" id="estado_aprobacion" value="pendiente">
 						<input type="hidden" name="id_copia" id="id_copia" >
 					</div>
-					<div class="filas">
-						<label for="">Fecha entrega</label>
-						<input type="date" name="fecha_entrega" id="fecha_entrega" class="requerido" disabled>
-					</div>
+
 					<div class="filas">
 						<label for="">Fecha reservacion</label>
 						<input type="date" name="fecha_reservacion" id="fecha_reservacion" class="requerido" disabled>
+					</div>
+					<div class="filas">
+						<label for="">Fecha entrega</label>
+						<input type="date" name="fecha_entrega" id="fecha_entrega" class="requerido" disabled>
 					</div>
 					<div class="filas">
 						<label for="">Fecha retiro</label>
