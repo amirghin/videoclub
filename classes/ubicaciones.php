@@ -9,7 +9,7 @@ public $mensaje = "";
 		$mensaje = "";
 		try{
 			$insertar = "INSERT INTO ubicaciones (cod_ubicacion, detalle, usuario_creacion) 
-					  VALUES ({$cod_ubicacion}, '{$detalle}','{$id_user})'";
+					  VALUES ('{$cod_ubicacion}', '{$detalle}','{$id_user}')";
 			
 			$resultado = mysqli_query($conexion, $insertar);
 

@@ -15,12 +15,12 @@
 		<form action="" method="POST" >
 			<fieldset>
                <div class="filas">
-                   <label for="cod_ubicacion">Codigo de ubicacion: </label>
+                   <label for="cod_ubicacion" class="requerido">Codigo de ubicacion: </label>
                    <input type="text" name="cod_ubicacion"> 
                </div>
                <div class="filas">
                    <label for="detalle">Detalle:</label>
-                   <input type="text" name="detalle">
+                   <input type="text" name="detalle" class="requerido">
                </div>
                <div class="filas">
                     <input type="button" class="button" value="Insertar" id="insertar_ubicacion">
