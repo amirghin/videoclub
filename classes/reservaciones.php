@@ -22,7 +22,7 @@ class reservaciones{
 				throw new Exception(mysqli_error($conexion));
 			}
 
-			$resultado = mysqli_query($conexion, $insert);
+			//$resultado = mysqli_query($conexion, $insert);
 
 			if(!$resultado){
 				throw new Exception(mysqli_error($conexion));
