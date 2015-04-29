@@ -6,6 +6,7 @@
                 <li><a href="i_peliculas.php"><i class="glyphicon glyphicon-list-alt"></i> Insertar Peliculas</a></li>
                 <li><a href="b_peliculas_transac.php"><i class="glyphicon glyphicon-list-alt"></i> Buscar Peliculas</a></li>
                 <li><a href="b_peliculas_transac.php"><i class="glyphicon glyphicon-list-alt"></i> Insertar generos de peliculas</a></li>
+                <li><a href="i_actores_directos.php"><i class="glyphicon glyphicon-list-alt"></i> Insertar Actores</a></li>
             </ul>
         </li>
         <li><a href=""><i class="glyphicon glyphicon-briefcase"></i> Usuarios <span>&#9660;</span></a>
