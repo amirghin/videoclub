@@ -370,6 +370,36 @@ function llenar_dropdown_actores(){
 };
 
 
+function llenar_usuarios_aprobaciones(){
+    console.log("hola");
+     $.ajax({
+        method:"POST",
+        url: "controllers/busqueda_clientes_pendiente_aprobacion_controller.php"
+    }) 
+    .success (function (data){
+        console.log(data);
+        var object = jQuery.parseJSON(data);
+        console.log(object);
+
+      if (object.error) {
+            // handle the error
+            $("#no-resultados").append(object.error.message);
+            //throw object.error.message;
+            console.log(object.error.message);
+        }else{
+            var table = "<tr><td>ID Cliente</td><td>Nombre Cliente</td><td>Apellidos</td><td>Estado</td></tr>";
+            var tableValues = "";
+            $.each(object.clientes, function(key,value){
+                tableValues += "<tr><td>"+value.id_cliente+"</td><td>"+value.nombre+"</td><td>"+value.apellidos+"</td><td>"+value.estado+"</td></tr>";
+            });
+            $("#result").append(table);
+            $("#result").append(tableValues);
+            console.log(tableValues);
+        }
+
+    })  
+};
+
 function verficar_estado_cliente(id_cliente){
     $.ajax({
         url: "controllers/verificar_estado_cliente_controller.php",
@@ -995,6 +1025,9 @@ $(function(){
         llenar_dropdown_actores();
     };
 
+    if($("#estado_clientes").length>0){
+        llenar_usuarios_aprobaciones();
+    };
     
 
 

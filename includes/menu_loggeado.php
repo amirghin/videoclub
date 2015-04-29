@@ -16,6 +16,8 @@
             <ul class="hiddenMenu">
                 <li><a href="i_usuarios_administradores.php"><i class="glyphicon glyphicon-list-alt"></i> Insertar usuario adminitrador</a></li>
                 <li><a href="b_usuarios_administradores.php"><i class="glyphicon glyphicon-list-alt"></i> Buscar Usuarios</a></li>
+                <li><a href="i_clientes.php"><i class="glyphicon glyphicon-list-alt"></i> Ingresar Clientes</a></li>   
+                <li><a href="b_clientes_pendientes.php"><i class="glyphicon glyphicon-list-alt"></i>Clientes pendientes de aprobacion</a></li>  
             </ul>
         </li>
         <li><a href="i_reservaciones.php"><i class="glyphicon glyphicon-briefcase"></i> Reservaciones <span>&#9660;</span></a>
